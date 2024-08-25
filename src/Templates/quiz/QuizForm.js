@@ -8,6 +8,7 @@ const newQuizData = {
   title: "",
   description: "",
   categoryName: "",
+  imageUrl: "",
   status: "active", // Default status set to "active"
 };
 
@@ -49,6 +50,16 @@ const QuizForm = () => {
             type="text"
             name="title"
             value={quizData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>image</label>
+          <input
+            type="text"
+            name="imageUrl"
+            value={quizData.imageUrl}
             onChange={handleChange}
             required
           />
