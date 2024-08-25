@@ -33,7 +33,7 @@ const QuizForm = () => {
       setQuizzez([...quizzez, quizCreated.data]);
 
       // Navigate to the question form page with the new quiz ID
-      navigate(`/questionForm/${quizCreated.data._id}`);
+      navigate(`/question-form/${quizCreated.data._id}`);
     } catch (error) {
       console.log(error.response.data.msg);
       alert("You should first create the quiz");

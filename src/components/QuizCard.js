@@ -22,6 +22,8 @@ const QuizCard = ({
   dateCreated,
   numberOfQuestions,
   quizId,
+  categoryName,
+  onDelete,
 }) => {
   // Format the date
   const formattedDate = format(new Date(dateCreated), "MMMM d, yyyy");
@@ -34,7 +36,19 @@ const QuizCard = ({
         image={imageUrl}
         alt="Quiz image"
       />
-      <CardHeader title={title} subheader={formattedDate} />
+      <CardHeader
+        title={title}
+        subheader={
+          <div>
+            <Typography variant="body2" color="text.secondary">
+              {categoryName}
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+              {formattedDate}
+            </Typography>
+          </div>
+        }
+      />
 
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -46,7 +60,7 @@ const QuizCard = ({
       </CardContent>
       <CardActions disableSpacing>
         <Tooltip title="Delete">
-          <IconButton aria-label="delete">
+          <IconButton aria-label="delete" onClick={onDelete}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>

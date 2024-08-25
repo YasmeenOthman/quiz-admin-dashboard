@@ -25,9 +25,8 @@ function QuestionsForm() {
   // Fetch quiz details by ID
   async function getQuizById() {
     let res = await axios.get(`${serverUrl}/quiz/${quizId}`);
-    console.log(res.data.questions);
     setQuiz(res.data); // Set the quiz data
-    setQuizQuestions(res.data.questions); // Set the list of questions in the quiz
+    setQuizQuestions(res.data.questions.reverse()); // Set the list of questions in the quiz
   }
 
   // Fetch quiz data when component mounts
