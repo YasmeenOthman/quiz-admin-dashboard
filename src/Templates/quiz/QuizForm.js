@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BasicButton from "../../components/BasicButton";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 // Initial state for the quiz form
@@ -40,7 +41,7 @@ const QuizForm = () => {
   };
 
   return (
-    <>
+    <div>
       <h1>New Quiz</h1>
 
       <form>
@@ -94,12 +95,12 @@ const QuizForm = () => {
         </div>
 
         <div style={{ display: "flex", gap: "10px" }}>
-          <input type="button" value="Prev" onClick={() => navigate("/")} />
+          <BasicButton value="Prev" onClick={() => navigate("/")} />
           {/* Button to submit the form and create the quiz */}
-          <input type="button" value="Next" onClick={createQuiz} />
+          <BasicButton value="Next" onClick={createQuiz} />
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import QuizCard from "../../components/QuizCard";
+import BasicButton from "../../components/BasicButton";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -20,7 +21,7 @@ const QuizManagement = () => {
       console.log(error);
     }
   }
-  console.log(quizzez);
+
   return (
     <div>
       <h1>Quiz Management</h1>
@@ -44,7 +45,7 @@ const QuizManagement = () => {
         )}
       </div>
       <Link to="/create-quiz">
-        <button>Create New Quiz</button>
+        <BasicButton value="Create New Quiz" />
       </Link>
     </div>
   );
