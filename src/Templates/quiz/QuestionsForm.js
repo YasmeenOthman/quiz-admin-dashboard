@@ -25,6 +25,7 @@ function QuestionsForm() {
   // Fetch quiz details by ID
   async function getQuizById() {
     let res = await axios.get(`${serverUrl}/quiz/${quizId}`);
+    console.log(res.data.questions);
     setQuiz(res.data); // Set the quiz data
     setQuizQuestions(res.data.questions); // Set the list of questions in the quiz
   }
@@ -77,7 +78,7 @@ function QuestionsForm() {
       const response = await axios.post(`${serverUrl}/question`, newQuestion);
       alert(response.data.msg);
       // Add the new question to the list of quiz questions
-      setQuizQuestions([response.data, ...quizQuestions]);
+      setQuizQuestions([newQuestion, ...quizQuestions]);
       // Clear the form for new input
       setQuestionData(initialQuestionData);
     } catch (error) {
@@ -110,7 +111,6 @@ function QuestionsForm() {
         value="Create A New Question"
         onClick={() => setIsCreatingQuestion(!isCreatingQuestion)}
       />
-
       {/* Conditional rendering of the question creation form */}
       {isCreatingQuestion && (
         <form onSubmit={handleSubmit}>
@@ -206,13 +206,13 @@ function QuestionsForm() {
           <BasicButton value="Add Question" type="submit" />
         </form>
       )}
-
       {/* Render the list of questions */}
       <h2>Questions</h2>
       {quizQuestions.length === 0 ? (
-        <h3>No questions yet...</h3>
+        <h3>No questions</h3>
       ) : (
-        <div>
+        <>
+          {" "}
           {quizQuestions.map((question, index) => (
             <details
               key={index}
@@ -272,8 +272,8 @@ function QuestionsForm() {
                 </div>
               </div>
             </details>
-          ))}{" "}
-        </div>
+          ))}
+        </>
       )}
     </>
   );
