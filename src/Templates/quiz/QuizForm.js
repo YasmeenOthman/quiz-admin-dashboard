@@ -41,7 +41,7 @@ const QuizForm = () => {
   };
 
   return (
-    <div>
+    <>
       <h1>New Quiz</h1>
 
       <form>
@@ -100,7 +100,7 @@ const QuizForm = () => {
           <BasicButton value="Next" onClick={createQuiz} />
         </div>
       </form>
-    </div>
+    </>
   );
 };
 

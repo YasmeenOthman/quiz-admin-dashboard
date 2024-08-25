@@ -68,9 +68,11 @@ const QuizCard = ({
           </IconButton>
         </Tooltip>
         <Tooltip title="Edit">
-          <IconButton aria-label="edit">
-            <EditIcon />
-          </IconButton>
+          <Link to={`/edit-quiz/${quizId}`}>
+            <IconButton aria-label="edit">
+              <EditIcon />
+            </IconButton>
+          </Link>
         </Tooltip>
         <Tooltip title="View Questions">
           <Link to={`/question-form/${quizId}`}>
