@@ -1,4 +1,3 @@
-// components/QuizCard.jsx
 import * as React from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
@@ -12,7 +11,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import Tooltip from "@mui/material/Tooltip"; // Import Tooltip
-
+import Badge from "@mui/material/Badge"; // Import Badge
 import { format } from "date-fns";
 
 const QuizCard = ({
@@ -23,13 +22,18 @@ const QuizCard = ({
   numberOfQuestions,
   quizId,
   categoryName,
+  status, // New prop for quiz status
   onDelete,
 }) => {
   // Format the date
   const formattedDate = format(new Date(dateCreated), "MMMM d, yyyy");
 
+  // Determine badge color based on status
+  const badgeColor = status === "active" ? "success" : "error";
+  const badgeText = status === "active" ? "Active" : "Inactive";
+
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card sx={{ maxWidth: 300, position: "relative" }}>
       <CardMedia
         component="img"
         height="150"
@@ -49,13 +53,12 @@ const QuizCard = ({
           </div>
         }
       />
-
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Total questions:{numberOfQuestions}
+          Total questions: {numberOfQuestions}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -76,6 +79,12 @@ const QuizCard = ({
             </IconButton>
           </Link>
         </Tooltip>
+        {/* Badge for status */}
+        <Badge
+          badgeContent={badgeText}
+          color={badgeColor}
+          sx={{ position: "absolute", top: 16, right: 30 }}
+        />
       </CardActions>
     </Card>
   );

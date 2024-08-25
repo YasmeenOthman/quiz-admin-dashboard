@@ -69,6 +69,7 @@ const QuizManagement = () => {
               quizId={quiz._id}
               numberOfQuestions={quiz.questions.length}
               categoryName={quiz.category.name}
+              status={quiz.status}
               onDelete={() => deleteQuiz(quiz._id)} // Pass the delete function
             />
           ))
