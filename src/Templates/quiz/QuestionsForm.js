@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import BasicButton from "../../components/Button";
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
 const initialQuestionData = {
   questionText: "",
   questionType: "multiple-choice",
@@ -18,7 +20,7 @@ function QuestionsForm() {
   const [isCreatingQuestion, setIsCreatingQuestion] = useState(false);
 
   async function getQuizById() {
-    let res = await axios.get(`http://localhost:4000/api/quiz/${quizId}`);
+    let res = await axios.get(`${serverUrl}/quiz/${quizId}`);
     setQuiz(res.data);
     setQuizQuestions(res.data.questions);
   }
@@ -82,9 +84,11 @@ function QuestionsForm() {
   return (
     <>
       <h1>Quiz : {quiz.title}</h1>
-      <button onClick={() => setIsCreatingQuestion(!isCreatingQuestion)}>
-        Create A New Question
-      </button>
+      <BasicButton
+        value="Create A New Question"
+        onClick={() => setIsCreatingQuestion(!isCreatingQuestion)}
+      />
+
       {isCreatingQuestion && (
         <form onSubmit={handleSubmit}>
           <div>
@@ -217,19 +221,18 @@ function QuestionsForm() {
               </p>
             )}
             <div style={{ marginTop: "10px", display: "flex", gap: "10px" }}>
-              <button style={{ padding: "5px 10px", border: "none" }}>
-                Edit
-              </button>
-              <button
+              <BasicButton
+                value="Edit"
+                style={{ padding: "5px 10px", border: "none" }}
+              />
+
+              <BasicButton
+                value="Delete"
                 style={{
                   padding: "5px 10px",
-                  color: "white",
-                  backgroundColor: "red",
                   border: "none",
                 }}
-              >
-                Delete
-              </button>
+              />
             </div>
           </div>
         </details>

@@ -1,11 +1,11 @@
-import React from "react";
+// components/BasicButtons.jsx
+import * as React from "react";
+import Button from "@mui/material/Button";
 
-function Button({ value }) {
+export default function BasicButton({ value, style, onClick }) {
   return (
-    <div>
-      <button>{value}</button>
-    </div>
+    <Button variant="outlined" style={style} onClick={onClick}>
+      {value}
+    </Button>
   );
 }
-
-export default Button;
