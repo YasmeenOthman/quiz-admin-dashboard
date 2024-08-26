@@ -22,11 +22,13 @@ const QuizCard = ({
   numberOfQuestions,
   quizId,
   categoryName,
-  status, // New prop for quiz status
+  status,
   onDelete,
 }) => {
   // Format the date
-  const formattedDate = format(new Date(dateCreated), "MMMM d, yyyy");
+  const formattedDate = dateCreated
+    ? format(new Date(dateCreated), "MMMM d, yyyy")
+    : "";
 
   // Determine badge color based on status
   const badgeColor = status === "active" ? "success" : "error";
@@ -49,10 +51,11 @@ const QuizCard = ({
                 {categoryName}
               </Typography>
             )}
-
-            <Typography variant="caption" color="text.secondary">
-              {formattedDate}
-            </Typography>
+            {formattedDate && (
+              <Typography variant="caption" color="text.secondary">
+                {formattedDate}
+              </Typography>
+            )}
           </div>
         }
       />
@@ -67,11 +70,14 @@ const QuizCard = ({
         )}
       </CardContent>
       <CardActions disableSpacing>
-        <Tooltip title="Delete">
-          <IconButton aria-label="delete" onClick={onDelete}>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
+        {onDelete && (
+          <Tooltip title="Delete">
+            <IconButton aria-label="delete" onClick={onDelete}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        )}
+
         <Tooltip title="Edit">
           <Link to={`/edit-quiz/${quizId}`}>
             <IconButton aria-label="edit">

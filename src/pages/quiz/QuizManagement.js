@@ -1,14 +1,16 @@
 // pages/QuizManagement.jsx
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import QuizCard from "../../components/QuizCard";
 import BasicButton from "../../components/BasicButton";
-import QuizFilter from "../../Templates/quiz/QuizFilter"; // Import QuizFilter
+import QuizFilter from "./QuizFilter";
+import CategoryCard from "../../components/CategoryCard";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const QuizManagement = () => {
+  const navigate = useNavigate();
   const [quizzez, setQuizzez] = useState([]);
   const [filteredQuizzez, setFilteredQuizzez] = useState([]);
   const [visibleQuizzez, setVisibleQuizzez] = useState(4);
@@ -44,7 +46,7 @@ const QuizManagement = () => {
   };
 
   const handleToggle = () => {
-    setVisibleQuizzez(isExpanded ? 4 : quizzez.length);
+    setVisibleQuizzez(isExpanded ? 4 : navigate("/quizzez"));
     setIsExpanded(!isExpanded);
   };
 
@@ -107,6 +109,21 @@ const QuizManagement = () => {
             onClick={handleToggle}
           />
         )}
+      </div>
+
+      <h2>Recent Categories</h2>
+      <div className="category-cards">
+        {filteredQuizzez
+          .map((quiz) => quiz.category)
+          .filter(
+            (category, index, self) =>
+              category &&
+              self.findIndex((cat) => cat.name === category.name) === index
+          ) // Filter unique categories
+          .slice(0, 4) // Limit to last 4 categories
+          .map((category) => (
+            <CategoryCard key={category._id} categoryName={category.name} />
+          ))}
       </div>
     </div>
   );

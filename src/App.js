@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import QuizForm from "./Templates/quiz/QuizForm";
-import QuestionsForm from "./Templates/quiz/QuestionsForm";
-import QuizManagement from "./Templates/quiz/QuizManagement";
-import EditQuizForm from "./Templates/quiz/EditQuizForm";
+import QuizForm from "./pages/quiz/QuizForm";
+import QuestionsForm from "./pages/quiz/QuestionsForm";
+import QuizManagement from "./pages/quiz/QuizManagement";
+import EditQuizForm from "./pages/quiz/EditQuizForm";
+import QuizList from "./pages/quiz/QuizList";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<QuizManagement />} />
+          <Route path="/quizzez" element={<QuizList />} />
           <Route path="/create-quiz" element={<QuizForm />} />
           <Route path="/question-form/:quizId" element={<QuestionsForm />} />
           <Route path="/edit-quiz/:quizId" element={<EditQuizForm />} />
