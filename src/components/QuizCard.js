@@ -44,9 +44,12 @@ const QuizCard = ({
         title={title}
         subheader={
           <div>
-            <Typography variant="body2" color="text.secondary">
-              {categoryName}
-            </Typography>
+            {categoryName && (
+              <Typography variant="body2" color="text.secondary">
+                {categoryName}
+              </Typography>
+            )}
+
             <Typography variant="caption" color="text.secondary">
               {formattedDate}
             </Typography>
@@ -57,9 +60,11 @@ const QuizCard = ({
         <Typography variant="body2" color="text.secondary">
           {description}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Total questions: {numberOfQuestions}
-        </Typography>
+        {numberOfQuestions >= 0 && (
+          <Typography variant="body2" color="text.secondary">
+            Total questions: {numberOfQuestions}
+          </Typography>
+        )}
       </CardContent>
       <CardActions disableSpacing>
         <Tooltip title="Delete">

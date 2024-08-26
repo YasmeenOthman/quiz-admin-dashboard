@@ -21,8 +21,9 @@ const QuizManagement = () => {
   async function getAllQuizzez() {
     try {
       const allQuizzez = await axios.get(`${serverUrl}/quiz`);
-      setQuizzez(allQuizzez.data.reverse());
-      setFilteredQuizzez(allQuizzez.data.reverse());
+      const reversedQuizzes = allQuizzez.data.reverse(); // Reverse the array once
+      setQuizzez(reversedQuizzes);
+      setFilteredQuizzez(reversedQuizzes);
     } catch (error) {
       console.log(error);
     }
@@ -49,17 +50,16 @@ const QuizManagement = () => {
 
   // Handle filter changes
   const handleFilterChange = ({ category, status, title }) => {
-    console.log(category, status, title);
     let filtered = quizzez;
-
+    // Filter by category if a category is selected
     if (category) {
       filtered = filtered.filter((quiz) => quiz.category.name === category);
     }
-
+    // Filter by status if a status is selected
     if (status) {
       filtered = filtered.filter((quiz) => quiz.status === status);
     }
-
+    // Filter by title if a title is entered
     if (title) {
       filtered = filtered.filter((quiz) =>
         quiz.title.toLowerCase().includes(title.toLowerCase())
@@ -68,7 +68,6 @@ const QuizManagement = () => {
 
     setFilteredQuizzez(filtered);
   };
-  
 
   return (
     <div>
@@ -96,7 +95,7 @@ const QuizManagement = () => {
                 imageUrl={quiz.imageUrl}
                 quizId={quiz._id}
                 numberOfQuestions={quiz.questions.length}
-                categoryName={quiz.category.name}
+                categoryName={quiz.category && quiz.category.name}
                 status={quiz.status}
                 onDelete={() => deleteQuiz(quiz._id)}
               />

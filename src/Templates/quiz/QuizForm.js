@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import BasicButton from "../../components/BasicButton";
+import BasicModal from "../../components/Modal";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 // Initial state for the quiz form
@@ -17,6 +18,8 @@ const QuizForm = () => {
   const navigate = useNavigate();
   const [quizData, setQuizData] = useState(newQuizData);
   const [quizzez, setQuizzez] = useState([]);
+  const [quizId, setQuizId] = useState(null);
+  const [isQuizSaved, setIsQuizSaved] = useState(false);
 
   // Handle input changes and update the corresponding field in quizData state
   const handleChange = (e) => {
@@ -29,14 +32,13 @@ const QuizForm = () => {
     try {
       // Make a POST request to the server to create a new quiz
       let quizCreated = await axios.post(`${serverUrl}/quiz`, quizData);
-
       setQuizzez([...quizzez, quizCreated.data]);
-
-      // Navigate to the question form page with the new quiz ID
-      navigate(`/question-form/${quizCreated.data._id}`);
+      alert(quizCreated.data.msg);
+      setQuizId(quizCreated.data.quiz._id);
+      setIsQuizSaved(true);
     } catch (error) {
       console.log(error.response.data.msg);
-      alert("You should first create the quiz");
+      alert("All the quiz field are required");
     }
   };
 
@@ -52,6 +54,7 @@ const QuizForm = () => {
             name="title"
             value={quizData.title}
             onChange={handleChange}
+            placeholder="Quiz Title.."
             required
           />
         </div>
@@ -62,19 +65,10 @@ const QuizForm = () => {
             name="imageUrl"
             value={quizData.imageUrl}
             onChange={handleChange}
+            placeholder="Quiz Image.."
             required
           />
         </div>
-
-        <div>
-          <label>Description</label>
-          <textarea
-            name="description"
-            value={quizData.description}
-            onChange={handleChange}
-          />
-        </div>
-
         <div>
           <label>Category</label>
           <input
@@ -82,10 +76,19 @@ const QuizForm = () => {
             name="categoryName"
             value={quizData.categoryName}
             onChange={handleChange}
+            placeholder="Quiz Category.."
             required
           />
         </div>
-
+        <div>
+          <label>Description</label>
+          <textarea
+            name="description"
+            value={quizData.description}
+            onChange={handleChange}
+            placeholder="Quiz Description / optional.."
+          />
+        </div>
         <div>
           <label>Status</label>
           <select name="status" value={quizData.status} onChange={handleChange}>
@@ -93,12 +96,11 @@ const QuizForm = () => {
             <option value="inactive">Inactive</option>
           </select>
         </div>
-
         <div style={{ display: "flex", gap: "10px" }}>
-          <BasicButton value="Prev" onClick={() => navigate("/")} />
           {/* Button to submit the form and create the quiz */}
-          <BasicButton value="Next" onClick={createQuiz} />
+          <BasicButton value="Save Quiz" onClick={createQuiz} />
         </div>
+        {isQuizSaved && <BasicModal quizId={quizId} />}
       </form>
     </>
   );
