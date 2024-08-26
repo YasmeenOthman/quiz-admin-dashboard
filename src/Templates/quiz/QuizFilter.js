@@ -21,6 +21,10 @@ const QuizFilter = ({ onFilterChange }) => {
     getAllCategories();
   }, []);
 
+  useEffect(() => {
+    handleFilterChange();
+  }, [category, status, title]); // Trigger filter change whenever category, status, or title changes
+
   const handleFilterChange = () => {
     onFilterChange({ category, status, title });
   };
@@ -33,14 +37,12 @@ const QuizFilter = ({ onFilterChange }) => {
         value={title}
         onChange={(e) => {
           setTitle(e.target.value);
-          handleFilterChange();
         }}
       />
       <select
         value={category}
         onChange={(e) => {
           setCategory(e.target.value);
-          handleFilterChange();
         }}
       >
         <option value="">All Categories</option>
@@ -55,7 +57,6 @@ const QuizFilter = ({ onFilterChange }) => {
         value={status}
         onChange={(e) => {
           setStatus(e.target.value);
-          handleFilterChange();
         }}
       >
         <option value="">All Statuses</option>

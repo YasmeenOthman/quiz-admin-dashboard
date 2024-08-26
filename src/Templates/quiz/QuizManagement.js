@@ -68,6 +68,7 @@ const QuizManagement = () => {
 
     setFilteredQuizzez(filtered);
   };
+  
 
   return (
     <div>
