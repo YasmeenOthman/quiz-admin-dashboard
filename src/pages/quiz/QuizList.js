@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+
 import QuizCard from "../../components/QuizCard";
 import QuizFilter from "./QuizFilter";
 
@@ -67,19 +69,21 @@ function QuizList() {
         <h2>No quizzes found yet</h2>
       ) : (
         filteredQuizzez.map((quiz) => (
-          <QuizCard
-            key={quiz._id}
-            title={quiz.title}
-            description={quiz.description}
-            dateCreated={quiz.dateCreated}
-            createdBy={quiz.createdBy}
-            imageUrl={quiz.imageUrl}
-            quizId={quiz._id}
-            numberOfQuestions={quiz.questions.length}
-            categoryName={quiz.category?.name}
-            status={quiz.status}
-            onDelete={deleteQuiz}
-          />
+          <Link to={`/quiz/${quiz._id}`}>
+            <QuizCard
+              key={quiz._id}
+              title={quiz.title}
+              description={quiz.description}
+              dateCreated={quiz.dateCreated}
+              createdBy={quiz.createdBy}
+              imageUrl={quiz.imageUrl}
+              quizId={quiz._id}
+              numberOfQuestions={quiz.questions.length}
+              categoryName={quiz.category?.name}
+              status={quiz.status}
+              onDelete={deleteQuiz}
+            />
+          </Link>
         ))
       )}
     </div>

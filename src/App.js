@@ -7,6 +7,7 @@ import EditQuizForm from "./pages/quiz/EditQuizForm";
 import QuizList from "./pages/quiz/QuizList";
 import EditQuestionForm from "./pages/quiz/EditQuestionForm";
 import Sidebar from "./Templates/sidebar";
+import QuizPage from "./pages/quiz/QuizItem";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<QuizManagement />} />
               <Route path="/quizzes" element={<QuizList />} />
+              <Route path="/quiz/:quizId" element={<QuizPage />} />
               <Route path="/create-quiz" element={<QuizForm />} />
               <Route
                 path="/question-form/:quizId"
