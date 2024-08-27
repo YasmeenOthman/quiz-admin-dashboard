@@ -1,26 +1,44 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Container, Box } from "@mui/material";
 import QuizForm from "./pages/quiz/QuizForm";
 import QuestionsForm from "./pages/quiz/QuestionsForm";
 import QuizManagement from "./pages/quiz/QuizManagement";
 import EditQuizForm from "./pages/quiz/EditQuizForm";
 import QuizList from "./pages/quiz/QuizList";
 import EditQuestionForm from "./pages/quiz/EditQuestionForm";
+import Sidebar from "./Templates/sidebar";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<QuizManagement />} />
-          <Route path="/quizzez" element={<QuizList />} />
-          <Route path="/create-quiz" element={<QuizForm />} />
-          <Route path="/question-form/:quizId" element={<QuestionsForm />} />
-          <Route path="/edit-quiz/:quizId" element={<EditQuizForm />} />
-          <Route
-            path="/edit-question/:questionId"
-            element={<EditQuestionForm />}
-          />
-        </Routes>
+        <Container
+          disableGutters
+          maxWidth={false}
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "250px 1fr",
+            height: "100vh",
+          }}
+        >
+          <Sidebar />
+          <Box sx={{ padding: 2 }}>
+            <Routes>
+              <Route path="/" element={<QuizManagement />} />
+              <Route path="/quizzes" element={<QuizList />} />
+              <Route path="/create-quiz" element={<QuizForm />} />
+              <Route
+                path="/question-form/:quizId"
+                element={<QuestionsForm />}
+              />
+              <Route path="/edit-quiz/:quizId" element={<EditQuizForm />} />
+              <Route
+                path="/edit-question/:questionId"
+                element={<EditQuestionForm />}
+              />
+            </Routes>
+          </Box>
+        </Container>
       </BrowserRouter>
     </div>
   );
