@@ -32,6 +32,7 @@ function QuizList() {
     }
     // Filter by status if a status is selected
     if (status) {
+      console.log(filtered);
       filtered = filtered.filter((quiz) => quiz.status === status);
     }
     // Filter by title if a title is entered
@@ -46,6 +47,7 @@ function QuizList() {
 
   return (
     <div>
+      <h1>All Quizzez</h1>
       {/* Add QuizFilter component */}
       <QuizFilter onFilterChange={handleFilterChange} />
       {filteredQuizzez.length === 0 ? (

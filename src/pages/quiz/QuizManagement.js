@@ -80,7 +80,7 @@ const QuizManagement = () => {
 
       {/* Add QuizFilter component */}
       <QuizFilter onFilterChange={handleFilterChange} />
-
+      <h1>Last Added quizzez</h1>
       <div>
         {filteredQuizzez.length === 0 ? (
           <h2>No quizzes found yet</h2>
