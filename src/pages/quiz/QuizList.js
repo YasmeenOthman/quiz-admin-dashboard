@@ -45,6 +45,19 @@ function QuizList() {
     setFilteredQuizzez(filtered);
   };
 
+  const deleteQuiz = async (quizId) => {
+    try {
+      if (window.confirm("Are you sure you want to delete this quiz?")) {
+        await axios.delete(`${serverUrl}/quiz/${quizId}`);
+        setQuizzez(quizzez.filter((quiz) => quiz._id !== quizId));
+        setFilteredQuizzez(
+          filteredQuizzez.filter((quiz) => quiz._id !== quizId)
+        );
+      }
+    } catch (error) {
+      console.error("Error deleting quiz:", error);
+    }
+  };
   return (
     <div>
       <h1>All Quizzez</h1>
@@ -65,6 +78,7 @@ function QuizList() {
             numberOfQuestions={quiz.questions.length}
             categoryName={quiz.category?.name}
             status={quiz.status}
+            onDelete={deleteQuiz}
           />
         ))
       )}

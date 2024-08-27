@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import BasicButton from "../../components/BasicButton";
 
@@ -101,6 +101,8 @@ function QuestionsForm() {
       alert(error.response.data);
     }
   }
+
+  async function editQuestion() {}
 
   return (
     <>
@@ -255,11 +257,13 @@ function QuestionsForm() {
                 <div
                   style={{ marginTop: "10px", display: "flex", gap: "10px" }}
                 >
-                  <BasicButton
-                    value="Edit"
-                    style={{ padding: "5px 10px", border: "none" }}
-                  />
-
+                  <Link to={`/edit-question/${question._id}`}>
+                    <BasicButton
+                      value="Edit"
+                      onClick={() => editQuestion(question._id)}
+                      style={{ padding: "5px 10px", border: "none" }}
+                    />
+                  </Link>
                   <BasicButton
                     value="Delete"
                     onClick={() => deleteQuestion(question._id)}

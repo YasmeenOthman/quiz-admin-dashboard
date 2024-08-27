@@ -45,10 +45,10 @@ const QuizManagement = () => {
     }
   };
 
-  const handleToggle = () => {
-    setVisibleQuizzez(isExpanded ? 4 : navigate("/quizzez"));
-    setIsExpanded(!isExpanded);
-  };
+  // const handleToggle = () => {
+  //   setVisibleQuizzez(isExpanded ? 4 : navigate("/quizzez"));
+  //   setIsExpanded(!isExpanded);
+  // };
 
   // Handle filter changes
   const handleFilterChange = ({ category, status, title }) => {
@@ -74,9 +74,14 @@ const QuizManagement = () => {
   return (
     <div>
       <h1>Quiz Management</h1>
-      <Link to="/create-quiz">
-        <BasicButton value="Create New Quiz" />
-      </Link>
+      <div>
+        <Link to="/create-quiz">
+          <BasicButton value="Create New Quiz" />
+        </Link>
+        <Link to="/quizzez">
+          <BasicButton value={"Explore All Quizzez"} />
+        </Link>
+      </div>
 
       {/* Add QuizFilter component */}
       <QuizFilter onFilterChange={handleFilterChange} />
@@ -103,12 +108,12 @@ const QuizManagement = () => {
               />
             ))
         )}
-        {filteredQuizzez.length > 4 && (
-          <BasicButton
-            value={isExpanded ? "See Less" : "See More"}
-            onClick={handleToggle}
-          />
-        )}
+        {/* {filteredQuizzez.length > 4 && ( */}
+        {/* <BasicButton
+          value={isExpanded ? "See Less" : "Explore All Quizzez"}
+          onClick={handleToggle}
+        /> */}
+        {/* )} */}
       </div>
 
       <h2>Recent Categories</h2>
