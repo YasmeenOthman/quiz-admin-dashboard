@@ -1,4 +1,3 @@
-// components/EditQuestionForm.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
@@ -59,7 +58,7 @@ const EditQuestionForm = () => {
     try {
       await axios.put(`${serverUrl}/question/${questionId}`, questionData);
       alert("Question updated successfully!");
-      navigate(`/question-form/${questionData.quiz}`); // Redirect to quiz page
+      navigate(`/quiz/${questionData.quiz}`); // Redirect to quiz page
     } catch (error) {
       console.error("Error updating question:", error);
       alert("Error updating question");
@@ -160,7 +159,7 @@ const EditQuestionForm = () => {
         <BasicButton
           value="Cancel"
           type="button"
-          onClick={() => navigate(`/question-form/${questionData.quiz}`)}
+          onClick={() => navigate(`/quiz/${questionData.quiz}`)}
         />
       </form>
     </div>

@@ -7,7 +7,8 @@ import EditQuizForm from "./pages/quiz/EditQuizForm";
 import QuizList from "./pages/quiz/QuizList";
 import EditQuestionForm from "./pages/quiz/EditQuestionForm";
 import Sidebar from "./Templates/sidebar";
-import QuizPage from "./pages/quiz/QuizItem";
+import QuizPage from "./pages/quiz/QuizPage";
+import CategoryList from "./pages/category/CateogoryList";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
                 path="/edit-question/:questionId"
                 element={<EditQuestionForm />}
               />
+              <Route path="/categories" element={<CategoryList />} />
             </Routes>
           </Box>
         </Container>

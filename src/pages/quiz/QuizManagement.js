@@ -14,7 +14,6 @@ const QuizManagement = () => {
   const [quizzez, setQuizzez] = useState([]);
   const [filteredQuizzez, setFilteredQuizzez] = useState([]);
   const [visibleQuizzez, setVisibleQuizzez] = useState(4);
-  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
     getAllQuizzez();
@@ -76,6 +75,9 @@ const QuizManagement = () => {
         <Link to="/quizzes">
           <BasicButton value={"Explore All Quizzez"} />
         </Link>
+        <Link to="/categories">
+          <BasicButton value={"Explore All Categories"} />
+        </Link>
       </div>
 
       {/* Add QuizFilter component */}
@@ -105,7 +107,7 @@ const QuizManagement = () => {
         )}
       </div>
 
-      <h2>Recent Categories</h2>
+      <h2>Recent Categories With Active Quizzez</h2>
       <div className="category-cards">
         {filteredQuizzez
           .map((quiz) => quiz.category)
@@ -116,7 +118,11 @@ const QuizManagement = () => {
           ) // Filter unique categories
           .slice(0, 4) // Limit to last 4 categories
           .map((category) => (
-            <CategoryCard key={category._id} categoryName={category.name} />
+            <CategoryCard
+              key={category._id}
+              categoryName={category.name}
+              quizCount={category.quizzes.length}
+            />
           ))}
       </div>
     </div>
