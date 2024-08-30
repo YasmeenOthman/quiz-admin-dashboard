@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import BasicButton from "../../components/BasicButton";
 import BasicModal from "../../components/Modal";
 
@@ -15,12 +15,23 @@ const newQuizData = {
 };
 
 const QuizForm = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
   const [quizData, setQuizData] = useState(newQuizData);
   const [quizzez, setQuizzez] = useState([]);
   const [quizId, setQuizId] = useState(null);
   const [isQuizSaved, setIsQuizSaved] = useState(false);
 
+  // Extract the category name from the query parameter, if available
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const category = params.get("category");
+    if (category) {
+      setQuizData((prevState) => ({
+        ...prevState,
+        categoryName: category,
+      }));
+    }
+  }, [location.search]);
   // Handle input changes and update the corresponding field in quizData state
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -63,7 +63,7 @@ const CategoryCard = ({ categoryName, description, quizCount }) => {
         </Typography>
       </CardContent>
       <Tooltip title="Add new Quiz">
-        <Link to="/create-quiz">
+        <Link to={`/create-quiz?category=${categoryName}`}>
           <IconButton aria-label="add">
             <AddIcon />
           </IconButton>

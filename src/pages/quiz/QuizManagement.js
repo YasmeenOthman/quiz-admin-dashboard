@@ -107,7 +107,7 @@ const QuizManagement = () => {
         )}
       </div>
 
-      <h2>Recent Categories With Active Quizzez</h2>
+      <h2>Recent Categories With Quizzez</h2>
       <div className="category-cards">
         {filteredQuizzez
           .map((quiz) => quiz.category)
