@@ -32,8 +32,7 @@ const Register = ({}) => {
     }
   }, []);
 
-  // Register
-
+  // ----- sign up -----
   async function handleSubmit(event) {
     try {
       event.preventDefault();
@@ -41,13 +40,19 @@ const Register = ({}) => {
       let res = await axios.post(`${serverUrl}/user/register`, user);
       console.log(res.data);
       if (res.data.status) {
-        navigate("/");
+        toast.success("Registerd successfully !", {
+          toastOptions,
+          onClose: () => {
+            navigate("/quiz-login");
+          },
+        });
       }
     } catch (error) {
       toast.error(error.response.data.msg, toastOptions);
     }
   }
 
+  // ---- toggle password visibility ----
   function toggleVisibility() {
     setIsPasswordVisible(!isPasswordVisible);
   }
@@ -57,7 +62,7 @@ const Register = ({}) => {
       <form onSubmit={handleSubmit}>
         <div>
           <img src="" alt="logo" />
-          <h1>Welcome Back!!</h1>
+          <h1>Sign Up!!</h1>
         </div>
         <div>
           <input

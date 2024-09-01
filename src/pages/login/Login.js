@@ -1,15 +1,15 @@
 // Login.js
 import { useState, useEffect } from "react";
 import axios from "axios";
+import BasicButton from "../../components/BasicButton";
 import { useNavigate, Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
-import BasicButton from "../../components/BasicButton";
 import { Tooltip } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
 const toastOptions = {
   position: "bottom-right",
   autoClose: 8000,
@@ -17,12 +17,11 @@ const toastOptions = {
   draggable: true,
   theme: "dark",
 };
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   useEffect(() => {
@@ -31,25 +30,24 @@ const Login = () => {
     }
   }, []);
 
+  // toggle password visibility
+  function toggleVisibility() {
+    setIsPasswordVisible(!isPasswordVisible);
+  }
   // Login
-
   async function handleSubmit(event) {
     try {
       event.preventDefault();
       let user = { email, password };
       let res = await axios.post(`${serverUrl}/user/login`, user);
-      console.log(res.data);
       if (res.data.status) {
         localStorage.setItem("authToken", res.data.token);
         navigate("/");
       }
     } catch (error) {
+      console.log(error);
       toast.error(error.response.data.msg, toastOptions);
     }
-  }
-
-  function toggleVisibility() {
-    setIsPasswordVisible(!isPasswordVisible);
   }
 
   return (

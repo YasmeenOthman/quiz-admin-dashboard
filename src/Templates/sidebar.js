@@ -54,18 +54,18 @@ const list = [
 ];
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [openSections, setOpenSections] = useState({
     Quizzez: false,
     Users: false,
   });
 
-  const navigate = useNavigate();
-
   const handleClick = (title) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [title]: !prev[title],
-    }));
+    // Toggle the specific section by updating the state
+    setOpenSections({
+      ...openSections, // Keep the current state of other sections
+      [title]: !openSections[title], // Flip the state of the clicked section
+    });
   };
 
   const handleLogout = () => {
