@@ -20,7 +20,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AddIcon from "@mui/icons-material/Add";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import HomeIcon from "@mui/icons-material/Home";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const list = [
   { title: "Home", icon: <HomeIcon />, path: "/" },
@@ -50,7 +50,7 @@ const list = [
     ],
   },
   { title: "Statistics", icon: <StatsIcon />, path: "/statistics" },
-  { title: "Logout", icon: <LogoutIcon />, path: "/logout" },
+  { title: "Logout", icon: <LogoutIcon />, path: "/logout" }, // We will handle logout separately
 ];
 
 const Sidebar = () => {
@@ -59,11 +59,23 @@ const Sidebar = () => {
     Users: false,
   });
 
+  const navigate = useNavigate();
+
   const handleClick = (title) => {
     setOpenSections((prev) => ({
       ...prev,
       [title]: !prev[title],
     }));
+  };
+
+  const handleLogout = () => {
+    if (window.confirm("Will you leave ?")) {
+      // Clear the token from local storage
+      localStorage.removeItem("authToken");
+
+      // Redirect to the login page
+      navigate("/quiz-login");
+    }
   };
 
   return (
@@ -107,6 +119,13 @@ const Sidebar = () => {
                     </List>
                   </Collapse>
                 </React.Fragment>
+              );
+            } else if (item.title === "Logout") {
+              return (
+                <ListItem button key={index} onClick={handleLogout}>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.title} />
+                </ListItem>
               );
             } else {
               return (

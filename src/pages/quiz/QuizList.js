@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import QuizCard from "../../components/QuizCard";
@@ -8,9 +8,15 @@ import QuizFilter from "./QuizFilter";
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 function QuizList() {
+  const navigate = useNavigate();
   const [quizzez, setQuizzez] = useState([]);
   const [filteredQuizzez, setFilteredQuizzez] = useState([]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
   useEffect(() => {
     async function getquizzez() {
       try {

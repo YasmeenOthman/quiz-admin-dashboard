@@ -1,14 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const QuizFilter = ({ onFilterChange }) => {
+  const navigate = useNavigate();
   const [category, setCategory] = useState("");
   const [status, setStatus] = useState("");
   const [title, setTitle] = useState("");
   const [categories, setCategories] = useState([]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
   useEffect(() => {
     async function getAllCategories() {
       try {

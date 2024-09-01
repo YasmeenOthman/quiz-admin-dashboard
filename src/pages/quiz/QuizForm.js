@@ -16,11 +16,17 @@ const newQuizData = {
 
 const QuizForm = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [quizData, setQuizData] = useState(newQuizData);
   const [quizzez, setQuizzez] = useState([]);
   const [quizId, setQuizId] = useState(null);
   const [isQuizSaved, setIsQuizSaved] = useState(false);
 
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
   // Extract the category name from the query parameter, if available
   useEffect(() => {
     const params = new URLSearchParams(location.search);

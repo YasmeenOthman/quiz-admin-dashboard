@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CategoryCard from "../../components/CategoryCard";
-
+import { useNavigate } from "react-router-dom";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 function CategoryList() {
+  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
 
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
   async function getAllCategories() {
     try {
       let res = await axios.get(`${serverUrl}/category`);

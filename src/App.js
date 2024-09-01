@@ -1,22 +1,10 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Container, Box } from "@mui/material";
-import QuizForm from "./pages/quiz/QuizForm";
-import QuestionsForm from "./pages/quiz/QuestionsForm";
-import QuizManagement from "./pages/quiz/QuizManagement";
-import EditQuizForm from "./pages/quiz/EditQuizForm";
-import QuizList from "./pages/quiz/QuizList";
-import EditQuestionForm from "./pages/quiz/EditQuestionForm";
-import Sidebar from "./Templates/sidebar";
-import QuizPage from "./pages/quiz/QuizPage";
-import CategoryList from "./pages/category/CateogoryList";
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
+import React from "react";
 
 function App() {
-  const isAuthenticated = () => !!localStorage.getItem("authToken");
   return (
     <div className="App">
-      <BrowserRouter>
+      hellos
+      {/* <BrowserRouter>
         <Container
           disableGutters
           maxWidth={false}
@@ -48,7 +36,7 @@ function App() {
             </Routes>
           </Box>
         </Container>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }

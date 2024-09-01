@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BasicButton from "../../components/BasicButton";
 
@@ -17,11 +17,17 @@ const initialQuestionData = {
 
 function QuestionsForm() {
   const { quizId } = useParams(); // Get quizId from URL parameters
+  const navigate = useNavigate();
   const [questionData, setQuestionData] = useState(initialQuestionData); // State for the question form data
   const [quiz, setQuiz] = useState({}); // State for the quiz details
   const [quizQuestions, setQuizQuestions] = useState([]); // State for the list of questions in the quiz
   const [isCreatingQuestion, setIsCreatingQuestion] = useState(false); // State to toggle question creation form
 
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
   // Fetch quiz details by ID
   async function getQuizById() {
     let res = await axios.get(`${serverUrl}/quiz/${quizId}`);

@@ -17,6 +17,11 @@ const EditQuizForm = () => {
     status: "active",
   });
 
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
   // Fetch quiz details by ID
   useEffect(() => {
     async function fetchQuizData() {

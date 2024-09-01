@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import BasicButton from "../../components/BasicButton"; // Assuming you have this component
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 function QuizPage() {
   const { quizId } = useParams();
+  const navigate = useNavigate();
   const [quiz, setQuiz] = useState(null);
+
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
 
   useEffect(() => {
     async function fetchQuiz() {

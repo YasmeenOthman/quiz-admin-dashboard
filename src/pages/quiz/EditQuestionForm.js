@@ -8,7 +8,6 @@ const serverUrl = process.env.REACT_APP_SERVER_URL;
 const EditQuestionForm = () => {
   const { questionId } = useParams(); // Retrieve questionId from the URL
   const navigate = useNavigate();
-
   // Define the state to hold the question data
   const [questionData, setQuestionData] = useState({
     questionText: "",
@@ -18,6 +17,12 @@ const EditQuestionForm = () => {
     explanation: "",
     quiz: "", // Track the quiz ID this question belongs to
   });
+
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
 
   // Fetch question details by ID when component mounts
   useEffect(() => {

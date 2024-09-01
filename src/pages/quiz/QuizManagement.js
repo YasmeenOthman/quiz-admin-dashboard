@@ -16,6 +16,11 @@ const QuizManagement = () => {
   const [visibleQuizzez, setVisibleQuizzez] = useState(4);
 
   useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/quiz-login");
+    }
+  }, []);
+  useEffect(() => {
     getAllQuizzez();
   }, []);
 
