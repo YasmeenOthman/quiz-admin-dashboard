@@ -17,12 +17,13 @@ const toastOptions = {
   draggable: true,
   theme: "dark",
 };
+
 const serverUrl = process.env.REACT_APP_SERVER_URL;
-const Login = () => {
+const Register = ({}) => {
   const navigate = useNavigate();
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   useEffect(() => {
@@ -31,16 +32,15 @@ const Login = () => {
     }
   }, []);
 
-  // Login
+  // Register
 
   async function handleSubmit(event) {
     try {
       event.preventDefault();
-      let user = { email, password };
-      let res = await axios.post(`${serverUrl}/user/login`, user);
+      let user = { username, email, password };
+      let res = await axios.post(`${serverUrl}/user/register`, user);
       console.log(res.data);
       if (res.data.status) {
-        localStorage.setItem("authToken", res.data.token);
         navigate("/");
       }
     } catch (error) {
@@ -60,6 +60,12 @@ const Login = () => {
           <h1>Welcome Back!!</h1>
         </div>
         <div>
+          <input
+            type="text"
+            placeholder="Username..."
+            value={username}
+            onChange={(e) => setUserName(e.target.value)}
+          />
           <input
             type="email"
             placeholder="Email..."
@@ -84,13 +90,13 @@ const Login = () => {
             )}
           </div>
         </div>
-        <BasicButton value="Login" onClick={handleSubmit} />
+        <BasicButton value="Register" onClick={handleSubmit} />
 
         <div>
           <p>
             DO NOT HAVE AN ACCOUNT ?{" "}
-            <Link to="/quiz-register">
-              <span>REGISTER</span>
+            <Link to="/quiz-login">
+              <span>LOGIN</span>
             </Link>
           </p>
         </div>
@@ -100,4 +106,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

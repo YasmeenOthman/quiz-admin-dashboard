@@ -10,8 +10,10 @@ import Sidebar from "./Templates/sidebar";
 import QuizPage from "./pages/quiz/QuizPage";
 import CategoryList from "./pages/category/CateogoryList";
 import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 
 function App() {
+  const isAuthenticated = () => !!localStorage.getItem("authToken");
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,10 +26,11 @@ function App() {
             height: "100vh",
           }}
         >
-          <Sidebar />
+          {isAuthenticated() && <Sidebar />}
           <Box sx={{ padding: 2 }}>
             <Routes>
               <Route path="/quiz-login" element={<Login />} />
+              <Route path="/quiz-register" element={<Register />} />
               <Route path="/" element={<QuizManagement />} />
               <Route path="/quizzes" element={<QuizList />} />
               <Route path="/quiz/:quizId" element={<QuizPage />} />
