@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import QuizCard from "../../components/QuizCard";
 import BasicButton from "../../components/BasicButton";
 import QuizFilter from "./QuizFilter";
@@ -14,12 +15,18 @@ const QuizManagement = () => {
   const [quizzez, setQuizzez] = useState([]);
   const [filteredQuizzez, setFilteredQuizzez] = useState([]);
   const [visibleQuizzez, setVisibleQuizzez] = useState(4);
+  const [decoded, setDecoded] = useState(null);
+  let token = null;
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
       navigate("/quiz-login");
+    } else {
+      token = localStorage.getItem("authToken");
+      setDecoded(jwtDecode(token));
     }
   }, []);
+
   useEffect(() => {
     getAllQuizzez();
   }, []);
@@ -72,6 +79,7 @@ const QuizManagement = () => {
 
   return (
     <div>
+      <h1>Welcome {decoded && decoded.username.toUpperCase()}</h1>
       <h1>Quiz Management</h1>
       <div>
         <Link to="/create-quiz">

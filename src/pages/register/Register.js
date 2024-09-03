@@ -12,7 +12,7 @@ import { Tooltip } from "@mui/material";
 
 const toastOptions = {
   position: "bottom-right",
-  autoClose: 8000,
+  autoClose: 5000,
   pauseOnHover: true,
   draggable: true,
   theme: "dark",
@@ -86,11 +86,11 @@ const Register = ({}) => {
             />
             {!isPasswordVisible ? (
               <Tooltip title="Show Password">
-                <VisibilityIcon onClick={toggleVisibility} />
+                <VisibilityOffIcon onClick={toggleVisibility} />
               </Tooltip>
             ) : (
               <Tooltip title="Hide Password">
-                <VisibilityOffIcon onClick={toggleVisibility} />
+                <VisibilityIcon onClick={toggleVisibility} />
               </Tooltip>
             )}
           </div>

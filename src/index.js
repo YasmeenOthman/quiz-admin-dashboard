@@ -1,15 +1,3 @@
-// import React from "react";
-// import ReactDOM from "react-dom/client";
-
-// import App from "./App";
-
-// const root = ReactDOM.createRoot(document.getElementById("root"));
-// root.render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// );
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
@@ -25,6 +13,8 @@ import QuizList from "./pages/quiz/QuizList";
 import EditQuestionForm from "./pages/quiz/EditQuestionForm";
 import QuizPage from "./pages/quiz/QuizPage";
 import CategoryList from "./pages/category/CateogoryList";
+import PrivateRoute from "./authRoutes/PrivateRoute";
+import Unauthorized from "./authRoutes/Unauthorized"; // Import the new Unauthorized component
 
 const Navigation = () => {
   return (
@@ -57,41 +47,51 @@ const router = createBrowserRouter([
   },
   {
     path: "/",
-    element: <Navigation />, // Renders Sidebar and main content
+    element: <PrivateRoute allowedRoles={["admin"]} />, // Protect all child routes
     children: [
       {
         path: "",
-        element: <QuizManagement />,
-      },
-      {
-        path: "quizzes",
-        element: <QuizList />,
-      },
-      {
-        path: "quiz/:quizId",
-        element: <QuizPage />,
-      },
-      {
-        path: "create-quiz",
-        element: <QuizForm />,
-      },
-      {
-        path: "question-form/:quizId",
-        element: <QuestionsForm />,
-      },
-      {
-        path: "edit-quiz/:quizId",
-        element: <EditQuizForm />,
-      },
-      {
-        path: "edit-question/:questionId",
-        element: <EditQuestionForm />,
-      },
-      {
-        path: "categories",
-        element: <CategoryList />,
+        element: <Navigation />, // Renders Sidebar and main content
+        children: [
+          {
+            path: "",
+            element: <QuizManagement />,
+          },
+          {
+            path: "quizzes",
+            element: <QuizList />,
+          },
+          {
+            path: "quiz/:quizId",
+            element: <QuizPage />,
+          },
+          {
+            path: "create-quiz",
+            element: <QuizForm />,
+          },
+          {
+            path: "question-form/:quizId",
+            element: <QuestionsForm />,
+          },
+          {
+            path: "edit-quiz/:quizId",
+            element: <EditQuizForm />,
+          },
+          {
+            path: "edit-question/:questionId",
+            element: <EditQuestionForm />,
+          },
+          {
+            path: "categories",
+            element: <CategoryList />,
+          },
+        ],
       },
     ],
+  },
+  {
+    path: "/unauthorized",
+    element: <Unauthorized />, // Use the Unauthorized component
   },
 ]);
 

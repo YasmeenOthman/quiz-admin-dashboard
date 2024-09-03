@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 const toastOptions = {
   position: "bottom-right",
-  autoClose: 8000,
+  autoClose: 5000,
   pauseOnHover: true,
   draggable: true,
   theme: "dark",
@@ -73,11 +73,11 @@ const Login = () => {
             />
             {!isPasswordVisible ? (
               <Tooltip title="Show Password">
-                <VisibilityIcon onClick={toggleVisibility} />
+                <VisibilityOffIcon onClick={toggleVisibility} />
               </Tooltip>
             ) : (
               <Tooltip title="Hide Password">
-                <VisibilityOffIcon onClick={toggleVisibility} />
+                <VisibilityIcon onClick={toggleVisibility} />
               </Tooltip>
             )}
           </div>
