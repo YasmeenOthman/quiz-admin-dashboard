@@ -60,27 +60,6 @@ const QuizManagement = () => {
     }
   };
 
-  // Handle filter changes
-  const handleFilterChange = ({ category, status, title }) => {
-    let filtered = quizzez;
-    // Filter by category if a category is selected
-    if (category) {
-      filtered = filtered.filter((quiz) => quiz.category.name === category);
-    }
-    // Filter by status if a status is selected
-    if (status) {
-      filtered = filtered.filter((quiz) => quiz.status === status);
-    }
-    // Filter by title if a title is entered
-    if (title) {
-      filtered = filtered.filter((quiz) =>
-        quiz.title.toLowerCase().includes(title.toLowerCase())
-      );
-    }
-
-    setFilteredQuizzez(filtered);
-  };
-
   return (
     <div>
       <h1>Welcome {decoded && decoded.username.toUpperCase()}</h1>
@@ -97,8 +76,6 @@ const QuizManagement = () => {
         </Link>
       </div>
 
-      {/* Add QuizFilter component */}
-      {/* <QuizFilter onFilterChange={handleFilterChange} /> */}
       <h1>Last Added quizzez</h1>
       <div>
         {filteredQuizzez.length === 0 ? (

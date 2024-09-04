@@ -33,6 +33,7 @@ function CategoryList() {
         {categories.map((category) => {
           return (
             <CategoryCard
+              key={category._id}
               quizCount={category.quizzes.length}
               categoryName={category.name}
             />
