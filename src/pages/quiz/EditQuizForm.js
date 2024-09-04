@@ -46,13 +46,16 @@ const EditQuizForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await axios.put(`${serverUrl}/quiz/${quizId}`, quizData);
-      console.log(res.data);
+      let res = await axios.put(`${serverUrl}/quiz/${quizId}`, quizData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      });
       alert("Quiz updated successfully!");
       navigate("/"); // Redirect to the quiz management page
     } catch (error) {
       console.error("Error updating quiz:", error);
-      alert("Error updating quiz");
+      alert(`Error updating quiz ${error.response.data.error}`);
     }
   };
 

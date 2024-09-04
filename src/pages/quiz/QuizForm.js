@@ -48,7 +48,11 @@ const QuizForm = () => {
   const createQuiz = async () => {
     try {
       // Make a POST request to the server to create a new quiz
-      let quizCreated = await axios.post(`${serverUrl}/quiz`, quizData);
+      let quizCreated = await axios.post(`${serverUrl}/quiz`, quizData, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      });
       setQuizzez([...quizzez, quizCreated.data]);
       alert(quizCreated.data.msg);
       setQuizId(quizCreated.data.quiz._id);

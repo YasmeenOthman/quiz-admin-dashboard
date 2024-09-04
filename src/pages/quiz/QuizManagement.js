@@ -45,7 +45,11 @@ const QuizManagement = () => {
   const deleteQuiz = async (quizId) => {
     try {
       if (window.confirm("Are you sure you want to delete this quiz?")) {
-        await axios.delete(`${serverUrl}/quiz/${quizId}`);
+        await axios.delete(`${serverUrl}/quiz/${quizId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
         setQuizzez(quizzez.filter((quiz) => quiz._id !== quizId));
         setFilteredQuizzez(
           filteredQuizzez.filter((quiz) => quiz._id !== quizId)
@@ -94,7 +98,7 @@ const QuizManagement = () => {
       </div>
 
       {/* Add QuizFilter component */}
-      <QuizFilter onFilterChange={handleFilterChange} />
+      {/* <QuizFilter onFilterChange={handleFilterChange} /> */}
       <h1>Last Added quizzez</h1>
       <div>
         {filteredQuizzez.length === 0 ? (
