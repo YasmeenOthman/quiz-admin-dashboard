@@ -1,11 +1,11 @@
 // pages/QuizManagement.jsx
+
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import QuizCard from "../../components/QuizCard";
 import BasicButton from "../../components/BasicButton";
-import QuizFilter from "./QuizFilter";
 import CategoryCard from "../../components/CategoryCard";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -18,23 +18,28 @@ const QuizManagement = () => {
   const [decoded, setDecoded] = useState(null);
   let token = null;
 
+  // useEffect hook to check for authentication token
+  // If token is missing, the user is redirected to the login page
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
       navigate("/quiz-login");
     } else {
       token = localStorage.getItem("authToken");
-      setDecoded(jwtDecode(token));
+      setDecoded(jwtDecode(token)); // Decode the JWT token to get user details
     }
   }, []);
 
+  // useEffect hook to fetch all quizzes when the component mounts
   useEffect(() => {
     getAllQuizzez();
   }, []);
 
+  // Function to fetch all quizzes from the server
+  // The quizzes are reversed so the latest ones appear first
   async function getAllQuizzez() {
     try {
       const allQuizzez = await axios.get(`${serverUrl}/quiz`);
-      const reversedQuizzes = allQuizzez.data.reverse(); // Reverse the array once
+      const reversedQuizzes = allQuizzez.data.reverse();
       setQuizzez(reversedQuizzes);
       setFilteredQuizzez(reversedQuizzes);
     } catch (error) {
@@ -42,6 +47,7 @@ const QuizManagement = () => {
     }
   }
 
+  // Function to delete a quiz by its ID
   const deleteQuiz = async (quizId) => {
     try {
       if (window.confirm("Are you sure you want to delete this quiz?")) {
@@ -50,6 +56,7 @@ const QuizManagement = () => {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         });
+        // Update the state to remove the deleted quiz
         setQuizzez(quizzez.filter((quiz) => quiz._id !== quizId));
         setFilteredQuizzez(
           filteredQuizzez.filter((quiz) => quiz._id !== quizId)
@@ -82,7 +89,7 @@ const QuizManagement = () => {
           <h2>No quizzes found yet</h2>
         ) : (
           filteredQuizzez
-            .slice(0, visibleQuizzez)
+            .slice(0, visibleQuizzez) // Show a limited number of quizzes
             .map((quiz) => (
               <QuizCard
                 key={quiz._id}
@@ -95,7 +102,7 @@ const QuizManagement = () => {
                 numberOfQuestions={quiz.questions.length}
                 categoryName={quiz.category && quiz.category.name}
                 status={quiz.status}
-                onDelete={() => deleteQuiz(quiz._id)}
+                onDelete={() => deleteQuiz(quiz._id)} // Pass the delete function to the QuizCard
               />
             ))
         )}
@@ -104,7 +111,7 @@ const QuizManagement = () => {
       <h2>Recent Categories With Quizzez</h2>
       <div className="category-cards">
         {filteredQuizzez
-          .map((quiz) => quiz.category)
+          .map((quiz) => quiz.category) // Extract categories from quizzes
           .filter(
             (category, index, self) =>
               category &&
