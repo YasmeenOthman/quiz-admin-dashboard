@@ -53,6 +53,7 @@ function QuizList() {
     setFilteredQuizzez(filtered);
   };
 
+  // ---- delete a quiz -----
   const deleteQuiz = async (quizId) => {
     try {
       if (window.confirm("Are you sure you want to delete this quiz?")) {

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import BasicButton from "../../components/BasicButton"; // Assuming you have this component
-
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip"; // Import Tooltip
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 function QuizPage() {
@@ -28,8 +31,25 @@ function QuizPage() {
     fetchQuiz();
   }, [quizId]);
 
+  // ---- deleteQuiz  ------
+  const deleteQuiz = async () => {
+    try {
+      if (window.confirm("Are you sure you want to delete this quiz?")) {
+        let res = await axios.delete(`${serverUrl}/quiz/${quizId}`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
+        alert(res.data.msg);
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Error deleting quiz:", error);
+    }
+  };
+
+  // Handle question deletion
   const deleteQuestion = async (questionId) => {
-    // Handle question deletion logic here
     try {
       await axios.delete(`${serverUrl}/question/${questionId}`);
       setQuiz((prevQuiz) => ({
@@ -49,7 +69,30 @@ function QuizPage() {
 
   return (
     <div>
-      <h1>{quiz.title}</h1>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "30px",
+        }}
+      >
+        <h1>{quiz.title}</h1>
+        <div>
+          <Tooltip title="Edit">
+            <Link to={`/edit-quiz/${quizId}`}>
+              <IconButton aria-label="edit">
+                <EditIcon />
+              </IconButton>
+            </Link>
+          </Tooltip>
+          <Tooltip title="Delete">
+            <IconButton aria-label="delete" onClick={deleteQuiz}>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+      </div>
+
       <p>{quiz.description}</p>
       {quiz.imageUrl && <img src={quiz.imageUrl} alt={quiz.title} />}
       <p>Category: {quiz.category?.name}</p>
