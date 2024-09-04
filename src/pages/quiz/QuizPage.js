@@ -31,7 +31,7 @@ function QuizPage() {
     fetchQuiz();
   }, [quizId]);
 
-  // ---- deleteQuiz  ------
+  // ---- Handle  Quiz deletion ------
   const deleteQuiz = async () => {
     try {
       if (window.confirm("Are you sure you want to delete this quiz?")) {
@@ -48,7 +48,7 @@ function QuizPage() {
     }
   };
 
-  // Handle question deletion
+  // ----- Handle question deletion ---------
   const deleteQuestion = async (questionId) => {
     try {
       await axios.delete(`${serverUrl}/question/${questionId}`);
