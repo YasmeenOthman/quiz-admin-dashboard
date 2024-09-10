@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import BasicButton from "../../components/BasicButton";
+import MultipleChoiceInput from "../../components/MultipleChoiceInput";
 
 // Base URL for server API
 const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -25,7 +26,6 @@ function QuestionsForm() {
   const [isCreatingQuestion, setIsCreatingQuestion] = useState(false); // State to toggle question creation form
 
   const from = location.state?.from;
-  console.log("questionForm", from);
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
@@ -67,31 +67,37 @@ function QuestionsForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if a correct answer is selected
     if (!questionData.correctAnswer) {
       alert("Please select the correct answer.");
       return;
     }
 
-    let { questionText, questionType, choices, correctAnswer, explanation } =
-      questionData;
-    let newQuestion = {
-      questionText,
-      questionType,
-      choices,
-      correctAnswer,
-      explanation,
-      quizId,
-    };
+    // Check if all multiple-choice options are filled in
+    if (
+      questionData.questionType === "multiple-choice" &&
+      questionData.choices.some((choice) => !choice)
+    ) {
+      alert("Please fill in all the choices.");
+      return;
+    }
+
     try {
+      let { questionText, questionType, choices, correctAnswer, explanation } =
+        questionData;
+      let newQuestion = {
+        questionText,
+        questionType,
+        choices,
+        correctAnswer,
+        explanation,
+        quizId,
+      };
       const response = await axios.post(`${serverUrl}/question`, newQuestion);
       alert(response.data.msg);
-      // Add the new question to the list of quiz questions
-      setQuizQuestions([newQuestion, ...quizQuestions]);
-      // Clear the form for new input
+      getQuizById();
       setQuestionData(initialQuestionData);
     } catch (error) {
-      console.error("Error adding question:", error.response.data);
+      alert(`Error adding question: ${error.response.data.msg}`);
     }
   };
 
@@ -111,8 +117,6 @@ function QuestionsForm() {
       alert(error.response.data);
     }
   }
-
-  async function editQuestion() {}
 
   return (
     <>
@@ -152,30 +156,12 @@ function QuestionsForm() {
           {questionData.questionType === "multiple-choice" && (
             <div>
               <label>Choices</label>
-              {questionData.choices.map((choice, index) => (
-                <div key={index}>
-                  <input
-                    type="text"
-                    value={choice}
-                    onChange={(e) => handleChoiceChange(index, e.target.value)}
-                    placeholder={`Choice ${index + 1}`}
-                    required
-                  />
-                  <input
-                    type="radio"
-                    name="correctAnswer"
-                    onChange={() => handleCorrectAnswerChange(choice)}
-                    checked={
-                      questionData.correctAnswer &&
-                      questionData.correctAnswer === choice
-                    }
-                  />
-                  {questionData.correctAnswer &&
-                    questionData.correctAnswer === choice && (
-                      <label>Correct Answer</label>
-                    )}
-                </div>
-              ))}
+              <MultipleChoiceInput
+                choices={questionData.choices}
+                correctAnswer={questionData.correctAnswer}
+                onChoiceChange={handleChoiceChange}
+                onCorrectAnswerChange={handleCorrectAnswerChange}
+              />
             </div>
           )}
 
@@ -270,7 +256,6 @@ function QuestionsForm() {
                   <Link to={`/edit-question/${question._id}`} state={{ from }}>
                     <BasicButton
                       value="Edit"
-                      onClick={() => editQuestion(question._id)}
                       style={{ padding: "5px 10px", border: "none" }}
                     />
                   </Link>

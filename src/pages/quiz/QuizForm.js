@@ -120,6 +120,7 @@ const QuizForm = () => {
         <div style={{ display: "flex", gap: "10px" }}>
           {/* Button to submit the form and create the quiz */}
           <BasicButton value="Save Quiz" onClick={createQuiz} />
+          <BasicButton value="Cancel" onClick={() => navigate("/")} />
         </div>
         {isQuizSaved && <BasicModal quizId={quizId} />}
       </form>
