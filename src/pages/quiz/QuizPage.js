@@ -51,13 +51,19 @@ function QuizPage() {
   // ----- Handle question deletion ---------
   const deleteQuestion = async (questionId) => {
     try {
-      await axios.delete(`${serverUrl}/question/${questionId}`);
-      setQuiz((prevQuiz) => ({
-        ...prevQuiz,
-        questions: prevQuiz.questions.filter(
-          (question) => question._id !== questionId
-        ),
-      }));
+      if (
+        window.confirm(
+          "This question will be permanently deleted. Are you sure?"
+        )
+      ) {
+        await axios.delete(`${serverUrl}/question/${questionId}`);
+        setQuiz((prevQuiz) => ({
+          ...prevQuiz,
+          questions: prevQuiz.questions.filter(
+            (question) => question._id !== questionId
+          ),
+        }));
+      }
     } catch (error) {
       console.error("Error deleting question:", error);
     }
@@ -98,7 +104,12 @@ function QuizPage() {
       <p>Category: {quiz.category?.name}</p>
       <p>Status: {quiz.status}</p>
       <p>Date Created: {new Date(quiz.dateCreated).toLocaleDateString()}</p>
-      <p>Created By: {quiz.createdBy?.name}</p>
+      <p>Created By: {quiz.createdBy?.email}</p>
+      <BasicButton
+        value="New Question"
+        type="button"
+        onClick={() => navigate(`/question-form/${quizId}`)}
+      />
       <h2>Questions</h2>
       {quiz.questions.length > 0 ? (
         quiz.questions.map((question, index) => (

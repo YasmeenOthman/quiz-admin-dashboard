@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import BasicButton from "../../components/BasicButton";
-import MultipleChoiceInput from "../../components/MultipleChoiceInput";
+import BasicButton from "../../../components/BasicButton";
+import MultipleChoiceInput from "./MultipleChoiceInput";
+import QuestionTemplate from "./QuestionTemplate";
+import TrueFalseInput from "./TrueFalseInput";
 
 // Base URL for server API
 const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -106,7 +108,6 @@ function QuestionsForm() {
     try {
       if (window.confirm("Delete the question?")) {
         let res = await axios.delete(`${serverUrl}/question/${id}`);
-
         // Remove the deleted question from the state
         setQuizQuestions(
           quizQuestions.filter((question) => question._id !== id)
@@ -120,7 +121,9 @@ function QuestionsForm() {
 
   return (
     <>
-      <h1>Quiz : {quiz.title}</h1>
+      <Link to={`/quiz/${quizId}`}>
+        <h1>Quiz : {quiz.title}</h1>
+      </Link>
       {/* Toggle the form to create a new question */}
       <BasicButton
         value="Create A New Question"
@@ -169,26 +172,10 @@ function QuestionsForm() {
           {questionData.questionType === "true-false" && (
             <div>
               <label>Choices</label>
-              <div>
-                <input
-                  type="radio"
-                  name="correctAnswer"
-                  value="True"
-                  onChange={() => handleCorrectAnswerChange("True")}
-                  checked={questionData.correctAnswer === "True"}
-                />
-                <label>True</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="correctAnswer"
-                  value="False"
-                  onChange={() => handleCorrectAnswerChange("False")}
-                  checked={questionData.correctAnswer === "False"}
-                />
-                <label>False</label>
-              </div>
+              <TrueFalseInput
+                handleCorrectAnswerChange={handleCorrectAnswerChange}
+                correctAnswer={questionData.correctAnswer}
+              />
             </div>
           )}
 
@@ -208,70 +195,10 @@ function QuestionsForm() {
       {quizQuestions.length === 0 ? (
         <h3>No questions</h3>
       ) : (
-        <>
-          {" "}
-          {quizQuestions.map((question, index) => (
-            <details
-              key={index}
-              style={{
-                marginBottom: "1em",
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                padding: "10px",
-              }}
-            >
-              <summary
-                style={{
-                  fontSize: "1.2em",
-                  fontWeight: "bold",
-                  cursor: "pointer",
-                }}
-              >
-                {question.questionText}
-              </summary>
-              <div style={{ marginTop: "10px" }}>
-                <p>
-                  <strong>Correct Answer:</strong> {question.correctAnswer}
-                </p>
-                {question.questionType === "multiple-choice" && (
-                  <div>
-                    <strong>Choices:</strong>
-                    <ul style={{ paddingLeft: "20px", marginTop: "5px" }}>
-                      {question.choices.map((choice, i) => (
-                        <li key={i} style={{ marginBottom: "5px" }}>
-                          {choice}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {question.explanation && (
-                  <p style={{ marginTop: "10px" }}>
-                    <strong>Explanation:</strong> {question.explanation}
-                  </p>
-                )}
-                <div
-                  style={{ marginTop: "10px", display: "flex", gap: "10px" }}
-                >
-                  <Link to={`/edit-question/${question._id}`} state={{ from }}>
-                    <BasicButton
-                      value="Edit"
-                      style={{ padding: "5px 10px", border: "none" }}
-                    />
-                  </Link>
-                  <BasicButton
-                    value="Delete"
-                    onClick={() => deleteQuestion(question._id)}
-                    style={{
-                      padding: "5px 10px",
-                      border: "none",
-                    }}
-                  />
-                </div>
-              </div>
-            </details>
-          ))}
-        </>
+        <QuestionTemplate
+          quizQuestions={quizQuestions}
+          deleteQuestion={deleteQuestion}
+        />
       )}
     </>
   );

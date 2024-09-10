@@ -46,7 +46,7 @@ const QuizManagement = () => {
       console.log(error);
     }
   }
-
+  console.log(quizzez);
   // Function to delete a quiz by its ID
   const deleteQuiz = async (quizId) => {
     try {
