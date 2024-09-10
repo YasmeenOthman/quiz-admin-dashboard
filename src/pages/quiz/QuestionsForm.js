@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import BasicButton from "../../components/BasicButton";
 
@@ -18,10 +18,14 @@ const initialQuestionData = {
 function QuestionsForm() {
   const { quizId } = useParams(); // Get quizId from URL parameters
   const navigate = useNavigate();
+  const location = useLocation();
   const [questionData, setQuestionData] = useState(initialQuestionData); // State for the question form data
   const [quiz, setQuiz] = useState({}); // State for the quiz details
   const [quizQuestions, setQuizQuestions] = useState([]); // State for the list of questions in the quiz
   const [isCreatingQuestion, setIsCreatingQuestion] = useState(false); // State to toggle question creation form
+
+  const from = location.state?.from;
+  console.log("questionForm", from);
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
@@ -263,7 +267,7 @@ function QuestionsForm() {
                 <div
                   style={{ marginTop: "10px", display: "flex", gap: "10px" }}
                 >
-                  <Link to={`/edit-question/${question._id}`}>
+                  <Link to={`/edit-question/${question._id}`} state={{ from }}>
                     <BasicButton
                       value="Edit"
                       onClick={() => editQuestion(question._id)}

@@ -86,7 +86,10 @@ const QuizCard = ({
           </Link>
         </Tooltip>
         <Tooltip title="View Questions">
-          <Link to={`/question-form/${quizId}`}>
+          <Link
+            to={`/question-form/${quizId}`}
+            state={{ from: "quizManagement" }}
+          >
             <IconButton aria-label="view questions">
               <VisibilityIcon />
             </IconButton>

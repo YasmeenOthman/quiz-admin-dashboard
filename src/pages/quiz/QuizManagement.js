@@ -69,7 +69,7 @@ const QuizManagement = () => {
 
   return (
     <div>
-      <h1>Welcome {decoded && decoded.username.toUpperCase()}</h1>
+      <h1>Welcome {decoded && decoded.username?.toUpperCase()}</h1>
       <h1>Quiz Management</h1>
       <div>
         <Link to="/create-quiz">

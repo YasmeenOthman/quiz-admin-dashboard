@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import BasicButton from "../../components/BasicButton";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const EditQuestionForm = () => {
+  const location = useLocation();
   const { questionId } = useParams(); // Retrieve questionId from the URL
+  const from = location.state?.from;
+
   const navigate = useNavigate();
   // Define the state to hold the question data
   const [questionData, setQuestionData] = useState({
@@ -17,6 +20,8 @@ const EditQuestionForm = () => {
     explanation: "",
     quiz: "", // Track the quiz ID this question belongs to
   });
+
+  console.log(from);
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
@@ -68,6 +73,10 @@ const EditQuestionForm = () => {
       console.error("Error updating question:", error);
       alert("Error updating question");
     }
+  };
+
+  const handleCancel = () => {
+    navigate(from === "quizManagement" ? "/" : `/quiz/${questionData.quiz}`);
   };
 
   return (
@@ -161,11 +170,7 @@ const EditQuestionForm = () => {
         </div>
 
         <BasicButton value="Save Changes" type="submit" />
-        <BasicButton
-          value="Cancel"
-          type="button"
-          onClick={() => navigate(`/quiz/${questionData.quiz}`)}
-        />
+        <BasicButton value="Cancel" type="button" onClick={handleCancel} />
       </form>
     </div>
   );
