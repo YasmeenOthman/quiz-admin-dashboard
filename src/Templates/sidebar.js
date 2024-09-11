@@ -23,7 +23,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { Link, useNavigate } from "react-router-dom";
 
 const list = [
-  { title: "Home", icon: <HomeIcon />, path: "/" },
+  { title: "Home", icon: <HomeIcon />, path: "/home" },
   {
     title: "Quizzez",
     icon: <QuizIcon />,

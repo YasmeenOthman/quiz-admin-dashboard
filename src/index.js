@@ -15,6 +15,7 @@ import QuizPage from "./pages/quiz/QuizPage";
 import CategoryList from "./pages/category/CateogoryList";
 import PrivateRoute from "./authRoutes/PrivateRoute";
 import Unauthorized from "./authRoutes/Unauthorized"; // Import the new Unauthorized component
+import Home from "./pages/home/Home";
 
 const Navigation = () => {
   return (
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
         path: "",
         element: <Navigation />, // Renders Sidebar and main content
         children: [
+          {
+            path: "/home",
+            element: <Home />,
+          },
           {
             path: "",
             element: <QuizManagement />,
