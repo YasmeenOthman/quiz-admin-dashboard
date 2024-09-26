@@ -1,0 +1,48 @@
+@use '../../styles/colors';
+@use "../../styles/fonts";
+
+.summary-card {
+    background-color: colors.$bg-Color; 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 8px; 
+    width:20%;
+    padding: 15px;
+    margin: 16px;
+    min-height: 100px;
+ 
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.summary-card-header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+   
+}
+
+.summary-card-icon {
+   color:colors.$primary-Color ; 
+    padding: 5px;
+    border:none; 
+
+}
+.summary-card-title {
+    font-family: fonts.$secondary-font; 
+    color:colors.$secondary-Color ; 
+    font-size: 16px;
+    text-align: center;
+    
+}
+
+.summary-card-value {
+    font-family: fonts.$text-font;
+    color: colors.$text-Color; 
+  
+    
+
+ 
+}

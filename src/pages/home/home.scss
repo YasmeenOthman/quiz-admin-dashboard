@@ -1,0 +1,26 @@
+@use '../../styles/colors';
+@use "../../styles/fonts";
+
+.home-container {
+    background-color: colors.$bg-Color;
+    min-height: 100vh;
+    padding: 15px;
+    font-family: fonts.$background-font; // Set a default font for the container
+}
+
+.home-welcome-message {
+    color: colors.$primary-Color;
+    font-family: fonts.$primary-font; // Use primary font for welcome message
+    margin-bottom: 30px; // Added some spacing
+}
+
+.home-summary-subtitle {
+    color: colors.$text-Color;
+    font-family: fonts.$secondary-font; // Use secondary font for subtitle
+    margin-bottom: 20px; // Added spacing below subtitle
+}
+
+.home-stats-cards {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
