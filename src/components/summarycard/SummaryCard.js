@@ -10,8 +10,8 @@ const SummaryCard = ({ title, value, Icon }) => {
         </div>
         <div className="summary-card-header">
           <h3 className="summary-card-title">{title}</h3>
+          <h4 className="summary-card-value">{value}</h4>
         </div>
-        <h4 className="summary-card-value">{value}</h4>
       </div>
     </div>
   );

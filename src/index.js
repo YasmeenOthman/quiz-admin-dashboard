@@ -1,4 +1,5 @@
 import React from "react";
+import "./index.css";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Container, Box } from "@mui/material";

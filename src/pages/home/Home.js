@@ -100,7 +100,7 @@ function Home() {
       <h1 className="home-welcome-message">
         Welcome {decoded && decoded.username?.toUpperCase()}
       </h1>
-      <h2 className="home-summary-subtitle">Summary</h2>
+      <h2 className="home-cards-subtitle">Last Activities:</h2>
       <div className="home-stats-cards" style={{ display: "flex" }}>
         {summaryData.map((item, index) => (
           <SummaryCard

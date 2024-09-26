@@ -1,23 +1,26 @@
 @use '../../styles/colors';
 @use "../../styles/fonts";
 
+
 .home-container {
     background-color: colors.$bg-Color;
     min-height: 100vh;
     padding: 15px;
-    font-family: fonts.$background-font; // Set a default font for the container
+    font-family: fonts.$background-font; 
 }
 
 .home-welcome-message {
     color: colors.$primary-Color;
-    font-family: fonts.$primary-font; // Use primary font for welcome message
-    margin-bottom: 30px; // Added some spacing
+    font-family: fonts.$primary-font; 
+    margin-bottom: 5%; 
 }
 
-.home-summary-subtitle {
+.home-cards-subtitle {
     color: colors.$text-Color;
-    font-family: fonts.$secondary-font; // Use secondary font for subtitle
-    margin-bottom: 20px; // Added spacing below subtitle
+    font-family: fonts.$secondary-font;
+    margin-bottom: 3%; 
+    border-bottom: 3px solid colors.$text-Color;
+    width: 20%;
 }
 
 .home-stats-cards {

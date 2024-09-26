@@ -1,5 +1,6 @@
 // Login.js
 import { useState, useEffect } from "react";
+import "./login.scss";
 import axios from "axios";
 import BasicButton from "../../components/BasicButton";
 import { useNavigate, Link } from "react-router-dom";
@@ -51,20 +52,23 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <img src="" alt="logo" />
-          <h1>Welcome Back!!</h1>
+    <div className="login-form-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="form-logo">
+          <img src="./logo.png" alt="logo" />
         </div>
-        <div>
-          <input
-            type="email"
-            placeholder="Email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <div style={{ display: "flex" }}>
+        <h1 className="login-header">Welcome Back!!</h1>
+        <div className="login-inputs">
+          <div className="email-container">
+            <input
+              type="email"
+              placeholder="Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="pass-container" style={{ display: "flex" }}>
             <input
               type={!isPasswordVisible ? "password" : "text"}
               placeholder="Password..."
