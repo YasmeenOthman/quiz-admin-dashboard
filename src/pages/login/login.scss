@@ -1,18 +1,25 @@
 @use "../../styles/colors";
+@use "../../styles/fonts";
 
 .login-form-container{
     height: 100vh;
     padding: 5%;
-
     // background-color: colors.$primary-Color;
+    color: colors.$primary-Color;
+    background-image: url("../../../public/bg.jpeg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .login-form{
     background-color: colors.$bg-Color;
+    font-family: fonts.$primary-font;
     width: 70%;
     height: 80vh;
     margin: 0 auto;
     padding:15px;
+    border-radius: .4rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,7 +41,7 @@
 }
 
 .login-header{
-    color: colors.$text-Color;
+    // color: colors.$text-Color;
 }
 
 .login-inputs{
@@ -52,16 +59,26 @@
     outline: none;
     border-radius: .25rem;
 }
-.pass-container{
-    display: flex;
-    align-items: center;
-    background-color: red;
-    border: 1px solid black;
+.email-container,.pass-container{
+    display: grid;
+    align-items: center; 
+    padding: .5rem;
+    
 }
-.email-container{
-    display: flex;
-    align-items: center;
-    background-color: red;
- 
 
+.email-container{
+   grid-template-columns: 86% ;
+}
+.pass-container{
+   grid-template-columns: 80% 20%;
+}
+
+.login-navigation-msg-container{
+    margin: 30px;
+    padding: 10px;
+}
+
+.login-link{
+    text-decoration: none;
+    color: colors.$secondary-Color;
 }

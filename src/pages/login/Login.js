@@ -9,6 +9,7 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Tooltip } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Padding } from "@mui/icons-material";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 const toastOptions = {
@@ -86,12 +87,22 @@ const Login = () => {
             )}
           </div>
         </div>
-        <BasicButton value="Login" onClick={handleSubmit} />
+        <BasicButton
+          value="Login"
+          onClick={handleSubmit}
+          style={{
+            backgroundColor: "#04305a",
+            color: "#2D9CDB",
+            color: "#F4F5F7",
+            padding: "10px",
+            width: "20%",
+          }}
+        />
 
-        <div>
-          <p>
+        <div className="login-navigation-msg-container">
+          <p className="login-switching-msg">
             DO NOT HAVE AN ACCOUNT ?{" "}
-            <Link to="/quiz-register">
+            <Link className="login-link" to="/quiz-register">
               <span>REGISTER</span>
             </Link>
           </p>
