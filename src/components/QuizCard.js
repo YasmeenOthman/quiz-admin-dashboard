@@ -39,7 +39,7 @@ const QuizCard = ({
       <CardMedia
         component="img"
         height="150"
-        image={imageUrl ? imageUrl : "/quiz.avif"}
+        image={imageUrl ? imageUrl : "../images/quiz.avif"}
         alt="Quiz image"
       />
       <CardHeader

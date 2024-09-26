@@ -56,7 +56,7 @@ const Login = () => {
     <div className="login-form-container">
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="form-logo">
-          <img src="./logo.png" alt="logo" />
+          <img src="../images/logo.png" alt="logo" />
         </div>
         <h1 className="login-header">Welcome Back!!</h1>
         <div className="login-inputs">
