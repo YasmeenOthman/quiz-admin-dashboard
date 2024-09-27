@@ -1,5 +1,6 @@
 // Login.js
 import { useState, useEffect } from "react";
+import "./register.scss";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -38,7 +39,7 @@ const Register = ({}) => {
       event.preventDefault();
       let user = { username, email, password };
       let res = await axios.post(`${serverUrl}/user/register`, user);
-      console.log(res.data);
+
       if (res.data.status) {
         toast.success("Registerd successfully !", {
           toastOptions,
@@ -46,6 +47,8 @@ const Register = ({}) => {
             navigate("/quiz-login");
           },
         });
+      } else {
+        toast.error(res.data.msg);
       }
     } catch (error) {
       toast.error(error.response.data.msg, toastOptions);
@@ -58,26 +61,30 @@ const Register = ({}) => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <img src="" alt="logo" />
-          <h1>Sign Up!!</h1>
+    <div className="register-form-container">
+      <form className="register-form" onSubmit={handleSubmit}>
+        <div className="form-logo">
+          <img src="../images/logo.png" alt="logo" />
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Username..."
-            value={username}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <input
-            type="email"
-            placeholder="Email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <div style={{ display: "flex" }}>
+        <h1>Sign Up!!</h1>
+        <div className="register-inputs">
+          <div className="email-container">
+            <input
+              type="text"
+              placeholder="Username..."
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+          </div>
+          <div className="email-container">
+            <input
+              type="email"
+              placeholder="Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="pass-container" style={{ display: "flex" }}>
             <input
               type={!isPasswordVisible ? "password" : "text"}
               placeholder="Password..."
@@ -95,12 +102,22 @@ const Register = ({}) => {
             )}
           </div>
         </div>
-        <BasicButton value="Register" onClick={handleSubmit} />
+        <BasicButton
+          value="Register"
+          onClick={handleSubmit}
+          style={{
+            backgroundColor: "#04305a",
+            color: "#2D9CDB",
+            color: "#F4F5F7",
+            padding: "10px",
+            width: "20%",
+          }}
+        />
 
-        <div>
-          <p>
-            DO NOT HAVE AN ACCOUNT ?{" "}
-            <Link to="/quiz-login">
+        <div className="register-navigation-msg-container">
+          <p className="register-switching-msg">
+            ALREADY HAVE AN ACCOUNT ?{" "}
+            <Link className="register-link" to="/quiz-login">
               <span>LOGIN</span>
             </Link>
           </p>

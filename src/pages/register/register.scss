@@ -1,7 +1,7 @@
 @use "../../styles/colors";
 @use "../../styles/fonts";
 
-.login-form-container{
+.register-form-container{
     min-height: 100vh;
     padding: 3%;
     color: colors.$primary-Color;
@@ -11,7 +11,7 @@
     background-size: cover;
 }
 
-.login-form{
+.register-form{
     background-color: colors.$bg-Color;
     font-family: fonts.$primary-font;
     width: 50%;
@@ -39,17 +39,18 @@
     
 }
 
-.login-header{
+.register-header{
     // color: colors.$text-Color;
 }
 
-.login-inputs{
+.register-inputs{
     width: 80%;
     padding: 10px;
     margin: 10px;
+   
 }
 
-.login-inputs input{
+.register-inputs input{
     width: 100%;
     padding: 20px;
     margin: 10px;
@@ -58,8 +59,8 @@
     border-radius: .25rem;
     font-size: 18px;
 }
-.login-inputs input::placeholder{
-    font-size: 14px;
+.register-inputs input::placeholder{
+  font-size: 14px;
 }
 .email-container,.pass-container{
     display: grid;
@@ -75,14 +76,14 @@
    grid-template-columns: 80% 20%;
 }
 
-.login-navigation-msg-container{
+.register-navigation-msg-container{
     margin: 30px;
     padding: 10px;
     font-size: 14px;
 
 }
 
-.login-link{
+.register-link{
     text-decoration: none;
     color: colors.$secondary-Color;
 }

@@ -9,7 +9,6 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Tooltip } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Padding } from "@mui/icons-material";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 const toastOptions = {
