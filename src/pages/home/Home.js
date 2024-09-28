@@ -129,58 +129,74 @@ function Home() {
           {decoded && decoded.username?.toUpperCase()}
         </span>
       </h1>
-      <h2 className="home-cards-subtitle">Last Activities:</h2>
-      <div className="home-stats-cards" style={{ display: "flex" }}>
-        {summaryData.map((item, index) => (
-          <SummaryCard
-            key={index}
-            title={item.title}
-            value={item.value}
-            Icon={item.Icon}
-          />
-        ))}
-      </div>
-      <h1>Last Added quizzez</h1>
-      <div>
-        {filteredQuizzez.length === 0 ? (
-          <h2>No quizzes found yet</h2>
-        ) : (
-          filteredQuizzez
-            .slice(0, visibleQuizzez) // Show a limited number of quizzes
-            .map((quiz) => (
-              <QuizCard
-                key={quiz._id}
-                title={quiz.title}
-                description={quiz.description}
-                dateCreated={quiz.dateCreated}
-                createdBy={quiz.createdBy}
-                imageUrl={quiz.imageUrl}
-                quizId={quiz._id}
-                numberOfQuestions={quiz.questions.length}
-                categoryName={quiz.category && quiz.category.name}
-                status={quiz.status}
-                onDelete={() => deleteQuiz(quiz._id)} // Pass the delete function to the QuizCard
-              />
-            ))
-        )}
-      </div>
-      <h2>Recent Categories With Quizzez</h2>
-      <div className="category-cards">
-        {filteredQuizzez
-          .map((quiz) => quiz.category) // Extract categories from quizzes
-          .filter(
-            (category, index, self) =>
-              category &&
-              self.findIndex((cat) => cat.name === category.name) === index
-          ) // Filter unique categories
-          .slice(0, 4) // Limit to last 4 categories
-          .map((category) => (
-            <CategoryCard
-              key={category._id}
-              categoryName={category.name}
-              quizCount={category.quizzes.length}
+      <div className="home-cards-container">
+        <div className="home-cards-subtitle-container">
+          <h2 className="home-cards-subtitle">Last Activities:</h2>
+        </div>
+        <div className="home-stats-cards" style={{ display: "flex" }}>
+          {summaryData.map((item, index) => (
+            <SummaryCard
+              key={index}
+              title={item.title}
+              value={item.value}
+              Icon={item.Icon}
             />
           ))}
+        </div>
+      </div>
+      <div className="last-added-quiz-container">
+        <div className="last-added-quiz-subtitle-container">
+          <h2 className="last-added-quiz-subtitle">Last Added quizzez</h2>
+        </div>
+        <div className="last-added-quiz-cards">
+          {filteredQuizzez.length === 0 ? (
+            <h2>No quizzes found yet</h2>
+          ) : (
+            filteredQuizzez
+              .slice(0, visibleQuizzez) // Show a limited number of quizzes
+              .map((quiz) => (
+                <QuizCard
+                  key={quiz._id}
+                  title={quiz.title}
+                  description={quiz.description}
+                  dateCreated={quiz.dateCreated}
+                  createdBy={quiz.createdBy}
+                  imageUrl={quiz.imageUrl}
+                  quizId={quiz._id}
+                  numberOfQuestions={quiz.questions.length}
+                  categoryName={quiz.category && quiz.category.name}
+                  status={quiz.status}
+                  onDelete={() => deleteQuiz(quiz._id)} // Pass the delete function to the QuizCard
+                />
+              ))
+          )}
+        </div>
+      </div>
+
+      <div className="categories-container">
+        <div className="categories-subtitle-container">
+          <h2 className="categories-subtitle">
+            Recent Categories With Quizzez
+          </h2>
+        </div>
+
+        <div className="category-cards">
+          {filteredQuizzez
+            .map((quiz) => quiz.category) // Extract categories from quizzes
+            .filter(
+              (category, index, self) =>
+                category &&
+                self.findIndex((cat) => cat.name === category.name) === index
+            ) // Filter unique categories
+            .slice(0, 4) // Limit to last 4 categories
+            .map((category) => (
+              <CategoryCard
+                key={category._id}
+                categoryName={category.name}
+                quizCount={category.quizzes.length}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );

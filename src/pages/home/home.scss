@@ -18,19 +18,64 @@
 .user-name{
     color:colors.$secondary-Color
 }
-.home-cards-subtitle {
+
+// home cards section
+.home-cards-container{
+    background-color: colors.$primary-Color;
+}
+
+.home-cards-subtitle-container{
+background-color: red;
+}
+.home-stats-cards {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+
+
+// -------- last added quiz section ---------
+
+.last-added-quiz-container{
+    margin: 50px 0;
+    background-color: colors.$warning-Color;
+}
+.last-added-quiz-subtitle-container{
+background-color: red;
+}
+
+.last-added-quiz-subtitle{
+
+}
+
+.last-added-quiz-cards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+
+
+// category section
+.categories-container{
+    background-color: colors.$secondary-Color;
+}
+.categories-subtitle-container{
+   background-color: red;
+}
+.category-cards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+// page subtitles 
+.home-cards-subtitle ,.last-added-quiz-subtitle,.categories-subtitle{
     font-family: fonts.$secondary-font;
     background-color: colors.$secondary-Color;
     color:colors.$bg-Color;
     font-size: 20px;
-    width: 25%;
+    width: 35%;
     padding:15px;
     margin-bottom: 3%; 
     border-radius:.4rem;
     box-shadow: #04305a8c 0px 3px 8px;
 }
 
-.home-stats-cards {
-  display: grid;
-  grid-template-columns: repeat(4,1fr);
-}
