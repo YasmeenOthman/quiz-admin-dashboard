@@ -69,7 +69,7 @@ const QuizManagement = () => {
 
   return (
     <div>
-      <h1>Welcome {decoded && decoded.username?.toUpperCase()}</h1>
+      {/* <h1>Welcome {decoded && decoded.username?.toUpperCase()}</h1> */}
       <h1>Quiz Management</h1>
       <div>
         <Link to="/create-quiz">
@@ -83,7 +83,7 @@ const QuizManagement = () => {
         </Link>
       </div>
 
-      <h1>Last Added quizzez</h1>
+      {/* <h1>Last Added quizzez</h1>
       <div>
         {filteredQuizzez.length === 0 ? (
           <h2>No quizzes found yet</h2>
@@ -106,9 +106,9 @@ const QuizManagement = () => {
               />
             ))
         )}
-      </div>
+      </div> */}
 
-      <h2>Recent Categories With Quizzez</h2>
+      {/* <h2>Recent Categories With Quizzez</h2>
       <div className="category-cards">
         {filteredQuizzez
           .map((quiz) => quiz.category) // Extract categories from quizzes
@@ -125,7 +125,7 @@ const QuizManagement = () => {
               quizCount={category.quizzes.length}
             />
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };
