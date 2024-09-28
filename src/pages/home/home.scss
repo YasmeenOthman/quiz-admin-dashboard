@@ -16,11 +16,15 @@
 }
 
 .home-cards-subtitle {
-    color: colors.$text-Color;
     font-family: fonts.$secondary-font;
+    background-color: colors.$secondary-Color;
+    color:colors.$bg-Color;
+    font-size: 20px;
+    width: 25%;
+    padding:15px;
     margin-bottom: 3%; 
-    border-bottom: 3px solid colors.$text-Color;
-    width: 20%;
+    border-radius:.4rem;
+    box-shadow: #04305a8c 0px 3px 8px;
 }
 
 .home-stats-cards {

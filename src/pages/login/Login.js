@@ -12,7 +12,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 const toastOptions = {
-  position: "bottom-right",
+  position: "top-right",
   autoClose: 5000,
   pauseOnHover: true,
   draggable: true,

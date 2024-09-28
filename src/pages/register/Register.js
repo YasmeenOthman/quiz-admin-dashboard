@@ -12,7 +12,7 @@ import BasicButton from "../../components/BasicButton";
 import { Tooltip } from "@mui/material";
 
 const toastOptions = {
-  position: "bottom-right",
+  position: "top-right",
   autoClose: 5000,
   pauseOnHover: true,
   draggable: true,
@@ -48,7 +48,7 @@ const Register = ({}) => {
           },
         });
       } else {
-        toast.error(res.data.msg);
+        toast.error(res.data.msg, toastOptions);
       }
     } catch (error) {
       toast.error(error.response.data.msg, toastOptions);
@@ -91,6 +91,7 @@ const Register = ({}) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+
             {!isPasswordVisible ? (
               <Tooltip title="Show Password">
                 <VisibilityOffIcon onClick={toggleVisibility} />
