@@ -11,6 +11,7 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -92,17 +93,33 @@ function Home() {
   // --------------- Summary data for statistics cards --------------
   const summaryData = [
     {
-      title: "Total Quizzes ",
+      title: "Total Quizzes",
       value: quizzes.length,
       Icon: AssignmentIcon,
+      gradient: "linear-gradient(to left, #FF7E5F, #FEB47B)",
+      // gradient: "linear-gradient(to left, #FFEDD5, #FFD1DC)",
     },
     {
       title: "Active Quizzes",
       value: activeQuizzes.length,
       Icon: CheckCircleIcon,
+      // gradient: "linear-gradient(to left, #4b46a8,#43C6AC)",
+      gradient: "linear-gradient(to left, #E3FDFD,#43C6AC)",
     },
-    { title: "Total Users", value: users.length, Icon: GroupIcon },
-    { title: "Average Score", value: 0, Icon: BarChartIcon },
+    {
+      title: "Total Users",
+      value: users.length,
+      Icon: GroupIcon,
+      // gradient: "linear-gradient(to left, #6A82FB, #FC5C7D)",
+      gradient: "linear-gradient(to left, #E0C3FC, #8EC5FC)",
+    },
+    {
+      title: "Average Score",
+      value: 0,
+      Icon: BarChartIcon,
+      // gradient: "linear-gradient(to left, #FDC830, #F37335)",
+      gradient: "linear-gradient(to left, #D4FC79, #96E6A1)",
+    },
   ];
 
   // ------------- Delete quiz by ID ----------------
@@ -139,10 +156,7 @@ function Home() {
 
   return (
     <div className="home-container">
-      {/* Welcome Message */}
-      <h1 className="home-welcome-message">Quiz App</h1>
       <HomeNav />
-
       {/* Stats Section */}
       <div id="stats" className="home-cards-container">
         <div className="home-cards-subtitle-container">
@@ -155,6 +169,7 @@ function Home() {
               title={item.title}
               value={item.value}
               Icon={item.Icon}
+              gradient={item.gradient}
             />
           ))}
         </div>
@@ -163,7 +178,7 @@ function Home() {
       {/* Last Added Quizzes Section */}
       <div id="last-added-quizzes" className="last-added-quiz-container">
         <div className="last-added-quiz-subtitle-container">
-          <h2 className="last-added-quiz-subtitle">Last Added quizzez</h2>
+          <h2 className="last-added-quiz-subtitle">Recent Added quizzez</h2>
         </div>
         <div className="last-added-quiz-cards">
           {filteredQuizzez.length === 0 ? (
@@ -215,6 +230,7 @@ function Home() {
             ))}
         </div>
       </div>
+      {/* <ArrowUpwardIcon /> */}
     </div>
   );
 }

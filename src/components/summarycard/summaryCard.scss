@@ -2,8 +2,7 @@
 @use "../../styles/fonts";
 
 .summary-card {
-    background-color: colors.$bg-Color; 
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(0, 0, 0, 0.24)  0px 3px 8px;
     border-radius: 8px; 
     width:20%;
     padding: 15px;
@@ -28,19 +27,20 @@
    color:colors.$primary-Color ; 
     padding: 5px;
     border:none; 
+    
+    
 
 }
 .summary-card-title {
     font-family: fonts.$secondary-font; 
-    color:colors.$secondary-Color ; 
-    font-size: 1rem;
+    color:colors.$primary-Color ; 
+    font-size: 1.2rem;
     text-align: center;
  
-    
 }
 .summary-card-value {
     font-family: fonts.$text-font;
-    color: colors.$text-Color; 
+    color: colors.$primary-Color; 
     font-size: 1.5rem;
     padding: 10px;
 }

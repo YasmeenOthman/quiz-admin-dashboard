@@ -12,28 +12,21 @@
     gap: 3%; // Space between sections
 }
 
-// Welcome Message Section
-.home-welcome-message {
-    color: colors.$primary-Color;
-    font-family: fonts.$primary-font;
-    margin-bottom: 3%; 
-    font-size: 1.6rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
-width: 45%;
-    .user-name {
-        color: colors.$secondary-Color;
-        font-weight: bold;
-    }
-}
-
 // Navbar Section
 .navbar-container {
     width: 100%;
-    margin: 40px 0;
-    padding-bottom: 15px;
-    border-bottom: 1px solid colors.$primary-Color;
+    margin-bottom: 40px;
+    padding: 15px;
+    background-color: colors.$primary-Color;
+    color: colors.$bg-Color;
+    background: linear-gradient(to left, colors.$primary-Color,#43C6AC);
+  
+
     
     .home-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         &-list {
             display: flex;
             justify-content: space-around;
@@ -45,7 +38,7 @@ width: 45%;
                 &-link {
                     text-decoration: none;
                     padding: 10px 15px;
-                    color: colors.$primary-Color;
+                    color: colors.$bg-Color;
                     font-family: fonts.$primary-font;
                     border-radius: 0.25rem;
                     transition: background-color 0.3s ease, color 0.3s ease;
@@ -64,11 +57,13 @@ width: 45%;
 .home-cards-container {
     .home-cards-subtitle-container {
         margin-bottom: 20px;
+        
     }
     .home-stats-cards {
         display: grid;
         grid-template-columns: repeat(4,1fr);
         gap: 20px;
+        border-radius: .4rem;
     }
 }
 
@@ -84,6 +79,8 @@ width: 45%;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+        padding: 10px;
     }
 }
 
@@ -103,14 +100,15 @@ width: 45%;
 .last-added-quiz-subtitle,
 .categories-subtitle {
     font-family: fonts.$secondary-font;
-    background-color: colors.$primary-Color;
-    color: colors.$bg-Color;
+    color: colors.$primary-Color;
     font-size: 1.5rem;
     padding: 10px 15px;
-    margin-bottom:60px;
-    border-radius: 0.4rem;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
-    text-align: center;
-    width: auto;
+    // margin:30px auto 80px auto;
+    margin-bottom: 30px;
+    // text-align: center;
+    width: 30%;
+    display: block;
+    // border-bottom: 5px solid colors.$secondary-Color;
+
 
 }

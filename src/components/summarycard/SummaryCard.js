@@ -1,9 +1,9 @@
 import React from "react";
 import "./summaryCard.scss";
 
-const SummaryCard = ({ title, value, Icon }) => {
+const SummaryCard = ({ title, value, Icon, gradient }) => {
   return (
-    <div className="summary-card">
+    <div className="summary-card" style={{ background: gradient }}>
       <div className="card-content">
         <div className="summary-card-icon">
           <Icon />
