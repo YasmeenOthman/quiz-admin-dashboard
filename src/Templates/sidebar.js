@@ -95,6 +95,8 @@ const Sidebar = () => {
           position: "sticky",
           top: "0",
           left: "0",
+          backgroundColor: "#04305a",
+          color: "#F4F5F7",
         }}
       >
         <List>
@@ -116,7 +118,9 @@ const Sidebar = () => {
               return (
                 <React.Fragment key={index}>
                   <ListItem button onClick={() => handleClick(title)}>
-                    <ListItemIcon>{icon}</ListItemIcon>
+                    <ListItemIcon sx={{ color: "#F4F5F7" }}>
+                      {icon}
+                    </ListItemIcon>
                     <ListItemText primary={title} />
                     {open ? <ExpandLess /> : <ExpandMore />}
                   </ListItem>
@@ -130,7 +134,9 @@ const Sidebar = () => {
                           key={subIndex}
                           sx={{ pl: 4 }} // Add left padding to indent sub-items
                         >
-                          <ListItemIcon>{subItem.icon}</ListItemIcon>
+                          <ListItemIcon sx={{ color: "#F4F5F7" }}>
+                            {subItem.icon}
+                          </ListItemIcon>
                           <ListItemText primary={subItem.name} />
                         </ListItem>
                       ))}
@@ -141,14 +147,18 @@ const Sidebar = () => {
             } else if (item.title === "Logout") {
               return (
                 <ListItem button key={index} onClick={handleLogout}>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemIcon sx={{ color: "#F4F5F7" }}>
+                    {item.icon}
+                  </ListItemIcon>
                   <ListItemText primary={item.title} />
                 </ListItem>
               );
             } else {
               return (
                 <ListItem button key={index} component={Link} to={item.path}>
-                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemIcon sx={{ color: "#F4F5F7" }}>
+                    {item.icon}
+                  </ListItemIcon>
                   <ListItemText primary={item.title} />
                 </ListItem>
               );
