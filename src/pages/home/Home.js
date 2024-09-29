@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import QuizCard from "../../components/QuizCard";
 import CategoryCard from "../../components/CategoryCard";
+import HomeNav from "./HomeNav";
 import "./home.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import SummaryCard from "../../components/summarycard/SummaryCard";
@@ -12,15 +13,19 @@ import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 function Home() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // ------------ State variables --------------
   const [quizzes, setQuizzes] = useState([]);
   const [users, setUsers] = useState([]);
   const [activeQuizzes, setActiveQuizzes] = useState([]);
   const [filteredQuizzez, setFilteredQuizzez] = useState([]);
-  const [visibleQuizzez, setVisibleQuizzez] = useState(4);
-  const [decoded, setDecoded] = useState(null);
+  const [visibleQuizzez, setVisibleQuizzez] = useState(3);
 
+  // --------- User authentication and token handling ------------
   useEffect(() => {
     const token = localStorage.getItem("authToken");
 
@@ -28,16 +33,16 @@ function Home() {
       navigate("/quiz-login");
     } else {
       const decodedToken = jwtDecode(token);
-      setDecoded(decodedToken); // Decode the JWT token to get user details
-      const expirationDate = decodedToken.exp * 1000; // Convert exp to milliseconds
+      const expirationDate = decodedToken.exp * 1000;
       if (Date.now() >= expirationDate) {
         localStorage.removeItem("authToken");
+        alert("Session expired ,please login again ");
         navigate("/quiz-login");
       }
     }
   }, [navigate]);
 
-  // Function to fetch all quizzes from the server
+  // ---------- Fetch all quizzes from the server -------------
   async function getAllQuizzes() {
     try {
       const allQuizzes = await axios.get(
@@ -50,7 +55,6 @@ function Home() {
       );
     } catch (error) {
       if (error.response && error.response.status === 403) {
-        // Token expired or invalid
         localStorage.removeItem("authToken");
         navigate("/quiz-login");
       }
@@ -58,7 +62,7 @@ function Home() {
     }
   }
 
-  // Function to fetch all registered users from the server
+  // ------------- Fetch all registered users from the server -------------
   async function getAllUsers() {
     try {
       const users = await axios.get(
@@ -72,7 +76,6 @@ function Home() {
       setUsers(users.data.filter((user) => user.role === "student"));
     } catch (error) {
       if (error.response && error.response.status === 403) {
-        // Token expired or invalid
         localStorage.removeItem("authToken");
         navigate("/quiz-login");
       }
@@ -80,12 +83,13 @@ function Home() {
     }
   }
 
-  // useEffect hook to fetch all quizzes and users when the component mounts
+  // ------------- Fetch quizzes and users when component mounts -------------
   useEffect(() => {
     getAllQuizzes();
     getAllUsers();
   }, []);
 
+  // --------------- Summary data for statistics cards --------------
   const summaryData = [
     {
       title: "Total Quizzes ",
@@ -101,7 +105,7 @@ function Home() {
     { title: "Average Score", value: 0, Icon: BarChartIcon },
   ];
 
-  // Function to delete a quiz by its ID
+  // ------------- Delete quiz by ID ----------------
   const deleteQuiz = async (quizId) => {
     try {
       if (window.confirm("Are you sure you want to delete this quiz?")) {
@@ -110,7 +114,6 @@ function Home() {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },
         });
-        // Update the state to remove the deleted quiz
         setQuizzes(quizzes.filter((quiz) => quiz._id !== quizId));
         setFilteredQuizzez(
           filteredQuizzez.filter((quiz) => quiz._id !== quizId)
@@ -121,15 +124,27 @@ function Home() {
     }
   };
 
+  // ---------- Scroll to section when URL hash changes -------------
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1)); // remove the #
+      console.log(element);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
+
+  // ------------------------------------------------------------------
+
   return (
     <div className="home-container">
-      <h1 className="home-welcome-message">
-        Welcome{" "}
-        <span className="user-name">
-          {decoded && decoded.username?.toUpperCase()}
-        </span>
-      </h1>
-      <div className="home-cards-container">
+      {/* Welcome Message */}
+      <h1 className="home-welcome-message">Quiz App</h1>
+      <HomeNav />
+
+      {/* Stats Section */}
+      <div id="stats" className="home-cards-container">
         <div className="home-cards-subtitle-container">
           <h2 className="home-cards-subtitle">Last Activities:</h2>
         </div>
@@ -144,7 +159,9 @@ function Home() {
           ))}
         </div>
       </div>
-      <div className="last-added-quiz-container">
+
+      {/* Last Added Quizzes Section */}
+      <div id="last-added-quizzes" className="last-added-quiz-container">
         <div className="last-added-quiz-subtitle-container">
           <h2 className="last-added-quiz-subtitle">Last Added quizzez</h2>
         </div>
@@ -153,7 +170,7 @@ function Home() {
             <h2>No quizzes found yet</h2>
           ) : (
             filteredQuizzez
-              .slice(0, visibleQuizzez) // Show a limited number of quizzes
+              .slice(0, visibleQuizzez)
               .map((quiz) => (
                 <QuizCard
                   key={quiz._id}
@@ -166,29 +183,29 @@ function Home() {
                   numberOfQuestions={quiz.questions.length}
                   categoryName={quiz.category && quiz.category.name}
                   status={quiz.status}
-                  onDelete={() => deleteQuiz(quiz._id)} // Pass the delete function to the QuizCard
+                  onDelete={() => deleteQuiz(quiz._id)}
                 />
               ))
           )}
         </div>
       </div>
 
-      <div className="categories-container">
+      {/* Categories Section */}
+      <div id="categories" className="categories-container">
         <div className="categories-subtitle-container">
           <h2 className="categories-subtitle">
             Recent Categories With Quizzez
           </h2>
         </div>
-
         <div className="category-cards">
           {filteredQuizzez
-            .map((quiz) => quiz.category) // Extract categories from quizzes
+            .map((quiz) => quiz.category)
             .filter(
               (category, index, self) =>
                 category &&
                 self.findIndex((cat) => cat.name === category.name) === index
-            ) // Filter unique categories
-            .slice(0, 4) // Limit to last 4 categories
+            )
+            .slice(0, 4)
             .map((category) => (
               <CategoryCard
                 key={category._id}

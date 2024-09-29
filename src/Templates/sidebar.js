@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { jwtDecode } from "jwt-decode";
 import {
   Drawer,
   List,
@@ -7,6 +8,8 @@ import {
   Collapse,
   ListItemIcon,
   Box,
+  Typography,
+  Avatar,
 } from "@mui/material";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
@@ -20,6 +23,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import AddIcon from "@mui/icons-material/Add";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
 import HomeIcon from "@mui/icons-material/Home";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Link, useNavigate } from "react-router-dom";
 
 const list = [
@@ -60,6 +64,9 @@ const Sidebar = () => {
     Users: false,
   });
 
+  const token = localStorage.getItem("authToken");
+  const decodedToken = jwtDecode(token);
+
   const handleClick = (title) => {
     // Toggle the specific section by updating the state
     setOpenSections({
@@ -91,6 +98,17 @@ const Sidebar = () => {
         }}
       >
         <List>
+          <ListItem>
+            <ListItemIcon>
+              <Avatar>
+                <AccountCircleIcon />
+              </Avatar>
+            </ListItemIcon>
+            <ListItemText
+              primary={<Typography>{decodedToken.username}</Typography>}
+            />
+          </ListItem>
+
           {list.map((item, index) => {
             if (item.items) {
               const { title, icon, items } = item;
