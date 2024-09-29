@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CategoryCard from "../../components/CategoryCard";
+import CategoryCard from "../../components/categorycard/CategoryCard";
 import { useNavigate } from "react-router-dom";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;

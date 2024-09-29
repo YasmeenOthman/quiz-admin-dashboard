@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import QuizCard from "../../components/QuizCard";
-import CategoryCard from "../../components/CategoryCard";
+import CategoryCard from "../../components/categorycard/CategoryCard";
 import HomeNav from "./HomeNav";
 import "./home.scss";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -145,7 +145,6 @@ function Home() {
   useEffect(() => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1)); // remove the #
-      console.log(element);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
@@ -184,13 +183,12 @@ function Home() {
           {filteredQuizzez.length === 0 ? (
             <h2>No quizzes found yet</h2>
           ) : (
-            filteredQuizzez
-              .slice(0, visibleQuizzez)
-              .map((quiz) => (
+            filteredQuizzez.slice(0, visibleQuizzez).map((quiz) => (
+              <Link className="quiz-page-link" to={`/quiz/${quiz._id}`}>
                 <QuizCard
                   key={quiz._id}
                   title={quiz.title}
-                  description={quiz.description}
+                  // description={quiz.description}
                   dateCreated={quiz.dateCreated}
                   createdBy={quiz.createdBy}
                   imageUrl={quiz.imageUrl}
@@ -200,7 +198,8 @@ function Home() {
                   status={quiz.status}
                   onDelete={() => deleteQuiz(quiz._id)}
                 />
-              ))
+              </Link>
+            ))
           )}
         </div>
       </div>

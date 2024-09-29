@@ -5,14 +5,16 @@
     box-shadow: rgba(0, 0, 0, 0.24)  0px 3px 8px;
     border-radius: 8px; 
     width:20%;
-    padding: 15px;
+    padding: 5px;
     margin: 16px;
+   
  
 }
 .card-content{
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 .summary-card-header {
@@ -34,13 +36,13 @@
 .summary-card-title {
     font-family: fonts.$secondary-font; 
     color:colors.$primary-Color ; 
-    font-size: 1.2rem;
+    font-size: .8rem;
     text-align: center;
  
 }
 .summary-card-value {
     font-family: fonts.$text-font;
     color: colors.$primary-Color; 
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     padding: 10px;
 }

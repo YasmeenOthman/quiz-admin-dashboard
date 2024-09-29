@@ -9,7 +9,7 @@
     font-family: fonts.$background-font;
     display: flex;
     flex-direction: column;
-    gap: 3%; // Space between sections
+    gap: 3%; 
 }
 
 // Navbar Section
@@ -19,9 +19,7 @@
     padding: 15px;
     background-color: colors.$primary-Color;
     color: colors.$bg-Color;
-    background: linear-gradient(to left, colors.$primary-Color,#43C6AC);
-  
-
+    // background: linear-gradient(to left, colors.$primary-Color,#43C6AC);
     
     .home-nav {
         display: flex;
@@ -33,7 +31,6 @@
             padding: 0;
             margin: 0;
             list-style: none;
-
             &-item {
                 &-link {
                     text-decoration: none;
@@ -55,10 +52,6 @@
 
 // Home Cards (Stats) Section
 .home-cards-container {
-    .home-cards-subtitle-container {
-        margin-bottom: 20px;
-        
-    }
     .home-stats-cards {
         display: grid;
         grid-template-columns: repeat(4,1fr);
@@ -85,9 +78,13 @@
     }
 }
 
+.quiz-page-link{
+    text-decoration: none;
+}
+
 // Categories Section
 .categories-container {
-    margin-top: 50px;
+    margin-top: 10px;
     background-color: white;
 
     .category-cards {

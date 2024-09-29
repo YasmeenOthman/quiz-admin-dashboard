@@ -59,7 +59,7 @@ const CategoryCard = ({ categoryName, description, quizCount }) => {
           </Typography>
         )}
         <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
-          Total Quizzes in this category: {quizCount}
+          Total Quizzes: {quizCount}
         </Typography>
       </CardContent>
       <Tooltip title="Add new Quiz">
