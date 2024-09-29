@@ -160,7 +160,7 @@ function Home() {
       {/* Stats Section */}
       <div id="stats" className="home-cards-container">
         <div className="home-cards-subtitle-container">
-          <h2 className="home-cards-subtitle">Last Activities:</h2>
+          {/* <h2 className="home-cards-subtitle">Last Activities:</h2> */}
         </div>
         <div className="home-stats-cards" style={{ display: "flex" }}>
           {summaryData.map((item, index) => (

@@ -70,16 +70,17 @@
 // Last Added Quizzes Section
 .last-added-quiz-container {
     margin: 50px 0;
+    padding: 10px;
     min-height: 500px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: white;
 
     .last-added-quiz-cards {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 20px;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
         padding: 10px;
     }
 }
@@ -87,6 +88,7 @@
 // Categories Section
 .categories-container {
     margin-top: 50px;
+    background-color: white;
 
     .category-cards {
         display: grid;
@@ -103,12 +105,9 @@
     color: colors.$primary-Color;
     font-size: 1.5rem;
     padding: 10px 15px;
-    // margin:30px auto 80px auto;
     margin-bottom: 30px;
-    // text-align: center;
-    width: 30%;
+    width: auto ;
     display: block;
-    // border-bottom: 5px solid colors.$secondary-Color;
 
 
 }
