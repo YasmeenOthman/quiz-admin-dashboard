@@ -4,6 +4,7 @@
     background-color: white;
     padding: 15px;
     margin-top: 40px;
+  
 }
 
 .quiz-stats-header{
@@ -18,4 +19,42 @@
 .quiz-select-dropdown{
     width: 20%;
     height: 30px;
+    color: colors.$primary-Color;
 }
+
+.quiz-stats-row{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 20px;
+}
+.quiz-stat-card{
+    padding: 15px;
+    width: 22%;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    gap: 10px;
+    .quiz-stat-card-icon{
+        padding: 10px;
+        border-radius: 50%;
+        text-align: center;
+        background: linear-gradient(to left, #4b46a8,#43C6AC);
+        color: white;
+     
+    }
+.quiz-stat-card-data{
+    padding: 5px;
+    .quiz-stat-card-title{
+        font-size: .8rem;
+        color: colors.$primary-Color;
+    }
+    .quiz-stat-card-value{
+        
+        font-weight:900;
+    }
+}
+
+}
+
+

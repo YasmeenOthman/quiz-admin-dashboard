@@ -115,7 +115,7 @@ function Home() {
       // gradient: "linear-gradient(to left, #E0C3FC, #8EC5FC)",
     },
     {
-      title: "Average Score",
+      title: "Highest Score",
       value: 0,
       Icon: BarChartIcon,
       // gradient: "linear-gradient(to left, #FDC830, #F37335)",
