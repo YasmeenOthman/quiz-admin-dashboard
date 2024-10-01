@@ -189,7 +189,6 @@ function Home() {
                 <QuizCard
                   key={quiz._id}
                   title={quiz.title}
-                  // description={quiz.description}
                   dateCreated={quiz.dateCreated}
                   createdBy={quiz.createdBy}
                   imageUrl={quiz.imageUrl}

@@ -1,4 +1,5 @@
 @use "../../styles/colors";
+@use "../../styles/fonts";
 
 .quiz-stats-section{
     background-color: white;
@@ -45,6 +46,7 @@
     }
 .quiz-stat-card-data{
     padding: 5px;
+    color:colors.$primary-Color;
     .quiz-stat-card-title{
         font-size: .8rem;
         color: colors.$primary-Color;
@@ -52,6 +54,8 @@
     .quiz-stat-card-value{
         
         font-weight:900;
+        font-family: fonts.$background-font;
+        text-transform: capitalize;
     }
 }
 
