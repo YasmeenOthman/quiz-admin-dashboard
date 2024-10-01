@@ -1,0 +1,21 @@
+@use "../../styles/colors";
+
+.quiz-stats-section{
+    background-color: white;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+.quiz-stats-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.quiz-stats-title{
+    color:colors.$primary-Color
+}
+
+.quiz-select-dropdown{
+    width: 20%;
+    height: 30px;
+}

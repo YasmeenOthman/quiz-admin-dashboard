@@ -12,6 +12,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import QuizStats from "./QuizStats";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -103,15 +104,15 @@ function Home() {
       title: "Active Quizzes",
       value: activeQuizzes.length,
       Icon: CheckCircleIcon,
-      // gradient: "linear-gradient(to left, #4b46a8,#43C6AC)",
-      gradient: "linear-gradient(to left, #E3FDFD,#43C6AC)",
+      gradient: "linear-gradient(to left, #4b46a8,#43C6AC)",
+      // gradient: "linear-gradient(to left, #E3FDFD,#43C6AC)",
     },
     {
       title: "Total Users",
       value: users.length,
       Icon: GroupIcon,
-      // gradient: "linear-gradient(to left, #6A82FB, #FC5C7D)",
-      gradient: "linear-gradient(to left, #E0C3FC, #8EC5FC)",
+      gradient: "linear-gradient(to left, #6A82FB, #FC5C7D)",
+      // gradient: "linear-gradient(to left, #E0C3FC, #8EC5FC)",
     },
     {
       title: "Average Score",
@@ -173,7 +174,7 @@ function Home() {
           ))}
         </div>
       </div>
-
+      <QuizStats quizzes={quizzes} />
       {/* Last Added Quizzes Section */}
       <div id="last-added-quizzes" className="last-added-quiz-container">
         <div className="last-added-quiz-subtitle-container">

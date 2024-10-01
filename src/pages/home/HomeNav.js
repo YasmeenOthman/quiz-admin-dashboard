@@ -5,7 +5,7 @@ function HomeNav() {
   return (
     <div className="navbar-container">
       <nav className="home-nav">
-        <h1> Home page</h1>
+        <h1> QuiziGo</h1>
         <ul className="home-nav-list">
           {/* <h1 className="home-welcome-message"> Home page</h1> */}
 

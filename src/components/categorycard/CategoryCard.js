@@ -32,7 +32,15 @@ const getCategoryIcon = (categoryName) => {
 
 const CategoryCard = ({ categoryName, description, quizCount }) => {
   return (
-    <Card sx={{ maxWidth: 345, margin: 2 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        margin: 2,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <CardContent>
         {/* Icon based on category name */}
         <Box

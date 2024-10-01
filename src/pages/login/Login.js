@@ -27,7 +27,7 @@ const Login = () => {
 
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
-      navigate("/");
+      navigate("/home");
     }
   }, []);
 
@@ -43,7 +43,7 @@ const Login = () => {
       let res = await axios.post(`${serverUrl}/user/login`, user);
       if (res.data.status) {
         localStorage.setItem("authToken", res.data.token);
-        navigate("/");
+        navigate("/home");
       }
     } catch (error) {
       console.log(error);
