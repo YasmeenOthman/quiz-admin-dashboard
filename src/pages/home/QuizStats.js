@@ -83,7 +83,7 @@ function QuizStats({ quizzes }) {
             </div>
             <div className="quiz-stat-card-data">
               <h5 className="quiz-stat-card-title">{stat.title}</h5>
-              <h3 className="quiz-stat-card-value">{stat.value}</h3>
+              <p className="quiz-stat-card-value">{stat.value}</p>
             </div>
           </div>
         ))}
