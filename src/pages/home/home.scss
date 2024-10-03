@@ -4,12 +4,12 @@
 // Home Container
 .home-container {
     background-color: colors.$bg-Color;
-    min-height: 100vh;
     padding: 2% 5%;
     font-family: fonts.$background-font;
     display: flex;
     flex-direction: column;
     gap: 3%; 
+    width: 80vw;
 }
 
 // Navbar Section
@@ -49,17 +49,18 @@
         }
     }
 }
-
 // Home Cards (Stats) Section
 .home-cards-container {
+    width: 100%;
     .home-stats-cards {
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
-        gap: 20px;
-        border-radius: .4rem;
+       display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px; 
+    
     }
 }
-
 // Last Added Quizzes Section
 .last-added-quiz-container {
     margin: 50px 0;
@@ -71,9 +72,11 @@
     background-color: white;
 
     .last-added-quiz-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
         padding: 10px;
     }
 }
@@ -83,13 +86,15 @@
 }
 
 // Categories Section
-.categories-container {
+.home-categories-container {
     margin-top: 10px;
     background-color: white;
 
+
     .category-cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill,minmax(300px ,auto));
+        justify-content: center;
         gap: 20px;
     }
 }
@@ -108,3 +113,9 @@
 
 
 }
+
+// @media (max-width: 768px) {
+//     .home-stats-cards {
+//         grid-template-columns: 1fr; // Single column on smaller screens
+//     }
+// }

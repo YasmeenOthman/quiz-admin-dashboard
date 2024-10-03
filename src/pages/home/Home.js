@@ -95,6 +95,7 @@ function Home() {
   // --------------- Summary data for statistics cards --------------
   const summaryData = [
     {
+      id: 1,
       title: "Total Quizzes",
       value: quizzes.length,
       Icon: QuizIcon,
@@ -102,6 +103,7 @@ function Home() {
       // gradient: "linear-gradient(to left, #FFEDD5, #FFD1DC)",
     },
     {
+      id: 2,
       title: "Active Quizzes",
       value: activeQuizzes.length,
       Icon: CheckCircleIcon,
@@ -109,6 +111,7 @@ function Home() {
       // gradient: "linear-gradient(to left, #E3FDFD,#43C6AC)",
     },
     {
+      id: 3,
       title: "Total Users",
       value: users.length,
       Icon: GroupIcon,
@@ -116,6 +119,7 @@ function Home() {
       // gradient: "linear-gradient(to left, #E0C3FC, #8EC5FC)",
     },
     {
+      id: 4,
       title: "Highest Score",
       value: 0,
       Icon: BarChartIcon,
@@ -163,10 +167,10 @@ function Home() {
         <div className="home-cards-subtitle-container">
           {/* <h2 className="home-cards-subtitle">Last Activities:</h2> */}
         </div>
-        <div className="home-stats-cards" style={{ display: "flex" }}>
+        <div className="home-stats-cards">
           {summaryData.map((item, index) => (
             <SummaryCard
-              key={index}
+              key={item.id}
               title={item.title}
               value={item.value}
               Icon={item.Icon}
@@ -186,7 +190,11 @@ function Home() {
             <h2>No quizzes found yet</h2>
           ) : (
             filteredQuizzez.slice(0, visibleQuizzez).map((quiz) => (
-              <Link className="quiz-page-link" to={`/quiz/${quiz._id}`}>
+              <Link
+                key={quiz._id}
+                className="quiz-page-link"
+                to={`/quiz/${quiz._id}`}
+              >
                 <QuizCard
                   key={quiz._id}
                   title={quiz.title}
@@ -206,7 +214,7 @@ function Home() {
       </div>
 
       {/* Categories Section */}
-      <div id="categories" className="categories-container">
+      <div id="categories" className="home-categories-container">
         <div className="categories-subtitle-container">
           <h2 className="categories-subtitle">
             Recent Categories With Quizzez

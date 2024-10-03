@@ -4,7 +4,7 @@
 .summary-card {
     box-shadow: rgba(0, 0, 0, 0.24)  0px 3px 8px;
     border-radius: 8px; 
-    width:20%;
+    min-width:20%;
     padding: 5px;
     margin: 16px;
    
@@ -12,7 +12,6 @@
 }
 .card-content{
     display: flex;
-    justify-content: center;
     justify-content: space-between;
     align-items: center;
 }

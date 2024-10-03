@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -10,8 +10,8 @@ import Typography from "@mui/material/Typography";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import Tooltip from "@mui/material/Tooltip"; // Import Tooltip
-import Badge from "@mui/material/Badge"; // Import Badge
+import Tooltip from "@mui/material/Tooltip";
+import Badge from "@mui/material/Badge";
 import { format } from "date-fns";
 
 const QuizCard = ({
@@ -25,6 +25,8 @@ const QuizCard = ({
   status,
   onDelete,
 }) => {
+  const navigate = useNavigate(); // Create a navigate function
+
   // Format the date
   const formattedDate = dateCreated
     ? format(new Date(dateCreated), "MMMM d, yyyy")
@@ -35,7 +37,9 @@ const QuizCard = ({
   const badgeText = status === "active" ? "Active" : "Inactive";
 
   return (
-    <Card sx={{ maxWidth: 300, position: "relative" }}>
+    <Card
+      sx={{ minWidth: 280, position: "relative", border: "1px solid #ccc" }}
+    >
       <CardMedia
         component="img"
         height="150"
@@ -79,21 +83,24 @@ const QuizCard = ({
         )}
 
         <Tooltip title="Edit">
-          <Link to={`/edit-quiz/${quizId}`}>
-            <IconButton aria-label="edit">
-              <EditIcon />
-            </IconButton>
-          </Link>
+          <IconButton
+            aria-label="edit"
+            onClick={() => navigate(`/edit-quiz/${quizId}`)} // Use navigate for routing
+          >
+            <EditIcon />
+          </IconButton>
         </Tooltip>
         <Tooltip title="View Questions">
-          <Link
-            to={`/question-form/${quizId}`}
-            state={{ from: "quizManagement" }}
+          <IconButton
+            aria-label="view questions"
+            onClick={() =>
+              navigate(`/question-form/${quizId}`, {
+                state: { from: "quizManagement" },
+              })
+            } // Use navigate for routing
           >
-            <IconButton aria-label="view questions">
-              <VisibilityIcon />
-            </IconButton>
-          </Link>
+            <VisibilityIcon />
+          </IconButton>
         </Tooltip>
         {/* Badge for status */}
         <Badge

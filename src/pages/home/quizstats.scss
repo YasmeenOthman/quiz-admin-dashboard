@@ -23,45 +23,55 @@
     color: colors.$primary-Color;
 }
 
-.quiz-stats-row{
+.quiz-stats-row {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center; 
     padding: 10px;
     margin-top: 20px;
+    width: 100%;
 }
-.quiz-stat-card{
-    padding: 15px;
-    width: 22%;
+
+
+.quiz-stat-card {
+    flex-basis: calc(25% - 20px); // Adjust based on how many cards per row (25% for 4 cards per row)
+    margin: 10px; 
+    padding: 10px;
     display: flex;
     align-items: center;
     height: 100px;
     gap: 10px;
-    .quiz-stat-card-icon{
+  
+    .quiz-stat-card-icon {
         padding: 10px;
         border-radius: 50%;
         color: white;
         display: flex;
         align-items: center;
         justify-content: center;
-     
     }
-.quiz-stat-card-data{
-    padding: 5px;
-    color:colors.$primary-Color;
-    .quiz-stat-card-title{
-        font-size: .8rem;
+
+    .quiz-stat-card-data {
+        padding: 5px;
         color: colors.$primary-Color;
-    }
-    .quiz-stat-card-value{
-        font-family: fonts.$background-font;
-        text-transform:uppercase;
-        margin-top: 3px;
-        font-size: 1.1rem;
-        font-weight: bolder;
-
+        
+        .quiz-stat-card-title {
+            font-size: .8rem;
+            color: colors.$primary-Color;
+        }
+        
+        .quiz-stat-card-value {
+            font-family: fonts.$background-font;
+            text-transform: uppercase;
+            margin-top: 3px;
+            font-size: 1.1rem;
+            font-weight: bolder;
+        }
     }
 }
 
-}
+
+
+
 
 
