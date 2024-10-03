@@ -1,58 +1,70 @@
-.card-container {
+
+@use "../../styles/colors";
+.category-card-container{
     border: 1px solid #ddd;
-    max-width: 345px;
+    border-radius: .4rem;
+    max-width: 280px;
     margin: 16px;
     padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    // align-items: center;
- 
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: colors.$bg-Color;
+    color: colors.$primary-Color;
+
   }
   
-  .card-header {
+  .category-card-header {
     display: flex;
     align-items: center;
     padding: 10px;
+    text-transform: capitalize;
+    .category-icon-container {
+      border: 1px solid colors.$primary-Color;
+      border-radius:.25rem;
+      margin-right: 10px;
+      padding: 5px;
+    }
+    
+   .category-name{
+      font-size: 1.2rem;
+      padding: 10px;
+      width: 60%;
+     
+      
+    }
+  }
+
+  
+  .category-card-description{
+    color: colors.$secondary-Color;
   }
   
-  .icon-container {
-    border: 1px solid black;
-    margin-right: 10px;
-    padding: 5px;
-  }
-  
-  h5 {
-    margin: 0;
-  }
-  
-  .description {
-    color: #666;
-  }
-  
-  .quiz-count {
-    color: #666;
+  .category-card-quiz-count {
+    color: colors.$primary-Color;
     margin-top: 16px;
+    .category-card-quiz-count-no{
+      color: colors.$secondary-Color;
+      font-weight: bolder;
+      font-size: 1.2rem;
+    }
   }
   
-  .add-quiz-link {
+  .category-card-add-quiz-link{
     text-decoration: none;
-    // align-self: center;
-    // background-color: rebeccapurple;
+    width: 20%;
+
+  
   }
   
-  .add-quiz-button {
+  .category-card-add-quiz-button {
     border: none;
     background: none;
     cursor: pointer;
     padding: 8px;
     display: flex;
     align-items: center;
-
-
   }
   
-  .add-quiz-button span {
-    margin-left: 8px;
-  }
-  
+ 

@@ -8,6 +8,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import SummaryCard from "../../components/summarycard/SummaryCard";
 import AssignmentIcon from "@mui/icons-material/Assignment";
+import QuizIcon from "@mui/icons-material/Quiz";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
@@ -96,7 +97,7 @@ function Home() {
     {
       title: "Total Quizzes",
       value: quizzes.length,
-      Icon: AssignmentIcon,
+      Icon: QuizIcon,
       gradient: "linear-gradient(to left, #FF7E5F, #FEB47B)",
       // gradient: "linear-gradient(to left, #FFEDD5, #FFD1DC)",
     },
@@ -178,7 +179,7 @@ function Home() {
       {/* Last Added Quizzes Section */}
       <div id="last-added-quizzes" className="last-added-quiz-container">
         <div className="last-added-quiz-subtitle-container">
-          <h2 className="last-added-quiz-subtitle">Recent Added quizzez</h2>
+          <h2 className="last-added-quiz-subtitle">Recent Added Quizzez</h2>
         </div>
         <div className="last-added-quiz-cards">
           {filteredQuizzez.length === 0 ? (

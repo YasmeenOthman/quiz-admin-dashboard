@@ -39,9 +39,10 @@
     .quiz-stat-card-icon{
         padding: 10px;
         border-radius: 50%;
-        text-align: center;
-        background: linear-gradient(to left, #4b46a8,#43C6AC);
         color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
      
     }
 .quiz-stat-card-data{
