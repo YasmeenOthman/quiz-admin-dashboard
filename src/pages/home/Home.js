@@ -51,7 +51,9 @@ function Home() {
       const allQuizzes = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/quiz`
       );
-      setQuizzes(allQuizzes.data);
+
+      const reversedQuiz = allQuizzes.data.reverse();
+      setQuizzes(reversedQuiz);
       setFilteredQuizzez(allQuizzes.data);
       setActiveQuizzes(
         allQuizzes.data.filter((quiz) => quiz.status === "active")

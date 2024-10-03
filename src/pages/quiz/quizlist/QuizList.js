@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./quizlist.scss";
 
-import QuizCard from "../../components/QuizCard";
-import QuizFilter from "./QuizFilter";
+import QuizCard from "../../../components/QuizCard";
+import QuizFilter from "../QuizFilter";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -68,16 +69,23 @@ function QuizList() {
     }
   };
   return (
-    <div>
-      <h1>All Quizzez</h1>
+    <div className="all-quizzez-container">
+      <div className="all-quizzez-title-container">
+        <h1>All Quizzez</h1>
+      </div>
+
       {/* Add QuizFilter component */}
       <QuizFilter onFilterChange={handleFilterChange} />
       {filteredQuizzez.length === 0 ? (
-        <h2>No quizzes found yet</h2>
+        <h2 className="quiz-list-message">No quizzes found yet</h2>
       ) : (
-        filteredQuizzez.map((quiz) => (
-          <Link to={`/quiz/${quiz._id}`}>
-            <div key={quiz._id}>
+        <div className="quiz-list-cards-container">
+          {filteredQuizzez.map((quiz) => (
+            <Link
+              className="quiz-list-link"
+              to={`/quiz/${quiz._id}`}
+              key={quiz._id}
+            >
               <QuizCard
                 title={quiz.title}
                 description={quiz.description}
@@ -90,9 +98,9 @@ function QuizList() {
                 status={quiz.status}
                 onDelete={deleteQuiz}
               />
-            </div>
-          </Link>
-        ))
+            </Link>
+          ))}
+        </div>
       )}
     </div>
   );

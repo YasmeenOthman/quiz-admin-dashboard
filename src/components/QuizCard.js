@@ -38,7 +38,12 @@ const QuizCard = ({
 
   return (
     <Card
-      sx={{ minWidth: 280, position: "relative", border: "1px solid #ccc" }}
+      sx={{
+        width: 280,
+        position: "relative",
+        border: "1px solid #ccc",
+        minHeight: 450,
+      }}
     >
       <CardMedia
         component="img"
@@ -64,8 +69,14 @@ const QuizCard = ({
         }
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {description}
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            minHeight: "80px",
+          }}
+        >
+          {description ? description : "No Description is available.....!!"}
         </Typography>
         {numberOfQuestions >= 0 && (
           <Typography variant="body2" color="text.secondary">

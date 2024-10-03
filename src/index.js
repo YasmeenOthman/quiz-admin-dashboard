@@ -10,7 +10,7 @@ import QuizManagement from "./pages/quiz/QuizManagement";
 import QuizForm from "./pages/quiz/QuizForm";
 import QuestionsForm from "./pages/quiz/QuestionForm/QuestionsForm";
 import EditQuizForm from "./pages/quiz/EditQuizForm";
-import QuizList from "./pages/quiz/QuizList";
+import QuizList from "./pages/quiz/quizlist/QuizList";
 import EditQuestionForm from "./pages/quiz/EditQuestionForm";
 import QuizPage from "./pages/quiz/QuizPage";
 import CategoryList from "./pages/category/CateogoryList";
