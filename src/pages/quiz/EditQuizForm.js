@@ -12,7 +12,7 @@ const EditQuizForm = () => {
   const [quizData, setQuizData] = useState({
     title: "",
     description: "",
-    category: "",
+    category: { name: "" },
     imageUrl: "",
     status: "active",
   });
@@ -23,23 +23,30 @@ const EditQuizForm = () => {
     }
   }, []);
   // Fetch quiz details by ID
-  useEffect(() => {
-    async function fetchQuizData() {
-      try {
-        const response = await axios.get(`${serverUrl}/quiz/${quizId}`);
-        setQuizData(response.data);
-      } catch (error) {
-        console.error("Error fetching quiz data:", error);
-      }
+  async function fetchQuizData() {
+    try {
+      const response = await axios.get(`${serverUrl}/quiz/${quizId}`);
+      setQuizData(response.data);
+    } catch (error) {
+      console.error("Error fetching quiz data:", error);
     }
-
+  }
+  useEffect(() => {
     fetchQuizData();
   }, [quizId]);
-  console.log(quizData);
+
   // Handle input changes and update the state
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setQuizData({ ...quizData, [name]: value });
+
+    if (name === "categoryName") {
+      setQuizData({
+        ...quizData,
+        category: { ...quizData.category, name: value },
+      });
+    } else {
+      setQuizData({ ...quizData, [name]: value });
+    }
   };
 
   // Handle form submission to update the quiz
@@ -51,8 +58,10 @@ const EditQuizForm = () => {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
       });
+      setQuizData(res.data);
+
       alert("Quiz updated successfully!");
-      navigate("/"); // Redirect to the quiz management page
+      navigate("/home"); // Redirect to the quiz management page
     } catch (error) {
       console.error("Error updating quiz:", error);
       alert(`Error updating quiz ${error.response.data.error}`);
@@ -86,7 +95,7 @@ const EditQuizForm = () => {
           <input
             type="text"
             name="categoryName"
-            value={quizData.category.name}
+            value={quizData.category?.name || ""}
             onChange={handleChange}
             required
           />
@@ -109,7 +118,7 @@ const EditQuizForm = () => {
         </div>
         <div style={{ display: "flex", gap: "10px" }}>
           <BasicButton value="Save Changes" type="submit" />
-          <BasicButton value="Cancel" onClick={() => navigate("/")} />
+          <BasicButton value="Cancel" onClick={() => navigate("/home")} />
         </div>
       </form>
     </div>

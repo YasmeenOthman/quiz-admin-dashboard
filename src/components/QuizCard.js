@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -25,7 +25,7 @@ const QuizCard = ({
   status,
   onDelete,
 }) => {
-  const navigate = useNavigate(); // Create a navigate function
+  const navigate = useNavigate();
 
   // Format the date
   const formattedDate = dateCreated
@@ -36,6 +36,34 @@ const QuizCard = ({
   const badgeColor = status === "active" ? "success" : "error";
   const badgeText = status === "active" ? "Active" : "Inactive";
 
+  // Function to handle delete button click
+  const handleDeleteClick = (event) => {
+    event.stopPropagation(); // Prevent the card click from firing
+    if (
+      onDelete &&
+      window.confirm("Are you sure you want to delete this quiz?")
+    ) {
+      onDelete();
+    }
+  };
+
+  // Function to handle edit button click
+  const handleEditClick = (event) => {
+    event.stopPropagation(); // Prevent the card click from firing
+    navigate(`/edit-quiz/${quizId}`);
+  };
+
+  // Function to handle view questions button click
+  const handleViewQuestionsClick = (event) => {
+    event.stopPropagation(); // Prevent the card click from firing
+    navigate(`/question-form/${quizId}`);
+  };
+
+  // Handle card click to navigate to the quiz page
+  const handleCardClick = () => {
+    navigate(`/quiz/${quizId}`, { state: { from: "home" } });
+  };
+
   return (
     <Card
       sx={{
@@ -44,6 +72,7 @@ const QuizCard = ({
         border: "1px solid #ccc",
         minHeight: 450,
       }}
+      onClick={handleCardClick} // Navigate to quiz on card click
     >
       <CardMedia
         component="img"
@@ -87,28 +116,21 @@ const QuizCard = ({
       <CardActions disableSpacing>
         {onDelete && (
           <Tooltip title="Delete">
-            <IconButton aria-label="delete" onClick={onDelete}>
+            <IconButton aria-label="delete" onClick={handleDeleteClick}>
               <DeleteIcon />
             </IconButton>
           </Tooltip>
         )}
 
         <Tooltip title="Edit">
-          <IconButton
-            aria-label="edit"
-            onClick={() => navigate(`/edit-quiz/${quizId}`)} // Use navigate for routing
-          >
+          <IconButton aria-label="edit" onClick={handleEditClick}>
             <EditIcon />
           </IconButton>
         </Tooltip>
         <Tooltip title="View Questions">
           <IconButton
             aria-label="view questions"
-            onClick={() =>
-              navigate(`/question-form/${quizId}`, {
-                state: { from: "quizManagement" },
-              })
-            } // Use navigate for routing
+            onClick={handleViewQuestionsClick}
           >
             <VisibilityIcon />
           </IconButton>

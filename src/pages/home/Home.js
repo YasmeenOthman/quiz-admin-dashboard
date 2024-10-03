@@ -191,12 +191,9 @@ function Home() {
           {filteredQuizzez.length === 0 ? (
             <h2>No quizzes found yet</h2>
           ) : (
-            filteredQuizzez.slice(0, visibleQuizzez).map((quiz) => (
-              <Link
-                key={quiz._id}
-                className="quiz-page-link"
-                to={`/quiz/${quiz._id}`}
-              >
+            filteredQuizzez
+              .slice(0, visibleQuizzez)
+              .map((quiz) => (
                 <QuizCard
                   key={quiz._id}
                   title={quiz.title}
@@ -209,8 +206,7 @@ function Home() {
                   status={quiz.status}
                   onDelete={() => deleteQuiz(quiz._id)}
                 />
-              </Link>
-            ))
+              ))
           )}
         </div>
       </div>

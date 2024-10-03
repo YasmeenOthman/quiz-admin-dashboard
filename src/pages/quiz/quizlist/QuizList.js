@@ -81,24 +81,19 @@ function QuizList() {
       ) : (
         <div className="quiz-list-cards-container">
           {filteredQuizzez.map((quiz) => (
-            <Link
-              className="quiz-list-link"
-              to={`/quiz/${quiz._id}`}
+            <QuizCard
               key={quiz._id}
-            >
-              <QuizCard
-                title={quiz.title}
-                description={quiz.description}
-                dateCreated={quiz.dateCreated}
-                createdBy={quiz.createdBy}
-                imageUrl={quiz.imageUrl}
-                quizId={quiz._id}
-                numberOfQuestions={quiz.questions.length}
-                categoryName={quiz.category?.name}
-                status={quiz.status}
-                onDelete={deleteQuiz}
-              />
-            </Link>
+              title={quiz.title}
+              description={quiz.description}
+              dateCreated={quiz.dateCreated}
+              createdBy={quiz.createdBy}
+              imageUrl={quiz.imageUrl}
+              quizId={quiz._id}
+              numberOfQuestions={quiz.questions.length}
+              categoryName={quiz.category?.name}
+              status={quiz.status}
+              onDelete={deleteQuiz}
+            />
           ))}
         </div>
       )}
