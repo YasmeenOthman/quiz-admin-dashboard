@@ -1,0 +1,87 @@
+@use "../../../styles/colors";
+@use "../../../styles/fonts";
+
+.quiz-form-container,
+.edit-quiz-form-container {
+  background-color: colors.$bg-Color;
+  padding: 2% 5%;
+  font-family: fonts.$background-font;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  min-height: 100vh;
+}
+
+.quiz-form-title-container,
+.edit-quiz-form-title-container {
+  background-color: colors.$primary-Color;
+  color: colors.$bg-Color;
+  font-family: fonts.$primary-font;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 15px;
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+.quiz-form,
+.edit-quiz-form {
+  background-color: white;
+  min-height: 80vh;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  .inputs-label-container,
+  .edit-inputs-label-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid colors.$bg-Color;
+    border-radius: 0.25rem;
+    width: 100%;
+  }
+  .form-label,
+  .edit-form-label {
+    margin-right: 3%;
+    flex-basis: 15%;
+    color: colors.$primary-Color;
+    padding: 10px;
+    font-weight: bolder;
+  }
+  .form-input,
+  .edit-form-input,
+  .form-textarea,
+  .edit-form-textarea {
+    border: 1px solid colors.$bg-Color;
+    padding: 12px;
+    flex-basis: 80%;
+    outline: none;
+    color: colors.$primary-Color;
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+  .form-select {
+    width: 30%;
+    border: 1px solid colors.$bg-Color;
+    border-radius: 0.25rem;
+  }
+  .form-textarea,
+  .edit-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+}
+
+.form-btn-container,
+.edit-form-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  gap: 10px;
+}

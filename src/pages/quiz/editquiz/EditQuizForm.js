@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import BasicButton from "../../components/BasicButton";
+import BasicButton from "../../../components/BasicButton";
+import "./editquiz.scss";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -22,6 +23,7 @@ const EditQuizForm = () => {
       navigate("/quiz-login");
     }
   }, []);
+
   // Fetch quiz details by ID
   async function fetchQuizData() {
     try {
@@ -38,7 +40,6 @@ const EditQuizForm = () => {
   // Handle input changes and update the state
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     if (name === "categoryName") {
       setQuizData({
         ...quizData,
@@ -69,54 +70,65 @@ const EditQuizForm = () => {
   };
 
   return (
-    <div>
-      <h1>Edit Quiz</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title</label>
+    <div className="edit-quiz-form-container">
+      <div className="edit-quiz-form-title-container">
+        <h1>Edit Quiz</h1>
+      </div>
+      <form onSubmit={handleSubmit} className="edit-quiz-form">
+        <div className="edit-inputs-label-container">
+          <label className="edit-form-label">Title</label>
           <input
             type="text"
             name="title"
             value={quizData.title}
             onChange={handleChange}
             required
+            className="edit-form-input"
           />
         </div>
-        <div>
-          <label>Description</label>
+        <div className="edit-inputs-label-container">
+          <label className="edit-form-label">Description</label>
           <textarea
             name="description"
             value={quizData.description}
             onChange={handleChange}
+            className="edit-form-textarea"
           />
         </div>
-        <div>
-          <label>Category</label>
+        <div className="edit-inputs-label-container">
+          <label className="edit-form-label">Category</label>
           <input
             type="text"
             name="categoryName"
             value={quizData.category?.name || ""}
             onChange={handleChange}
             required
+            className="edit-form-input"
           />
         </div>
-        <div>
-          <label>Image URL</label>
+        <div className="edit-inputs-label-container">
+          <label className="edit-form-label">Image URL</label>
           <input
             type="text"
             name="imageUrl"
             value={quizData.imageUrl}
             onChange={handleChange}
+            className="edit-form-input"
           />
         </div>
-        <div>
-          <label>Status</label>
-          <select name="status" value={quizData.status} onChange={handleChange}>
+        <div className="edit-inputs-label-container">
+          <label className="edit-form-label">Status</label>
+          <select
+            name="status"
+            value={quizData.status}
+            onChange={handleChange}
+            className="edit-form-input edit-form-select"
+          >
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>
         </div>
-        <div style={{ display: "flex", gap: "10px" }}>
+        <div className="edit-form-btn-container">
           <BasicButton value="Save Changes" type="submit" />
           <BasicButton value="Cancel" onClick={() => navigate("/home")} />
         </div>
