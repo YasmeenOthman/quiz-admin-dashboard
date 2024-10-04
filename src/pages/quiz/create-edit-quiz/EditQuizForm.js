@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import BasicButton from "../../../components/BasicButton";
-import "./editquiz.scss";
+import "./quizform.scss";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 

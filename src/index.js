@@ -7,14 +7,16 @@ import Sidebar from "./Templates/sidebar";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Home from "./pages/home/Home";
-import QuizManagement from "./pages/quiz/QuizManagement";
-import QuizForm from "./pages/quiz/createquiz/QuizForm";
-import QuestionsForm from "./pages/quiz/QuestionForm/QuestionsForm";
-import EditQuizForm from "./pages/quiz/editquiz/EditQuizForm";
 import QuizList from "./pages/quiz/quizlist/QuizList";
+import CategoryList from "./pages/category/CateogoryList";
+import QuizForm from "./pages/quiz/create-edit-quiz/QuizForm";
+import EditQuizForm from "./pages/quiz/create-edit-quiz/EditQuizForm";
+
+import QuizManagement from "./pages/quiz/QuizManagement";
+import QuestionsForm from "./pages/quiz/QuestionForm/QuestionsForm";
 import EditQuestionForm from "./pages/quiz/EditQuestionForm";
 import QuizPage from "./pages/quiz/QuizPage";
-import CategoryList from "./pages/category/CateogoryList";
+
 import PrivateRoute from "./authRoutes/PrivateRoute";
 import Unauthorized from "./authRoutes/Unauthorized";
 
