@@ -12,7 +12,6 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
-import AssignmentIcon from "@mui/icons-material/Assignment";
 import QuizStats from "./QuizStats";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -222,9 +221,10 @@ function Home() {
           {filteredQuizzez
             .map((quiz) => quiz.category)
             .filter(
-              (category, index, self) =>
+              (category, index, arr) =>
                 category &&
-                self.findIndex((cat) => cat.name === category.name) === index
+                category.quizzes.length > 0 &&
+                arr.findIndex((cat) => cat.name === category.name) === index
             )
             .slice(0, 4)
             .map((category) => (

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import "./questionform.scss";
 import BasicButton from "../../../components/BasicButton";
 import MultipleChoiceInput from "./MultipleChoiceInput";
 import QuestionTemplate from "./QuestionTemplate";
 import TrueFalseInput from "./TrueFalseInput";
+
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { Widgets } from "@mui/icons-material";
 
 // Base URL for server API
 const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -120,10 +124,14 @@ function QuestionsForm() {
   }
 
   return (
-    <>
-      <Link to={`/quiz/${quizId}`}>
+    <div className="question-form-container">
+      <div className="question-form-title-container">
         <h1>Quiz : {quiz.title}</h1>
-      </Link>
+        <OpenInNewIcon
+          onClick={() => navigate(`/quiz/${quizId}`)}
+          sx={{ color: "#2D9CDB", marginLeft: "15px" }}
+        />
+      </div>
       {/* Toggle the form to create a new question */}
       <BasicButton
         value="Create A New Question"
@@ -131,24 +139,26 @@ function QuestionsForm() {
       />
       {/* Conditional rendering of the question creation form */}
       {isCreatingQuestion && (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Question Text</label>
+        <form className="question-form" onSubmit={handleSubmit}>
+          <div className="inputs-label-container">
+            <label className="form-label">Question Text</label>
             <input
               type="text"
               name="questionText"
               value={questionData.questionText}
               onChange={handleChange}
               required
+              className="form-input"
             />
           </div>
 
-          <div>
-            <label>Question Type</label>
+          <div className="inputs-label-container">
+            <label className="form-label">Question Type</label>
             <select
               name="questionType"
               value={questionData.questionType}
               onChange={handleChange}
+              className="form-input"
             >
               <option value="multiple-choice">Multiple Choice</option>
               <option value="true-false">True/False</option>
@@ -157,8 +167,8 @@ function QuestionsForm() {
 
           {/* Conditional rendering for multiple-choice inputs */}
           {questionData.questionType === "multiple-choice" && (
-            <div>
-              <label>Choices</label>
+            <div className="inputs-label-container multiple-choices-container">
+              <label className="form-label">Choices</label>
               <MultipleChoiceInput
                 choices={questionData.choices}
                 correctAnswer={questionData.correctAnswer}
@@ -170,8 +180,8 @@ function QuestionsForm() {
 
           {/* Conditional rendering for true/false inputs */}
           {questionData.questionType === "true-false" && (
-            <div>
-              <label>Choices</label>
+            <div className="inputs-label-container">
+              <label className="form-label">Choices</label>
               <TrueFalseInput
                 handleCorrectAnswerChange={handleCorrectAnswerChange}
                 correctAnswer={questionData.correctAnswer}
@@ -179,8 +189,8 @@ function QuestionsForm() {
             </div>
           )}
 
-          <div>
-            <label>Explanation</label>
+          <div className="inputs-label-container">
+            <label className="form-label">Explanation</label>
             <textarea
               name="explanation"
               value={questionData.explanation}
@@ -200,7 +210,7 @@ function QuestionsForm() {
           deleteQuestion={deleteQuestion}
         />
       )}
-    </>
+    </div>
   );
 }
 

@@ -10,6 +10,7 @@ function TrueFalseInput({ handleCorrectAnswerChange, correctAnswer }) {
           value="True"
           onChange={() => handleCorrectAnswerChange("True")}
           checked={correctAnswer === "True"}
+          className="form-input"
         />
         <label>True</label>
       </div>
@@ -20,6 +21,7 @@ function TrueFalseInput({ handleCorrectAnswerChange, correctAnswer }) {
           value="False"
           onChange={() => handleCorrectAnswerChange("False")}
           checked={correctAnswer === "False"}
+          className="form-input"
         />
         <label>False</label>
       </div>
