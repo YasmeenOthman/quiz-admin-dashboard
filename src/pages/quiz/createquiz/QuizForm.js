@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import BasicButton from "../../components/BasicButton";
-import BasicModal from "../../components/Modal";
+import axios from "axios";
+import "./quizform.scss";
+import BasicButton from "../../../components/BasicButton";
+import BasicModal from "../../../components/Modal";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 // Initial state for the quiz form
@@ -64,12 +65,14 @@ const QuizForm = () => {
   };
 
   return (
-    <>
-      <h1>New Quiz</h1>
+    <div className="quiz-form-container">
+      <div className="quiz-form-title-container">
+        <h1>Create New Quiz</h1>
+      </div>
 
-      <form>
-        <div>
-          <label>Title</label>
+      <form className="quiz-form">
+        <div className="inputs-label-container">
+          <label className="form-label">Title : </label>
           <input
             type="text"
             name="title"
@@ -77,10 +80,11 @@ const QuizForm = () => {
             onChange={handleChange}
             placeholder="Quiz Title.."
             required
+            className="form-input"
           />
         </div>
-        <div>
-          <label>image</label>
+        <div className="inputs-label-container">
+          <label className="form-label">Image : </label>
           <input
             type="text"
             name="imageUrl"
@@ -88,10 +92,11 @@ const QuizForm = () => {
             onChange={handleChange}
             placeholder="Quiz Image.."
             required
+            className="form-input"
           />
         </div>
-        <div>
-          <label>Category</label>
+        <div className="inputs-label-container">
+          <label className="form-label">Category : </label>
           <input
             type="text"
             name="categoryName"
@@ -99,32 +104,38 @@ const QuizForm = () => {
             onChange={handleChange}
             placeholder="Quiz Category.."
             required
+            className="form-input"
           />
         </div>
-        <div>
-          <label>Description</label>
+        <div className="inputs-label-container">
+          <label className="form-label">Description : </label>
           <textarea
             name="description"
             value={quizData.description}
             onChange={handleChange}
             placeholder="Quiz Description / optional.."
+            className="form-textarea"
           />
         </div>
-        <div>
-          <label>Status</label>
-          <select name="status" value={quizData.status} onChange={handleChange}>
+        <div className="inputs-label-container">
+          <label className="form-label">Status :</label>
+          <select
+            name="status"
+            value={quizData.status}
+            onChange={handleChange}
+            className="form-input form-select"
+          >
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>
         </div>
-        <div style={{ display: "flex", gap: "10px" }}>
-          {/* Button to submit the form and create the quiz */}
+        <div className="form-btn-container">
           <BasicButton value="Save Quiz" onClick={createQuiz} />
-          <BasicButton value="Cancel" onClick={() => navigate("/")} />
+          <BasicButton value="Cancel" onClick={() => navigate("/home")} />
         </div>
         {isQuizSaved && <BasicModal quizId={quizId} />}
       </form>
-    </>
+    </div>
   );
 };
 

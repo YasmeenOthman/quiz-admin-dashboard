@@ -6,8 +6,9 @@ import { Container, Box } from "@mui/material";
 import Sidebar from "./Templates/sidebar";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import Home from "./pages/home/Home";
 import QuizManagement from "./pages/quiz/QuizManagement";
-import QuizForm from "./pages/quiz/QuizForm";
+import QuizForm from "./pages/quiz/createquiz/QuizForm";
 import QuestionsForm from "./pages/quiz/QuestionForm/QuestionsForm";
 import EditQuizForm from "./pages/quiz/EditQuizForm";
 import QuizList from "./pages/quiz/quizlist/QuizList";
@@ -15,8 +16,7 @@ import EditQuestionForm from "./pages/quiz/EditQuestionForm";
 import QuizPage from "./pages/quiz/QuizPage";
 import CategoryList from "./pages/category/CateogoryList";
 import PrivateRoute from "./authRoutes/PrivateRoute";
-import Unauthorized from "./authRoutes/Unauthorized"; // Import the new Unauthorized component
-import Home from "./pages/home/Home";
+import Unauthorized from "./authRoutes/Unauthorized";
 
 const Navigation = () => {
   return (
