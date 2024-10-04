@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./categoryList.scss";
 import CategoryCard from "../../components/categorycard/CategoryCard";
 import { useNavigate } from "react-router-dom";
 
@@ -27,9 +28,11 @@ function CategoryList() {
   }, []);
 
   return (
-    <div>
-      <h1>cateogories List</h1>
-      <div>
+    <div className="categories-container">
+      <div className="categories-title-container">
+        <h1>cateogories List</h1>
+      </div>
+      <div className="categories-cards-container">
         {categories.map((category) => {
           return (
             <CategoryCard

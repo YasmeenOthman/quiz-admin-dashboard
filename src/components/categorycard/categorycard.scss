@@ -3,7 +3,7 @@
 .category-card-container{
     border: 1px solid #ddd;
     border-radius: .4rem;
-    max-width: 280px;
+    width: 250px;
     margin: 16px;
     padding: 16px;
     display: flex;
@@ -17,14 +17,16 @@
   
   .category-card-header {
     display: flex;
+    // flex-wrap: wrap;
     align-items: center;
     padding: 10px;
     text-transform: capitalize;
     .category-icon-container {
-      border: 1px solid colors.$primary-Color;
       border-radius:.25rem;
       margin-right: 10px;
       padding: 5px;
+      background-color: colors.$primary-Color;
+      color:colors.$bg-Color ;
     }
     
    .category-name{

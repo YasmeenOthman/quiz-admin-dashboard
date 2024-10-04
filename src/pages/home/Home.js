@@ -114,7 +114,7 @@ function Home() {
     },
     {
       id: 3,
-      title: "Total Users",
+      title: "Total Students",
       value: users.length,
       Icon: GroupIcon,
       gradient: "linear-gradient(to left, #6A82FB, #FC5C7D)",

@@ -1,0 +1,41 @@
+@use "../../styles/colors";
+@use "../../styles/fonts";
+
+.categories-container{
+    background-color: colors.$bg-Color;
+    padding: 2% 5%;
+    font-family: fonts.$background-font;
+    display: flex;
+    flex-direction: column;
+    gap: 3%; 
+}
+
+.categories-title-container{
+    background-color: colors.$primary-Color;
+    color: colors.$bg-Color;
+    font-family: fonts.$primary-font;
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 15px;
+    text-transform: capitalize;
+    h1{
+        font-size: 1.5rem;
+    }
+
+}
+
+.categories-cards-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 500px;
+    gap: 10px;
+    padding: 15px;
+    margin-top: 30px;
+    color: colors.$primary-Color;
+    background-color: white;
+    font-family: fonts.$background-font;
+   
+}
