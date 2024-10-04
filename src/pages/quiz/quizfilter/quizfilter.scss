@@ -1,0 +1,23 @@
+
+@use "../../../styles/colors";
+.filter-container{
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-inputs{
+    padding: 10px;
+    width: 25%;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    color: colors.$primary-Color;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: .25rem;
+    font-size: 1rem;
+}
+.filter-inputs::placeholder{
+    font-size: .9rem;
+}

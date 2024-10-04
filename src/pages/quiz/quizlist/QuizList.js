@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./quizlist.scss";
-
 import QuizCard from "../../../components/QuizCard";
-import QuizFilter from "../QuizFilter";
+import QuizFilter from "../quizfilter/QuizFilter";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -77,7 +76,7 @@ function QuizList() {
       {/* Add QuizFilter component */}
       <QuizFilter onFilterChange={handleFilterChange} />
       {filteredQuizzez.length === 0 ? (
-        <h2 className="quiz-list-message">No quizzes found yet</h2>
+        <h2 className="quiz-list-cards-container">No quizzes found yet....</h2>
       ) : (
         <div className="quiz-list-cards-container">
           {filteredQuizzez.map((quiz) => (

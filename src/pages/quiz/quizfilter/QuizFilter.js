@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import "./quizfilter.scss";
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const QuizFilter = ({ onFilterChange }) => {
@@ -37,8 +37,9 @@ const QuizFilter = ({ onFilterChange }) => {
   };
 
   return (
-    <div>
+    <div className="filter-container">
       <input
+        className="filter-inputs"
         type="text"
         placeholder="Filter by title"
         value={title}
@@ -47,6 +48,7 @@ const QuizFilter = ({ onFilterChange }) => {
         }}
       />
       <select
+        className="filter-inputs"
         value={category}
         onChange={(e) => {
           setCategory(e.target.value);
@@ -61,6 +63,7 @@ const QuizFilter = ({ onFilterChange }) => {
           ))}
       </select>
       <select
+        className="filter-inputs"
         value={status}
         onChange={(e) => {
           setStatus(e.target.value);

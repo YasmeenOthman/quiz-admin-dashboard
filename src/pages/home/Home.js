@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import QuizCard from "../../components/QuizCard";
-import CategoryCard from "../../components/categorycard/CategoryCard";
-import HomeNav from "./HomeNav";
-import "./home.scss";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
+import QuizCard from "../../components/QuizCard";
+import CategoryCard from "../../components/categorycard/CategoryCard";
+import HomeNav from "./HomeNav";
 import SummaryCard from "../../components/summarycard/SummaryCard";
-import AssignmentIcon from "@mui/icons-material/Assignment";
+import "./home.scss";
 import QuizIcon from "@mui/icons-material/Quiz";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 import QuizStats from "./QuizStats";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
