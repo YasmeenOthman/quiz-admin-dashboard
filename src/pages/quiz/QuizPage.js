@@ -155,7 +155,7 @@ function QuizPage() {
               <div style={{ marginTop: "10px", display: "flex", gap: "10px" }}>
                 <Link
                   to={`/edit-question/${question._id}`}
-                  state={{ from: "quizPage" }}
+                  state={{ from: `/quiz/${quizId}` }}
                 >
                   <BasicButton
                     value="Edit"

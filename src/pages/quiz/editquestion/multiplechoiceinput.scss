@@ -1,0 +1,26 @@
+@use "../../../styles/colors";
+
+
+.multiple-choices-inputs-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  padding: 0.5rem;
+  border-radius: 4px;
+
+  &.correct-answer-highlight {
+    border-color: colors.$accent-Color;
+    background-color: #eaffea; 
+  }
+}
+
+.correct-answer-radio {
+  margin-left: 1rem;
+}
+
+.correct-answer-label {
+  margin-left: 0.5rem;
+  font-weight: bold;
+  color: green;
+}

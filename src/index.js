@@ -11,12 +11,10 @@ import QuizList from "./pages/quiz/quizlist/QuizList";
 import CategoryList from "./pages/category/CateogoryList";
 import QuizForm from "./pages/quiz/create-edit-quiz/QuizForm";
 import EditQuizForm from "./pages/quiz/create-edit-quiz/EditQuizForm";
-
-import QuizManagement from "./pages/quiz/QuizManagement";
 import QuestionsForm from "./pages/quiz/QuestionForm/QuestionsForm";
-import EditQuestionForm from "./pages/quiz/EditQuestionForm";
+import EditQuestionForm from "./pages/quiz/editquestion/EditQuestionForm";
+import QuizManagement from "./pages/quiz/QuizManagement";
 import QuizPage from "./pages/quiz/QuizPage";
-
 import PrivateRoute from "./authRoutes/PrivateRoute";
 import Unauthorized from "./authRoutes/Unauthorized";
 

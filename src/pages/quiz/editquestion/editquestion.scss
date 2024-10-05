@@ -1,0 +1,110 @@
+@use "../../../styles/colors";
+@use "../../../styles/fonts";
+
+.edit-question-form-container {
+  background-color: colors.$bg-Color;
+  padding: 2% 5%;
+  font-family: fonts.$background-font;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  min-height: 100vh;
+}
+
+.edit-question-form-title-container {
+  background-color: colors.$primary-Color;
+  color: colors.$bg-Color;
+  font-family: fonts.$primary-font;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    display: flex;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.edit-question-form {
+  background-color: colors.$bg-Color;
+  min-height: 80vh;
+  padding: 15px;
+  margin-top: 30px;
+  border-radius: .25rem;
+  box-shadow: #2d9bdb98 0px 3px 8px;
+}
+
+.inputs-label-container {
+  padding: 15px;
+  margin: 10px;
+  border-bottom: 1px solid colors.$secondary-Color;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .form-label {
+    margin-right: 3%;
+    flex-basis: 20%;
+    padding: 10px;
+    font-weight: bolder;
+    color: colors.$primary-Color;
+  }
+  .form-input {
+    border: 1px solid colors.$bg-Color;
+    border-radius: .25rem;
+    color: colors.$primary-Color;
+    padding: 12px;
+    flex-basis: 70%;
+    outline: none;
+    font-size: 1rem;
+    &::placeholder {
+      color: #999;
+    }
+  }
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    flex-basis: 70%;
+  }
+}
+
+.multiple-choices-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 5px;
+  width: 100%;
+}
+
+.correct-answer {
+  accent-color: colors.$accent-Color;
+  font-family: fonts.$accent-font;
+}
+
+.correct-answer-label {
+  color: colors.$accent-Color;
+}
+
+
+.true-false-input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.true-false-option {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.highlight {
+  background-color: #d0f0c0; 
+  border-radius: 4px;
+  padding: 5px;
+}
