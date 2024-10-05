@@ -117,14 +117,14 @@ const QuizCard = ({
         {onDelete && (
           <Tooltip title="Delete">
             <IconButton aria-label="delete" onClick={handleDeleteClick}>
-              <DeleteIcon />
+              <DeleteIcon sx={{ color: "coral" }} />
             </IconButton>
           </Tooltip>
         )}
 
         <Tooltip title="Edit">
           <IconButton aria-label="edit" onClick={handleEditClick}>
-            <EditIcon />
+            <EditIcon sx={{ color: "#6FCF97" }} />
           </IconButton>
         </Tooltip>
         <Tooltip title="View Questions">
@@ -132,7 +132,7 @@ const QuizCard = ({
             aria-label="view questions"
             onClick={handleViewQuestionsClick}
           >
-            <VisibilityIcon />
+            <VisibilityIcon sx={{ color: "#2D9CDB" }} />
           </IconButton>
         </Tooltip>
         {/* Badge for status */}

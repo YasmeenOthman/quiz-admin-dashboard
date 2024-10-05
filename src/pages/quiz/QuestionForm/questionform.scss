@@ -32,7 +32,6 @@
 }
 
 .question-form{
-    // background-color: colors.$primary-Color;
     background-color: colors.$bg-Color;
     min-height: 80vh;
     padding: 15px;
@@ -149,6 +148,7 @@ align-items: center;
   } 
   .total{
     width: 20%;
+    color: colors.$warning-Color;
   }
 }
 .question-template-container {
