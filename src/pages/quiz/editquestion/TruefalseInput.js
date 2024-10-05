@@ -13,9 +13,10 @@ const TrueFalseInput = ({ correctAnswer, handleCorrectAnswerChange }) => {
           type="radio"
           id="true-option"
           name="trueFalse"
-          value="true"
+          value="True"
           checked={correctAnswer === "True"}
           onChange={(e) => handleCorrectAnswerChange(e.target.value)}
+          className="correct-answer "
         />
         <label htmlFor="true-option">True</label>
       </div>
@@ -29,9 +30,10 @@ const TrueFalseInput = ({ correctAnswer, handleCorrectAnswerChange }) => {
           type="radio"
           id="false-option"
           name="trueFalse"
-          value="false"
+          value="False"
           checked={correctAnswer === "False"}
           onChange={(e) => handleCorrectAnswerChange(e.target.value)}
+          className="correct-answer "
         />
         <label htmlFor="false-option">False</label>
       </div>
