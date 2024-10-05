@@ -1,68 +1,55 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import BasicButton from "../../../components/BasicButton";
-import { useLocale } from "antd/es/locale";
 
 function QuestionTemplate({ quizQuestions, deleteQuestion }) {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from;
+
   return (
-    <div>
+    <div className="question-template-container">
       {quizQuestions.map((question, index) => (
-        <details
-          key={index}
-          style={{
-            marginBottom: "1em",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            padding: "10px",
-          }}
-        >
-          <summary
-            style={{
-              fontSize: "1.2em",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}
-          >
+        <details key={index} className="question-details">
+          <summary className="question-summary">
             {question.questionText}
           </summary>
-          <div style={{ marginTop: "10px" }}>
+          <div className="question-info-container">
             {question.questionType === "multiple-choice" && (
-              <div>
-                <strong>Choices:</strong>
-                <ul style={{ paddingLeft: "20px", marginTop: "5px" }}>
+              <div className="question-choices">
+                <strong className="choices-type">Choices:</strong>
+                <ul>
                   {question.choices.map((choice, i) => (
-                    <li key={i} style={{ marginBottom: "5px" }}>
-                      {choice}
-                    </li>
+                    <li key={i}>{choice}</li>
                   ))}
                 </ul>
               </div>
             )}
             <p>
-              <strong>Correct Answer:</strong> {question.correctAnswer}
+              <strong className="correct-answer">Correct Answer:</strong>{" "}
+              {question.correctAnswer}
             </p>
             {question.explanation && (
-              <p style={{ marginTop: "10px" }}>
-                <strong>Explanation:</strong> {question.explanation}
+              <p className="question-explanation">
+                <strong className="explanation">Explanation:</strong>{" "}
+                {question.explanation}
               </p>
             )}
-            <div style={{ marginTop: "10px", display: "flex", gap: "10px" }}>
+            <div className="question-actions">
               <Link to={`/edit-question/${question._id}`} state={{ from }}>
                 <BasicButton
                   value="Edit"
-                  style={{ padding: "5px 10px", border: "none" }}
+                  style={{
+                    background: "#6FCF97",
+                    color: "white",
+                    border: "none",
+                  }}
                 />
               </Link>
               <BasicButton
                 value="Delete"
                 onClick={() => deleteQuestion(question._id)}
-                style={{
-                  padding: "5px 10px",
-                  border: "none",
-                }}
+                style={{ background: "coral", color: "white", border: "none" }}
               />
             </div>
           </div>

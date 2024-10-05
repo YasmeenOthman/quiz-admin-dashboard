@@ -2,26 +2,26 @@ import React from "react";
 
 function TrueFalseInput({ handleCorrectAnswerChange, correctAnswer }) {
   return (
-    <div>
-      <div>
+    <div className="true-false-container">
+      <div className="true-answer-option">
         <input
           type="radio"
           name="correctAnswer"
           value="True"
           onChange={() => handleCorrectAnswerChange("True")}
           checked={correctAnswer === "True"}
-          className="form-input"
+          className="correct-answer"
         />
         <label>True</label>
       </div>
-      <div>
+      <div className="false-answer-option">
         <input
           type="radio"
           name="correctAnswer"
           value="False"
           onChange={() => handleCorrectAnswerChange("False")}
           checked={correctAnswer === "False"}
-          className="form-input"
+          className="correct-answer"
         />
         <label>False</label>
       </div>

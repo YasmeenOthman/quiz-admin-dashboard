@@ -6,9 +6,7 @@ import BasicButton from "../../../components/BasicButton";
 import MultipleChoiceInput from "./MultipleChoiceInput";
 import QuestionTemplate from "./QuestionTemplate";
 import TrueFalseInput from "./TrueFalseInput";
-
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import { Widgets } from "@mui/icons-material";
 
 // Base URL for server API
 const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -38,6 +36,7 @@ function QuestionsForm() {
       navigate("/quiz-login");
     }
   }, []);
+
   // Fetch quiz details by ID
   async function getQuizById() {
     let res = await axios.get(`${serverUrl}/quiz/${quizId}`);
@@ -126,17 +125,21 @@ function QuestionsForm() {
   return (
     <div className="question-form-container">
       <div className="question-form-title-container">
-        <h1>Quiz : {quiz.title}</h1>
-        <OpenInNewIcon
-          onClick={() => navigate(`/quiz/${quizId}`)}
-          sx={{ color: "#2D9CDB", marginLeft: "15px" }}
+        <div>
+          <h1>Quiz : {quiz.title}</h1>
+          <OpenInNewIcon
+            onClick={() => navigate(`/quiz/${quizId}`)}
+            sx={{ color: "#2D9CDB", marginLeft: "15px" }}
+          />
+        </div>
+        {/* Toggle the form to create a new question */}
+        <BasicButton
+          value="Create A New Question"
+          onClick={() => setIsCreatingQuestion(!isCreatingQuestion)}
+          style={{ background: "white" }}
         />
       </div>
-      {/* Toggle the form to create a new question */}
-      <BasicButton
-        value="Create A New Question"
-        onClick={() => setIsCreatingQuestion(!isCreatingQuestion)}
-      />
+
       {/* Conditional rendering of the question creation form */}
       {isCreatingQuestion && (
         <form className="question-form" onSubmit={handleSubmit}>
@@ -146,6 +149,7 @@ function QuestionsForm() {
               type="text"
               name="questionText"
               value={questionData.questionText}
+              placeholder="What is ..........? "
               onChange={handleChange}
               required
               className="form-input"
@@ -195,21 +199,28 @@ function QuestionsForm() {
               name="explanation"
               value={questionData.explanation}
               onChange={handleChange}
+              className="question-form-textarea "
             />
           </div>
           <BasicButton value="Add Question" type="submit" />
         </form>
       )}
       {/* Render the list of questions */}
-      <h2>Questions</h2>
-      {quizQuestions.length === 0 ? (
-        <h3>No questions</h3>
-      ) : (
-        <QuestionTemplate
-          quizQuestions={quizQuestions}
-          deleteQuestion={deleteQuestion}
-        />
-      )}
+      <div className="questions-container">
+        <div className="questions-container-title">
+          <h2 className="title">Questions</h2>
+          <h3 className="total">Total :{quizQuestions.length} </h3>
+        </div>
+
+        {quizQuestions.length === 0 ? (
+          <h3 className="no-questions-msg">No questions .....</h3>
+        ) : (
+          <QuestionTemplate
+            quizQuestions={quizQuestions}
+            deleteQuestion={deleteQuestion}
+          />
+        )}
+      </div>
     </div>
   );
 }
