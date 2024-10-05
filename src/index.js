@@ -14,7 +14,7 @@ import EditQuizForm from "./pages/quiz/create-edit-quiz/EditQuizForm";
 import QuestionsForm from "./pages/quiz/QuestionForm/QuestionsForm";
 import EditQuestionForm from "./pages/quiz/editquestion/EditQuestionForm";
 import QuizManagement from "./pages/quiz/QuizManagement";
-import QuizPage from "./pages/quiz/QuizPage";
+import QuizPage from "./pages/quiz/quizpage/QuizPage";
 import PrivateRoute from "./authRoutes/PrivateRoute";
 import Unauthorized from "./authRoutes/Unauthorized";
 
