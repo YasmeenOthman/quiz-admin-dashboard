@@ -38,6 +38,18 @@ const EditQuizForm = () => {
   }, [quizId]);
 
   // Handle input changes and update the state
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   if (name === "categoryName") {
+  //     setQuizData({
+  //       ...quizData,
+  //       category: { ...quizData.category, name: value },
+  //     });
+  //   } else {
+  //     setQuizData({ ...quizData, [name]: value });
+  //   }
+  //   console.log(quizData);
+  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryName") {
@@ -46,13 +58,19 @@ const EditQuizForm = () => {
         category: { ...quizData.category, name: value },
       });
     } else {
-      setQuizData({ ...quizData, [name]: value });
+      // If the imageUrl field is cleared, ensure it sets to an empty string
+      if (name === "imageUrl" && value.trim() === "") {
+        setQuizData({ ...quizData, [name]: "" });
+      } else {
+        setQuizData({ ...quizData, [name]: value });
+      }
     }
   };
 
   // Handle form submission to update the quiz
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting quiz data:", quizData);
     try {
       let res = await axios.put(`${serverUrl}/quiz/${quizId}`, quizData, {
         headers: {
