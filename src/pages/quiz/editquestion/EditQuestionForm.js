@@ -11,6 +11,7 @@ const serverUrl = process.env.REACT_APP_SERVER_URL;
 const EditQuestionForm = () => {
   const location = useLocation();
   const { questionId } = useParams();
+
   const from = location.state?.from;
   const navigate = useNavigate();
 
@@ -150,6 +151,11 @@ const EditQuestionForm = () => {
             type="button"
             onClick={handleCancel}
             className="cancel-button"
+            style={{
+              background: "#ff7f50",
+              color: "#F4F5F7",
+              border: "1px solid #F4F5F7",
+            }}
           />
         </div>
       </form>

@@ -4,16 +4,19 @@
 
 .quiz-container {
     background-color: colors.$bg-Color;
+    
     padding: 2% 5%;
     // font-family: fonts.$background-font;
     display: flex;
     flex-direction: column;
     gap: 3%;
     min-height: 100vh;
+
   }
   
   .quiz-header {
     background-color: colors.$primary-Color;
+    
     color: colors.$bg-Color;
     font-family: fonts.$primary-font;
     width: 100%;
@@ -26,7 +29,7 @@
   
   .quiz-title {
     font-size: 1.5rem; 
-    color:colors.$secondary-Color;
+    color:colors.$bg-Color;
    
   }
 
@@ -39,11 +42,20 @@
   .quiz-description,
   .quiz-category,
   .quiz-status,
+  .quiz-question,
   .quiz-date,
   .quiz-created-by {
-    font-size: 1.1em; 
-    margin-bottom: 15px;
+    font-size: 1rem; 
     padding: 15px;
+    text-transform: capitalize;
+    color:colors.$secondary-Color;
+    font-family: fonts.$background-font;
+    strong{
+      color:colors.$text-Color;
+      font-family: fonts.$background-font;
+      font-size: 1.1rem;
+      
+    }
   }
   
   .quiz-image {
@@ -51,44 +63,32 @@
     max-width: 90%;
     height: auto;
     margin:20px auto;
-    
-   
   }
   
   .questions-list {
     margin: 20px 0;
-  
-  }
-  
-  .question-item {
-    margin-bottom: 1em;
     border: 1px solid #ccc;
-    border-radius: 5px;
+  
+  }
+  .quiz-button-container {
+    margin-top: 10px;
     padding: 10px;
-  }
-  
-  .question-summary {
-    font-size: 1.2em;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .question-details {
-    margin-top: 10px;
-  }
-  
-  .question-choices {
-    padding-left: 20px;
-    margin-top: 5px;
-  }
-  
-  .question-choice {
-    margin-bottom: 5px;
-  }
-  
-  .button-container {
-    margin-top: 10px;
     display: flex;
+    justify-content: center;
     gap: 10px;
+
+
   }
   
+.quiz-page-msg{
+  padding: 15px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  a{
+    text-decoration: none;
+    color:colors.$secondary-Color;
+    margin-left: 5px;
+  }
+}

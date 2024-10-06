@@ -201,6 +201,7 @@ function Home() {
                   imageUrl={quiz.imageUrl}
                   quizId={quiz._id}
                   numberOfQuestions={quiz.questions.length}
+                  description={quiz.description}
                   categoryName={quiz.category && quiz.category.name}
                   status={quiz.status}
                   onDelete={() => deleteQuiz(quiz._id)}

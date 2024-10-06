@@ -1,7 +1,7 @@
 // components/EditQuizForm.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import BasicButton from "../../../components/BasicButton";
 import "./quizform.scss";
 
@@ -10,6 +10,9 @@ const serverUrl = process.env.REACT_APP_SERVER_URL;
 const EditQuizForm = () => {
   const { quizId } = useParams(); // Get quizId from URL parameters
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from;
+
   const [quizData, setQuizData] = useState({
     title: "",
     description: "",
@@ -37,19 +40,6 @@ const EditQuizForm = () => {
     fetchQuizData();
   }, [quizId]);
 
-  // Handle input changes and update the state
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   if (name === "categoryName") {
-  //     setQuizData({
-  //       ...quizData,
-  //       category: { ...quizData.category, name: value },
-  //     });
-  //   } else {
-  //     setQuizData({ ...quizData, [name]: value });
-  //   }
-  //   console.log(quizData);
-  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name === "categoryName") {
@@ -148,7 +138,15 @@ const EditQuizForm = () => {
         </div>
         <div className="edit-form-btn-container">
           <BasicButton value="Save Changes" type="submit" />
-          <BasicButton value="Cancel" onClick={() => navigate("/home")} />
+          <BasicButton
+            value="Cancel"
+            onClick={() => navigate("/home")}
+            style={{
+              background: "#ff7f50",
+              color: "#F4F5F7",
+              border: "1px solid #F4F5F7",
+            }}
+          />
         </div>
       </form>
     </div>

@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import "./quizpage.scss";
 import QuestionTemplate from "../QuestionForm/QuestionTemplate";
+import { Padding } from "@mui/icons-material";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -111,30 +112,39 @@ function QuizPage() {
           />
         )}
         <p className="quiz-description">
-          {" "}
           <strong>Description: </strong>
-          {quiz.description}
+          {quiz.description ? (
+            quiz.description
+          ) : (
+            <div>
+              <p className="descriptin-value">
+                Description not available yet ,
+                <Link to={`/edit-quiz/${quizId}`}>Add some</Link>{" "}
+              </p>
+            </div>
+          )}
         </p>
         <p className="quiz-category">
           <strong>Category: </strong>
           {quiz.category?.name}
         </p>
         <p className="quiz-status">
-          {" "}
           <strong>Status: </strong>
           {quiz.status}
         </p>
+        <p className="quiz-question">
+          <strong>Total questions: </strong>
+          {quiz.questions.length}
+        </p>
         <p className="quiz-date">
-          {" "}
           <strong> Date Created:</strong>
           {new Date(quiz.dateCreated).toLocaleDateString()}
         </p>
         <p className="quiz-created-by">
-          {" "}
           <strong> Created By:</strong> {quiz.createdBy?.email}
         </p>
 
-        <div className="quiz-btn-container">
+        <div className="quiz-button-container">
           <BasicButton
             value="New Question"
             type="button"
@@ -144,19 +154,29 @@ function QuizPage() {
             value={!viewQuestion ? "View Questions" : "Hide Question List"}
             type="button"
             onClick={handleViewQuestions}
+            style={{
+              background: !viewQuestion ? "#2D9CDB" : "#ff7f50",
+              color: "#F4F5F7",
+              border: "1px solid #F4F5F7",
+            }}
           />
         </div>
       </div>
-      {viewQuestion ? (
-        quiz.questions.length > 0 ? (
-          <QuestionTemplate
-            quizQuestions={quiz.questions}
-            deleteQuestion={deleteQuestion}
-          />
-        ) : (
-          <div>No questions yet</div>
-        )
-      ) : null}
+      <div className="questions-list ">
+        {viewQuestion ? (
+          quiz.questions.length > 0 ? (
+            <QuestionTemplate
+              quizQuestions={quiz.questions}
+              deleteQuestion={deleteQuestion}
+            />
+          ) : (
+            <div className="quiz-page-msg">
+              No questions yet,
+              <Link to={`/question-form/${quizId}`}> Add question!</Link>
+            </div>
+          )
+        ) : null}
+      </div>
     </div>
   );
 }

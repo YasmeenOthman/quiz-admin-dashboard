@@ -202,7 +202,9 @@ function QuestionsForm() {
               className="question-form-textarea "
             />
           </div>
-          <BasicButton value="Add Question" type="submit" />
+          <div className="button-container">
+            <BasicButton value="Add Question" type="submit" />
+          </div>
         </form>
       )}
       {/* Render the list of questions */}
