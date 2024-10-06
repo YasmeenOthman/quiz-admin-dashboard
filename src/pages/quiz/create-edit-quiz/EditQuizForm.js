@@ -140,7 +140,7 @@ const EditQuizForm = () => {
           <BasicButton value="Save Changes" type="submit" />
           <BasicButton
             value="Cancel"
-            onClick={() => navigate("/home")}
+            onClick={() => navigate(from ? from : `/home`)}
             style={{
               background: "#ff7f50",
               color: "#F4F5F7",

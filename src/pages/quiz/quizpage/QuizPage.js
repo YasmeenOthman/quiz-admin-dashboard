@@ -88,7 +88,10 @@ function QuizPage() {
         <h1 className="quiz-title">{quiz.title}</h1>
         <div>
           <Tooltip title="Edit">
-            <Link to={`/edit-quiz/${quizId}`}>
+            <Link
+              to={`/edit-quiz/${quizId}`}
+              state={{ from: `/quiz/${quizId}` }}
+            >
               <IconButton aria-label="edit">
                 <EditIcon sx={{ color: "white" }} />
               </IconButton>
