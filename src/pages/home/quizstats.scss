@@ -11,16 +11,20 @@
 .quiz-stats-header{
     display: flex;
     justify-content: space-between;
+  
 }
 
 .quiz-stats-title{
-    color:colors.$primary-Color
+    color:colors.$primary-Color;
+    flex-basis: 50%;
+   
 }
 
 .quiz-select-dropdown{
-    width: 20%;
+    flex-basis: 20%;
     height: 30px;
     color: colors.$primary-Color;
+
 }
 
 .quiz-stats-row {
@@ -34,14 +38,14 @@
 
 
 .quiz-stat-card {
-    flex-basis: calc(25% - 20px); // Adjust based on how many cards per row (25% for 4 cards per row)
     margin: 10px; 
     padding: 10px;
     display: flex;
     align-items: center;
     height: 100px;
     gap: 10px;
-  
+
+   
     .quiz-stat-card-icon {
         padding: 10px;
         border-radius: 50%;
@@ -49,12 +53,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
+      
+        
     }
 
     .quiz-stat-card-data {
         padding: 5px;
         color: colors.$primary-Color;
-        
         .quiz-stat-card-title {
             font-size: .8rem;
             color: colors.$primary-Color;

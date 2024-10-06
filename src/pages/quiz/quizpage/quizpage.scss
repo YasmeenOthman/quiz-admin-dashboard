@@ -1,37 +1,63 @@
 @use "../../../styles/colors";
 @use "../../../styles/fonts";
+
+
 .quiz-container {
+    background-color: colors.$bg-Color;
+    padding: 2% 5%;
+    // font-family: fonts.$background-font;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 3%;
+    min-height: 100vh;
   }
   
   .quiz-header {
+    background-color: colors.$primary-Color;
+    color: colors.$bg-Color;
+    font-family: fonts.$primary-font;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    gap: 30px;
+    justify-content:space-between;
   }
   
   .quiz-title {
-    font-size: 2em; /* Adjust size as needed */
+    font-size: 1.5rem; 
+    color:colors.$secondary-Color;
+   
+  }
+
+  .quiz-info{
+    padding: 10px;
+    border: 1px solid #ccc;
   }
   
+
   .quiz-description,
   .quiz-category,
   .quiz-status,
   .quiz-date,
   .quiz-created-by {
-    font-size: 1.1em; /* Adjust size as needed */
+    font-size: 1.1em; 
+    margin-bottom: 15px;
+    padding: 15px;
   }
   
   .quiz-image {
-    max-width: 100%;
+    display: block;
+    max-width: 90%;
     height: auto;
-    margin-top: 10px;
+    margin:20px auto;
+    
+   
   }
   
   .questions-list {
-    margin-top: 20px;
+    margin: 20px 0;
+  
   }
   
   .question-item {

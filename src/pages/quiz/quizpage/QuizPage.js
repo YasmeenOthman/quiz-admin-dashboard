@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import BasicButton from "../../../components/BasicButton"; // Assuming you have this component
+import BasicButton from "../../../components/BasicButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip"; // Import Tooltip
-import "./quizpage.scss"; // Import CSS file
+import Tooltip from "@mui/material/Tooltip";
+import "./quizpage.scss";
 import QuestionTemplate from "../QuestionForm/QuestionTemplate";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
@@ -15,6 +15,7 @@ function QuizPage() {
   const { quizId } = useParams();
   const navigate = useNavigate();
   const [quiz, setQuiz] = useState(null);
+  const [viewQuestion, setViewQuestion] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
@@ -76,6 +77,10 @@ function QuizPage() {
     return <div>Loading...</div>;
   }
 
+  function handleViewQuestions() {
+    setViewQuestion(!viewQuestion);
+  }
+
   return (
     <div className="quiz-container">
       <div className="quiz-header">
@@ -84,55 +89,74 @@ function QuizPage() {
           <Tooltip title="Edit">
             <Link to={`/edit-quiz/${quizId}`}>
               <IconButton aria-label="edit">
-                <EditIcon />
+                <EditIcon sx={{ color: "white" }} />
               </IconButton>
             </Link>
           </Tooltip>
           <Tooltip title="Delete">
             <IconButton aria-label="delete" onClick={deleteQuiz}>
-              <DeleteIcon />
+              <DeleteIcon sx={{ color: "white" }} />
             </IconButton>
           </Tooltip>
         </div>
       </div>
+      <div className="quiz-info">
+        {quiz.imageUrl ? (
+          <img src={quiz.imageUrl} alt={quiz.title} className="quiz-image" />
+        ) : (
+          <img
+            src="../images/quiz.avif"
+            alt={quiz.title}
+            className="quiz-image"
+          />
+        )}
+        <p className="quiz-description">
+          {" "}
+          <strong>Description: </strong>
+          {quiz.description}
+        </p>
+        <p className="quiz-category">
+          <strong>Category: </strong>
+          {quiz.category?.name}
+        </p>
+        <p className="quiz-status">
+          {" "}
+          <strong>Status: </strong>
+          {quiz.status}
+        </p>
+        <p className="quiz-date">
+          {" "}
+          <strong> Date Created:</strong>
+          {new Date(quiz.dateCreated).toLocaleDateString()}
+        </p>
+        <p className="quiz-created-by">
+          {" "}
+          <strong> Created By:</strong> {quiz.createdBy?.email}
+        </p>
 
-      <p className="quiz-description">{quiz.description}</p>
-      {quiz.imageUrl && (
-        <img src={quiz.imageUrl} alt={quiz.title} className="quiz-image" />
-      )}
-      <p className="quiz-category">
-        <strong style={{ color: "coral" }}>Category: </strong>
-        {quiz.category?.name}
-      </p>
-      <p className="quiz-status">
-        {" "}
-        <strong style={{ color: "coral" }}>Status: </strong>
-        {quiz.status}
-      </p>
-      <p className="quiz-date">
-        {" "}
-        <strong style={{ color: "coral" }}> Date Created:</strong>
-        {new Date(quiz.dateCreated).toLocaleDateString()}
-      </p>
-      <p className="quiz-created-by">
-        {" "}
-        <strong style={{ color: "coral" }}> Created By:</strong>{" "}
-        {quiz.createdBy?.email}
-      </p>
-
-      <div>
-        <BasicButton
-          value="New Question"
-          type="button"
-          onClick={() => navigate(`/question-form/${quizId}`)}
-        />
-        <BasicButton
-          value="View All Questions"
-          type="button"
-          onClick={() => navigate(`/question-form/${quizId}`)}
-        />
+        <div className="quiz-btn-container">
+          <BasicButton
+            value="New Question"
+            type="button"
+            onClick={() => navigate(`/question-form/${quizId}`)}
+          />
+          <BasicButton
+            value={!viewQuestion ? "View Questions" : "Hide Question List"}
+            type="button"
+            onClick={handleViewQuestions}
+          />
+        </div>
       </div>
-      <QuestionTemplate quizQuestions={quiz.questions} />
+      {viewQuestion ? (
+        quiz.questions.length > 0 ? (
+          <QuestionTemplate
+            quizQuestions={quiz.questions}
+            deleteQuestion={deleteQuestion}
+          />
+        ) : (
+          <div>No questions yet</div>
+        )
+      ) : null}
     </div>
   );
 }
