@@ -131,7 +131,15 @@ const QuizForm = () => {
         </div>
         <div className="form-btn-container">
           <BasicButton value="Save Quiz" onClick={createQuiz} />
-          <BasicButton value="Cancel" onClick={() => navigate("/home")} />
+          <BasicButton
+            value="Cancel"
+            onClick={() => navigate("/home")}
+            style={{
+              background: "#ff7f50",
+              color: "#F4F5F7",
+              border: "1px solid #F4F5F7",
+            }}
+          />
         </div>
         {isQuizSaved && <BasicModal quizId={quizId} />}
       </form>

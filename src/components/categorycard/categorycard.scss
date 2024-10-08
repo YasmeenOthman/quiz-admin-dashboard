@@ -17,7 +17,6 @@
   
   .category-card-header {
     display: flex;
-    // flex-wrap: wrap;
     align-items: center;
     padding: 10px;
     text-transform: capitalize;
@@ -25,8 +24,6 @@
       border-radius:.25rem;
       margin-right: 10px;
       padding: 5px;
-      background-color: colors.$primary-Color;
-      color:colors.$bg-Color ;
     }
     
    .category-name{

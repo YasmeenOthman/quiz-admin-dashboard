@@ -6,28 +6,26 @@ import ScienceIcon from "@mui/icons-material/Science";
 import CodeIcon from "@mui/icons-material/Code";
 import DevicesOtherIcon from "@mui/icons-material/DevicesOther";
 import BrushIcon from "@mui/icons-material/Brush";
-
 import MoneyIcon from "@mui/icons-material/Money";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import Tooltip from "@mui/material/Tooltip";
 import "./categorycard.scss";
 
-// Function to select the appropriate icon based on categoryName
 const getCategoryIcon = (categoryName) => {
   switch (categoryName.toLowerCase()) {
     case "science":
-      return <ScienceIcon sx={{ fontSize: "2rem" }} />;
+      return <ScienceIcon sx={{ fontSize: "2rem", color: "#28A745" }} />; // Green (nature, biology, growth)
     case "technology":
-      return <DevicesOtherIcon sx={{ fontSize: "2rem" }} />;
+      return <DevicesOtherIcon sx={{ fontSize: "2rem", color: "#00ADEF" }} />; // Blue (innovation, tech)
     case "art":
-      return <BrushIcon sx={{ fontSize: "2rem" }} />;
+      return <BrushIcon sx={{ fontSize: "2rem", color: "#FF5733" }} />; // Bright Orange (creativity, warmth)
     case "coding":
-      return <CodeIcon sx={{ fontSize: "2rem" }} />;
+      return <CodeIcon sx={{ fontSize: "2rem", color: "#8B00FF" }} />; // Purple (logic, creativity in programming)
     case "finance":
-      return <MoneyIcon sx={{ fontSize: "2rem" }} />;
+      return <MoneyIcon sx={{ fontSize: "2rem", color: "#FFD700" }} />; // Gold (wealth, money)
     default:
-      return <ExtensionIcon sx={{ fontSize: "2rem" }} />; // Default icon
+      return <ExtensionIcon sx={{ fontSize: "2rem", color: "#7D7D7D" }} />; // Gray (neutral, general tools)
   }
 };
 
