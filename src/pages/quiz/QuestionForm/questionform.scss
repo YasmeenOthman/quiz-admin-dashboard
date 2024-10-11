@@ -190,6 +190,30 @@ align-items: center;
       }
     }
 
+    .question-equation {
+      background-color: #1e1e1e; /* Dark theme background similar to VS Code */
+      color: #dcdcdc; /* Text color */
+      font-family: 'Fira Code', monospace; /* Monospaced font for code */
+      padding: 15px; /* Add padding for readability */
+      border-radius: 5px; /* Rounded corners */
+      margin-bottom: 20px;
+      line-height: 1.5;
+      white-space: pre-wrap; /* To handle code formatting */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    
+      .line-numbers {
+        display: inline-block;
+        text-align: right;
+        padding-right: 10px;
+        user-select: none;
+        color: #888;
+      }
+    }
+    
+    .question-equation code {
+      display: block;
+      white-space: pre-wrap;
+    }
     .question-explanation {
       margin-top: 10px;
     }

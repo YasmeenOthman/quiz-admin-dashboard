@@ -6,6 +6,17 @@ function QuestionTemplate({ quizQuestions, deleteQuestion }) {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from;
+  console.log(quizQuestions);
+
+  // Function to add line numbers for the code section
+  const addLineNumbers = (text) => {
+    return text.split("\n").map((line, index) => (
+      <span key={index}>
+        <span className="line-numbers">{index + 1}</span> {line}
+        <br />
+      </span>
+    ));
+  };
 
   return (
     <div className="question-template-container">
@@ -14,7 +25,13 @@ function QuestionTemplate({ quizQuestions, deleteQuestion }) {
           <summary className="question-summary">
             {question.questionText}
           </summary>
+
           <div className="question-info-container">
+            {question.hasEquation && (
+              <p className="question-equation">
+                <code>{addLineNumbers(question.equation)}</code>
+              </p>
+            )}
             {question.questionType === "multiple-choice" && (
               <div className="question-choices">
                 <strong className="choices-type">Choices:</strong>

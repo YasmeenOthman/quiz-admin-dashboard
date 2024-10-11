@@ -18,6 +18,8 @@ const initialQuestionData = {
   choices: ["", "", "", ""], // Assume 4 choices by default for multiple-choice
   correctAnswer: "",
   explanation: "",
+  hasEquation: false,
+  equation: "",
 };
 
 function QuestionsForm() {
@@ -28,7 +30,7 @@ function QuestionsForm() {
   const [quiz, setQuiz] = useState({}); // State for the quiz details
   const [quizQuestions, setQuizQuestions] = useState([]); // State for the list of questions in the quiz
   const [isCreatingQuestion, setIsCreatingQuestion] = useState(false); // State to toggle question creation form
-
+  const [questionBody, setQuestionBody] = useState(false);
   const from = location.state?.from;
 
   useEffect(() => {
@@ -51,8 +53,11 @@ function QuestionsForm() {
 
   // Handle changes in the form input fields
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setQuestionData({ ...questionData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setQuestionData({
+      ...questionData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
   // Handle changes in the multiple-choice options
@@ -87,14 +92,23 @@ function QuestionsForm() {
     }
 
     try {
-      let { questionText, questionType, choices, correctAnswer, explanation } =
-        questionData;
+      let {
+        questionText,
+        questionType,
+        choices,
+        correctAnswer,
+        explanation,
+        hasEquation,
+        equation,
+      } = questionData;
       let newQuestion = {
         questionText,
         questionType,
         choices,
         correctAnswer,
         explanation,
+        hasEquation, // Include whether the question has an equation or code
+        equation, // Include the actual equation or code
         quizId,
       };
       const response = await axios.post(`${serverUrl}/question`, newQuestion);
@@ -154,8 +168,33 @@ function QuestionsForm() {
               required
               className="form-input"
             />
+            <div style={{ width: "100%", fontSize: ".7rem" }} className="code">
+              <label style={{ color: "coral" }} className="form-label">
+                Does this question have an equation or code?
+              </label>
+              <input
+                type="checkbox"
+                name="hasEquation"
+                checked={questionData.hasEquation}
+                onChange={handleChange}
+              />
+            </div>
           </div>
+          {/* Checkbox to toggle code/math input */}
 
+          {/* Conditionally render input for code or equation */}
+          {questionData.hasEquation && (
+            <div className="inputs-label-container">
+              <label className="form-label">Add Code or Equation</label>
+              <textarea
+                name="equation"
+                value={questionData.equation}
+                onChange={handleChange}
+                placeholder="Insert code or equation here"
+                className="form-input"
+              />
+            </div>
+          )}
           <div className="inputs-label-container">
             <label className="form-label">Question Type</label>
             <select
@@ -168,7 +207,6 @@ function QuestionsForm() {
               <option value="true-false">True/False</option>
             </select>
           </div>
-
           {/* Conditional rendering for multiple-choice inputs */}
           {questionData.questionType === "multiple-choice" && (
             <div className="inputs-label-container multiple-choices-container">
@@ -181,7 +219,6 @@ function QuestionsForm() {
               />
             </div>
           )}
-
           {/* Conditional rendering for true/false inputs */}
           {questionData.questionType === "true-false" && (
             <div className="inputs-label-container">
@@ -192,7 +229,6 @@ function QuestionsForm() {
               />
             </div>
           )}
-
           <div className="inputs-label-container">
             <label className="form-label">Explanation</label>
             <textarea
@@ -207,6 +243,7 @@ function QuestionsForm() {
           </div>
         </form>
       )}
+
       {/* Render the list of questions */}
       <div className="questions-container">
         <div className="questions-container-title">
