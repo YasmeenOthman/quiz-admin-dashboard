@@ -3,7 +3,6 @@
 .question-form-container{
     background-color: colors.$bg-Color;
     padding: 2% 5%;
-    font-family: fonts.$background-font;
     display: flex;
     flex-direction: column;
     gap: 3%;
@@ -14,7 +13,7 @@
 .question-form-title-container{
   background-color: colors.$primary-Color;
   color: colors.$bg-Color;
-  font-family: fonts.$primary-font;
+  // font-family: fonts.$primary-font;
   width: 100%;
   margin-bottom: 30px;
   padding: 15px;
@@ -99,14 +98,6 @@ align-items: center;
  
 }
 
-.correct-answer{
-    accent-color: colors.$accent-Color;
-    font-family: fonts.$accent-font ;
-   
-}
-.correct-answer-label{
-    color: colors.$accent-Color;
-}
 
 .true-false-container {
   color: colors.$primary-Color;
@@ -131,7 +122,7 @@ align-items: center;
   }
 }
 
-// Question Template component 
+// -------- Question Template component  ------------
 
 .questions-container {
   padding: 15px;
@@ -141,7 +132,6 @@ align-items: center;
     padding: 10px;
     margin-bottom: 30px;
     color: colors.$primary-Color;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -168,7 +158,7 @@ align-items: center;
     color: colors.$text-Color;
 
     .question-summary {
-      font-size: 1.2em;
+      font-size: 1em;
       font-weight: bold;
       color: colors.$secondary-Color;
       font-family: fonts.$accent-font;
@@ -191,15 +181,15 @@ align-items: center;
     }
 
     .question-equation {
-      background-color: #1e1e1e; /* Dark theme background similar to VS Code */
-      color: #dcdcdc; /* Text color */
-      font-family: 'Fira Code', monospace; /* Monospaced font for code */
-      padding: 15px; /* Add padding for readability */
-      border-radius: 5px; /* Rounded corners */
+      background-color: #1e1e1e;
+      color: colors.$bg-Color; 
+      font-family: 'Fira Code', monospace; 
+      padding: 15px; 
+      border-radius: 5px; 
       margin-bottom: 20px;
       line-height: 1.5;
       white-space: pre-wrap; /* To handle code formatting */
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
     
       .line-numbers {
         display: inline-block;
@@ -228,6 +218,7 @@ align-items: center;
 
 .choices-type,.correct-answer,.explanation,.no-questions-msg{
   color: colors.$warning-Color;
+  font-family: fonts.$accent-font;
 }
 
 

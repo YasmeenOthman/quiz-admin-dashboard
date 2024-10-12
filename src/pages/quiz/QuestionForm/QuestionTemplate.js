@@ -6,7 +6,6 @@ function QuestionTemplate({ quizQuestions, deleteQuestion }) {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from;
-  console.log(quizQuestions);
 
   // Function to add line numbers for the code section
   const addLineNumbers = (text) => {

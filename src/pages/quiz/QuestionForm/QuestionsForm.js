@@ -101,14 +101,15 @@ function QuestionsForm() {
         hasEquation,
         equation,
       } = questionData;
+
       let newQuestion = {
         questionText,
         questionType,
         choices,
         correctAnswer,
         explanation,
-        hasEquation, // Include whether the question has an equation or code
-        equation, // Include the actual equation or code
+        hasEquation,
+        equation,
         quizId,
       };
       const response = await axios.post(`${serverUrl}/question`, newQuestion);
@@ -180,7 +181,6 @@ function QuestionsForm() {
               />
             </div>
           </div>
-          {/* Checkbox to toggle code/math input */}
 
           {/* Conditionally render input for code or equation */}
           {questionData.hasEquation && (

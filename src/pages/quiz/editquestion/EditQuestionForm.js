@@ -22,6 +22,8 @@ const EditQuestionForm = () => {
     correctAnswer: "",
     explanation: "",
     quiz: "",
+    equation: "",
+    hasEquation: "",
   });
 
   useEffect(() => {
@@ -29,6 +31,8 @@ const EditQuestionForm = () => {
       navigate("/quiz-login");
     }
   }, []);
+
+  // fetch the question data to edit
 
   useEffect(() => {
     async function fetchQuestionData() {
@@ -43,11 +47,22 @@ const EditQuestionForm = () => {
     fetchQuestionData();
   }, [questionId]);
 
+  // inputs fileds changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setQuestionData({ ...questionData, [name]: value });
+    // If the equation field is being updated, also set hasEquation accordingly
+    if (name === "equation") {
+      setQuestionData({
+        ...questionData,
+        [name]: value,
+        hasEquation: value.trim() !== "", // Set hasEquation to true if equation is not empty
+      });
+    } else {
+      setQuestionData({ ...questionData, [name]: value });
+    }
   };
 
+  // Handle input fileds for choices
   const handleChoiceChange = (index, value) => {
     const updatedChoices = questionData.choices.map((choice, i) =>
       i === index ? value : choice
@@ -55,6 +70,7 @@ const EditQuestionForm = () => {
     setQuestionData({ ...questionData, choices: updatedChoices });
   };
 
+  // correct answer
   const handleCorrectAnswerChange = (choice) => {
     setQuestionData({ ...questionData, correctAnswer: choice });
   };
@@ -95,6 +111,17 @@ const EditQuestionForm = () => {
             required
             className="form-input"
           />
+
+          <div className="inputs-label-container">
+            <label className="form-label">Add Code or Equation</label>
+            <textarea
+              name="equation"
+              value={questionData.equation}
+              onChange={handleChange}
+              placeholder="Insert code or equation here"
+              className="form-input"
+            />
+          </div>
         </div>
 
         <div className="inputs-label-container">
