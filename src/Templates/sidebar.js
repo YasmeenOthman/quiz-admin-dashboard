@@ -47,7 +47,7 @@ const list = [
     items: [
       {
         name: "View All",
-        path: "/users/view-all",
+        path: "/users",
         icon: <ManageAccountsIcon />,
       },
       { name: "Progress", path: "/users/progress", icon: <QueryStatsIcon /> },
@@ -91,7 +91,7 @@ const Sidebar = () => {
         sx={{
           overflow: "auto",
           width: "250px",
-          height: "100vh",
+          minHeight: "100vh",
           position: "sticky",
           top: "0",
           left: "0",

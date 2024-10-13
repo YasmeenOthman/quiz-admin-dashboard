@@ -17,6 +17,7 @@ import QuizManagement from "./pages/quiz/QuizManagement";
 import QuizPage from "./pages/quiz/quizpage/QuizPage";
 import PrivateRoute from "./authRoutes/PrivateRoute";
 import Unauthorized from "./authRoutes/Unauthorized";
+import Users from "./pages/usersManagement/Users";
 
 const Navigation = () => {
   return (
@@ -26,12 +27,11 @@ const Navigation = () => {
       sx={{
         display: "grid",
         gridTemplateColumns: "250px 1fr",
-        height: "100vh",
+        minHeight: "100vh",
       }}
     >
       <Sidebar />
       <Box sx={{ padding: 2 }}>
-        {/* Outlet renders the matched child route element */}
         <Outlet />
       </Box>
     </Container>
@@ -90,6 +90,10 @@ const router = createBrowserRouter([
           {
             path: "categories",
             element: <CategoryList />,
+          },
+          {
+            path: "users",
+            element: <Users />,
           },
         ],
       },
