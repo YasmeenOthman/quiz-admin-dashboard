@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "./userData.scss";
+
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 function UserData({ filteredUsers }) {
@@ -53,8 +53,8 @@ function UserData({ filteredUsers }) {
                 <td>{user.role}</td>
                 <td>{user.isActive ? "Active" : "Not  Active"}</td>
                 <td>
-                  <div>{formattedDate}</div>
-                  <div>{formattedTime}</div>
+                  <div className="formattedDate">{formattedDate}</div>
+                  <div className="formattedTime">{formattedTime}</div>
                 </td>
                 <td>{user.quizzesTaken.length}</td>
               </tr>

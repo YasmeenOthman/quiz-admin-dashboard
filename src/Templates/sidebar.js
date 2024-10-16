@@ -31,6 +31,7 @@ const list = [
   {
     title: "Quizzez",
     icon: <QuizIcon />,
+    path: "/quizzes",
     items: [
       { name: "Manage", path: "/", icon: <HandymanIcon /> },
       { name: "Create New Quiz", path: "/create-quiz", icon: <AddIcon /> },
@@ -44,6 +45,7 @@ const list = [
   {
     title: "Users",
     icon: <PeopleIcon />,
+    path: "/users",
     items: [
       {
         name: "View All",
@@ -113,11 +115,11 @@ const Sidebar = () => {
 
           {list.map((item, index) => {
             if (item.items) {
-              const { title, icon, items } = item;
+              const { path, title, icon, items } = item;
               const open = openSections[title] || false;
               return (
                 <React.Fragment key={index}>
-                  <ListItem button onClick={() => handleClick(title)}>
+                  <ListItem button onClick={() => handleClick(title)} to={path}>
                     <ListItemIcon sx={{ color: "#F4F5F7" }}>
                       {icon}
                     </ListItemIcon>

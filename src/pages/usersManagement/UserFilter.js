@@ -24,11 +24,9 @@ function UserFilter({ onFilterChange }) {
   };
 
   return (
-    <div
-    // className="filter-container"
-    >
+    <div className="user-filter-container">
       <input
-        // className="filter-inputs"
+        className="user-filter-inputs"
         type="text"
         placeholder="Filter by name"
         value={filteredData.username}
@@ -36,7 +34,7 @@ function UserFilter({ onFilterChange }) {
         onChange={handleChange}
       />
       <select
-        // className="filter-inputs"
+        className="user-filter-inputs"
         value={filteredData.role}
         name="role"
         onChange={handleChange}
@@ -46,7 +44,7 @@ function UserFilter({ onFilterChange }) {
         <option value="admin">admin</option>
       </select>
       <select
-        // className="filter-inputs"
+        className="user-filter-inputs"
         value={filteredData.status}
         name="status"
         onChange={handleChange}

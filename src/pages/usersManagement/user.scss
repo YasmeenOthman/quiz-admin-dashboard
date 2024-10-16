@@ -1,0 +1,112 @@
+@use "../../styles/colors";
+@use "../../styles/fonts";
+
+.user-container{
+  background-color: colors.$bg-Color;
+  padding: 2% 5%;
+  font-family: fonts.$background-font;
+  display: flex;
+  flex-direction: column;
+  gap: 3%; 
+  width: 80vw;
+}
+.users-title-container{
+  background-color: colors.$primary-Color;
+color: colors.$bg-Color;
+font-family: fonts.$primary-font;
+width: 100%;
+margin-bottom: 40px;
+padding: 15px;
+h1{
+    font-size: 1.5rem;
+}
+}
+
+// --------- user filter ------------
+
+.user-filter-container{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+
+.user-filter-inputs{
+  padding: 10px;
+  width: 25%;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  color: colors.$primary-Color;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: .25rem;
+  font-size: .8rem;
+}
+.user-filter-inputs::placeholder{
+  font-size: .8rem;
+}
+
+// --------- End of user filter ------------
+
+
+// User Data component
+.user-table-container {
+    margin: 2rem auto;
+    width: 100%;
+    height: 100vh;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: fonts.$background-font;
+      font-size: .9rem;
+      thead {
+        background-color: colors.$secondary-Color; 
+        color: white;
+        position: sticky;
+        top: 0; // Stick the header to the top
+        z-index: 1;
+        .table-row-header {
+          th {
+            padding: 15px;
+            font-weight: bold;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+          }
+        }
+      }
+  
+      tbody {
+        .table-row-data  {
+            height: 50px;
+
+          &:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+          &:hover {
+            background-color: #e9f5ff; 
+          }
+            td {
+              border-bottom: 1px solid #ddd;
+              color: colors.$text-Color; 
+              padding: 10px;
+              .formattedDate{
+                font-size: .9rem;
+              }
+              .formattedTime{
+                color: colors.$secondary-Color;
+                margin-top: 3px;
+                font-size: .8rem;
+              }
+             
+            }
+        }
+      }
+    }
+  }
+  
+  // end of User Data component

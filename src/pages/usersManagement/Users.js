@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UserData from "./UserData";
 import UserFilter from "./UserFilter";
+import "./user.scss";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 function Users() {
@@ -28,7 +29,7 @@ function Users() {
     fetchAllUsers();
   }, []);
 
-  //   filter data
+  // ---------------  filter data ------------
 
   const handleFilterChange = ({ username, status, email, role }) => {
     let filtered = users;
@@ -52,7 +53,11 @@ function Users() {
     setFilteredUsers(filtered);
   };
   return (
-    <div>
+    <div className="user-container">
+      <div className="users-title-container">
+        <h1>Users</h1>
+      </div>
+
       <UserFilter onFilterChange={handleFilterChange} />
       <UserData filteredUsers={filteredUsers} />
     </div>
