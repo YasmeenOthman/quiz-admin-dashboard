@@ -1,9 +1,7 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { Edit } from "@mui/icons-material";
+import { DeleteForever } from "@mui/icons-material";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
-
-function UserData({ filteredUsers }) {
+function UserData({ filteredUsers, onDeleteUser, onEditUser }) {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
 
@@ -57,6 +55,14 @@ function UserData({ filteredUsers }) {
                   <div className="formattedTime">{formattedTime}</div>
                 </td>
                 <td>{user.quizzesTaken.length}</td>
+                <td>
+                  <button onClick={() => onEditUser(user)}>
+                    <Edit />
+                  </button>
+                  <button onClick={() => onDeleteUser(user._id)}>
+                    <DeleteForever />
+                  </button>
+                </td>
               </tr>
             );
           })}

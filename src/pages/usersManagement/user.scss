@@ -12,14 +12,17 @@
 }
 .users-title-container{
   background-color: colors.$primary-Color;
-color: colors.$bg-Color;
-font-family: fonts.$primary-font;
-width: 100%;
-margin-bottom: 40px;
-padding: 15px;
-h1{
-    font-size: 1.5rem;
-}
+  color: colors.$bg-Color;
+  font-family: fonts.$primary-font;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h1{
+      font-size: 1.5rem;
+  }
 }
 
 // --------- user filter ------------
@@ -27,7 +30,9 @@ h1{
 .user-filter-container{
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+ 
 
 }
 
@@ -55,7 +60,7 @@ h1{
     width: 100%;
     height: 100vh;
     background-color: #f9f9f9;
-    padding: 1rem;
+    padding:0 1rem 1rem 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: auto;
@@ -70,6 +75,7 @@ h1{
         position: sticky;
         top: 0; // Stick the header to the top
         z-index: 1;
+        height: 70px;
         .table-row-header {
           th {
             padding: 15px;
@@ -108,5 +114,23 @@ h1{
       }
     }
   }
+
+  /* width */
+  .user-table-container::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+  .user-table-container::-webkit-scrollbar-track {
+    background: colors.$primary-Color; 
+  }
+   
+  /* Handle */
+  .user-table-container::-webkit-scrollbar-thumb {
+    background:colors.$secondary-Color; 
+  }
+  
+
   
   // end of User Data component
+

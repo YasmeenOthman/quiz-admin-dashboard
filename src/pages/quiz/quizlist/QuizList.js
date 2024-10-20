@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import "./quizlist.scss";
 import QuizCard from "../../../components/QuizCard";
@@ -12,11 +13,23 @@ function QuizList() {
   const [quizzez, setQuizzez] = useState([]);
   const [filteredQuizzez, setFilteredQuizzez] = useState([]);
 
+  // --------- User authentication and token handling ------------
   useEffect(() => {
-    if (!localStorage.getItem("authToken")) {
+    const token = localStorage.getItem("authToken");
+
+    if (!token) {
       navigate("/quiz-login");
+    } else {
+      const decodedToken = jwtDecode(token);
+      const expirationDate = decodedToken.exp * 1000;
+      if (Date.now() >= expirationDate) {
+        localStorage.removeItem("authToken");
+        alert("Session expired ,please login again ");
+        navigate("/quiz-login");
+      }
     }
-  }, []);
+  }, [navigate]);
+
   useEffect(() => {
     async function getquizzez() {
       try {
