@@ -48,7 +48,12 @@ function Home() {
   async function getAllQuizzes() {
     try {
       const allQuizzes = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/quiz`
+        `${process.env.REACT_APP_SERVER_URL}/quiz`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        }
       );
 
       const reversedQuiz = allQuizzes.data.reverse();

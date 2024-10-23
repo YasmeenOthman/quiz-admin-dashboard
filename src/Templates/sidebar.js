@@ -93,7 +93,7 @@ const Sidebar = () => {
         sx={{
           overflow: "auto",
           width: "250px",
-          minHeight: "100vh",
+          minHeight: "100%",
           position: "sticky",
           top: "0",
           left: "0",

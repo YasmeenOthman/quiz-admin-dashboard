@@ -59,7 +59,7 @@ function Users() {
   const handleDeleteUser = async (userId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        await axios.delete(`${serverUrl}/admin/users/${userId}`, {
+        await axios.delete(`${serverUrl}/admin/deleteUser/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
           },

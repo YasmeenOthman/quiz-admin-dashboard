@@ -33,7 +33,11 @@ function QuizList() {
   useEffect(() => {
     async function getquizzez() {
       try {
-        let res = await axios.get(`${serverUrl}/quiz`);
+        let res = await axios.get(`${serverUrl}/quiz`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+        });
         let receivedQuizzez = res.data.reverse();
         setQuizzez(receivedQuizzez);
         setFilteredQuizzez(receivedQuizzez);
