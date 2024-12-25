@@ -72,6 +72,21 @@
   font-size: 14px;
 }
 
+.password-criteria {
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: 14px;
+  padding: 10px;
+
+  div {
+    margin: 2px 0;
+  }
+  .criteria-item {
+    display: flex;
+    align-items: center;
+    margin: 2px 0;
+  }
+}
 .navigation-msg-container {
   margin: 30px;
   padding: 10px;
