@@ -27,7 +27,9 @@ function UserData({ filteredUsers, onDeleteUser, onEditUser }) {
       <table className="table">
         <thead>
           <tr className="table-row-header">
-            <th></th>
+            <th>
+              <input type="checkbox" name="" id="" />
+            </th>
             <th>User name</th>
             <th>Email</th>
             <th>Role</th>

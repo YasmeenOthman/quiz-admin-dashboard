@@ -19,6 +19,8 @@ import PrivateRoute from "./authRoutes/PrivateRoute";
 import ProtectedRoute from "./authRoutes/ProtectedRoute";
 import Unauthorized from "./authRoutes/Unauthorized";
 import Users from "./pages/usersManagement/Users";
+import Progress from "./pages/usersManagement/Progress";
+import Statistics from "./pages/statistics/Statistics";
 
 const Navigation = () => {
   return (
@@ -133,6 +135,22 @@ const router = createBrowserRouter([
             element: (
               <ProtectedRoute>
                 <Users />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "users/progress",
+            element: (
+              <ProtectedRoute>
+                <Progress />
+              </ProtectedRoute>
+            ),
+          },
+          {
+            path: "statistics",
+            element: (
+              <ProtectedRoute>
+                <Statistics />
               </ProtectedRoute>
             ),
           },

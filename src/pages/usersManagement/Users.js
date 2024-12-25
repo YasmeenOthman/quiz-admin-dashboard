@@ -31,7 +31,7 @@ function Users() {
 
   useEffect(() => {
     fetchAllUsers();
-  });
+  }, []);
 
   // ----------Edit user-------------
 
