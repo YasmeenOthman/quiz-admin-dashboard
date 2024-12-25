@@ -27,23 +27,6 @@ function Home() {
   const [filteredQuizzez, setFilteredQuizzez] = useState([]);
   const [visibleQuizzez, setVisibleQuizzez] = useState(3);
 
-  // --------- User authentication and token handling ------------
-  useEffect(() => {
-    const token = localStorage.getItem("authToken");
-
-    if (!token) {
-      navigate("/quiz-login");
-    } else {
-      const decodedToken = jwtDecode(token);
-      const expirationDate = decodedToken.exp * 1000;
-      if (Date.now() >= expirationDate) {
-        localStorage.removeItem("authToken");
-        alert("Session expired ,please login again ");
-        navigate("/quiz-login");
-      }
-    }
-  }, [navigate]);
-
   // ---------- Fetch all quizzes from the server -------------
   async function getAllQuizzes() {
     try {

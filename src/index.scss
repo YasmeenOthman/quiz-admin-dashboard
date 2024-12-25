@@ -1,18 +1,8 @@
 @use "../src/styles/colors";
 @use "../src/styles/fonts";
 
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-/* @media (max-width: 768px) {
-    .container {
-      grid-template-columns: 1fr; 
-    }
-    .sidebar {
-      width: 100%; 
-    }
-  } */
-

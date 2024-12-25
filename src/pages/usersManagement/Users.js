@@ -5,9 +5,11 @@ import UserFilter from "./UserFilter";
 import BasicButton from "../../components/BasicButton";
 import "./user.scss";
 import UserEditModal from "./UserEditModal";
-
+import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 function Users() {
+  const navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -29,7 +31,7 @@ function Users() {
 
   useEffect(() => {
     fetchAllUsers();
-  }, []);
+  });
 
   // ----------Edit user-------------
 

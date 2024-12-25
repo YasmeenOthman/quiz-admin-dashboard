@@ -34,6 +34,7 @@ function UserData({ filteredUsers, onDeleteUser, onEditUser }) {
             <th>Status</th>
             <th>Registration date</th>
             <th>Quizzez taken</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>

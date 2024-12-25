@@ -16,6 +16,7 @@ import EditQuestionForm from "./pages/quiz/editquestion/EditQuestionForm";
 import QuizManagement from "./pages/quiz/QuizManagement";
 import QuizPage from "./pages/quiz/quizpage/QuizPage";
 import PrivateRoute from "./authRoutes/PrivateRoute";
+import ProtectedRoute from "./authRoutes/ProtectedRoute";
 import Unauthorized from "./authRoutes/Unauthorized";
 import Users from "./pages/usersManagement/Users";
 
@@ -57,43 +58,83 @@ const router = createBrowserRouter([
         children: [
           {
             path: "/home",
-            element: <Home />,
+            element: (
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "",
-            element: <QuizManagement />,
+            element: (
+              <ProtectedRoute>
+                <QuizManagement />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "quizzes",
-            element: <QuizList />,
+            element: (
+              <ProtectedRoute>
+                <QuizList />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "quiz/:quizId",
-            element: <QuizPage />,
+            element: (
+              <ProtectedRoute>
+                <QuizPage />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "create-quiz",
-            element: <QuizForm />,
+            element: (
+              <ProtectedRoute>
+                <QuizForm />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "question-form/:quizId",
-            element: <QuestionsForm />,
+            element: (
+              <ProtectedRoute>
+                <QuestionsForm />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "edit-quiz/:quizId",
-            element: <EditQuizForm />,
+            element: (
+              <ProtectedRoute>
+                <EditQuizForm />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "edit-question/:questionId",
-            element: <EditQuestionForm />,
+            element: (
+              <ProtectedRoute>
+                <EditQuestionForm />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "categories",
-            element: <CategoryList />,
+            element: (
+              <ProtectedRoute>
+                <CategoryList />
+              </ProtectedRoute>
+            ),
           },
           {
             path: "users",
-            element: <Users />,
+            element: (
+              <ProtectedRoute>
+                <Users />
+              </ProtectedRoute>
+            ),
           },
         ],
       },

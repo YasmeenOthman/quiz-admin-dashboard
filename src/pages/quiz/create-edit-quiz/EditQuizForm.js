@@ -21,11 +21,11 @@ const EditQuizForm = () => {
     status: "active",
   });
 
-  useEffect(() => {
-    if (!localStorage.getItem("authToken")) {
-      navigate("/quiz-login");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (!localStorage.getItem("authToken")) {
+  //     navigate("/quiz-login");
+  //   }
+  // }, []);
 
   // Fetch quiz details by ID
   async function fetchQuizData() {
@@ -60,20 +60,19 @@ const EditQuizForm = () => {
   // Handle form submission to update the quiz
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitting quiz data:", quizData);
     try {
       let res = await axios.put(`${serverUrl}/quiz/${quizId}`, quizData, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("authToken")}`,
         },
       });
-      setQuizData(res.data);
-
-      alert("Quiz updated successfully!");
-      navigate("/home"); // Redirect to the quiz management page
+      if (res.data.status) {
+        setQuizData(res.data);
+        alert("Quiz updated successfully!");
+        navigate("/home"); // Redirect to the quiz management page
+      }
     } catch (error) {
-      console.error("Error updating quiz:", error);
-      alert(`Error updating quiz ${error.response.data.error}`);
+      alert(`Error updating quiz ${error.response.data.msg}`);
     }
   };
 
