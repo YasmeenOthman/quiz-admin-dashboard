@@ -1,16 +1,15 @@
-// Login.js
 import { useState, useEffect } from "react";
-import "./register.scss";
+import "./shared-form.scss";
 import axios from "axios";
+import BasicButton from "../../components/BasicButton";
 import { useNavigate, Link } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { ToastContainer, toast } from "react-toastify";
-
-import "react-toastify/dist/ReactToastify.css";
-import BasicButton from "../../components/BasicButton";
 import { Tooltip } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
 const toastOptions = {
   position: "top-right",
   autoClose: 5000,
@@ -19,64 +18,48 @@ const toastOptions = {
   theme: "dark",
 };
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
-const Register = ({}) => {
+const Login = () => {
   const navigate = useNavigate();
-  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
-      navigate("/");
+      navigate("/home");
     }
   }, []);
 
-  // ----- sign up -----
-  async function handleSubmit(event) {
-    try {
-      event.preventDefault();
-      let user = { username, email, password };
-      let res = await axios.post(`${serverUrl}/user/register`, user);
-
-      if (res.data.status) {
-        toast.success("Registerd successfully !", {
-          toastOptions,
-          onClose: () => {
-            navigate("/quiz-login");
-          },
-        });
-      } else {
-        toast.error(res.data.msg, toastOptions);
-      }
-    } catch (error) {
-      toast.error(error.response.data.msg, toastOptions);
-    }
-  }
-
-  // ---- toggle password visibility ----
+  // Toggle password visibility
   function toggleVisibility() {
     setIsPasswordVisible(!isPasswordVisible);
   }
 
+  // Handle login
+  async function handleSubmit(event) {
+    try {
+      event.preventDefault();
+      let user = { email, password };
+      let res = await axios.post(`${serverUrl}/user/login`, user);
+      if (res.data.status) {
+        localStorage.setItem("authToken", res.data.token);
+        navigate("/home");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.response.data.msg, toastOptions);
+    }
+  }
+
   return (
-    <div className="register-form-container">
-      <form className="register-form" onSubmit={handleSubmit}>
+    <div className="shared-form-container">
+      <form className="shared-form" onSubmit={handleSubmit}>
         <div className="form-logo">
           <img src="../images/logo.png" alt="logo" />
         </div>
-        <h1>Sign Up!!</h1>
-        <div className="register-inputs">
-          <div className="email-container">
-            <input
-              type="text"
-              placeholder="Username..."
-              value={username}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-          </div>
-          <div className="email-container">
+        <h1 className="form-header">Welcome Back!!</h1>
+        <div className="shared-inputs">
+          <div className="input-container">
             <input
               type="email"
               placeholder="Email..."
@@ -84,14 +67,14 @@ const Register = ({}) => {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="pass-container" style={{ display: "flex" }}>
+
+          <div className="input-container">
             <input
               type={!isPasswordVisible ? "password" : "text"}
               placeholder="Password..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-
             {!isPasswordVisible ? (
               <Tooltip title="Show Password">
                 <VisibilityOffIcon onClick={toggleVisibility} />
@@ -104,22 +87,21 @@ const Register = ({}) => {
           </div>
         </div>
         <BasicButton
-          value="Register"
+          value="Login"
           onClick={handleSubmit}
           style={{
             backgroundColor: "#04305a",
-            color: "#2D9CDB",
             color: "#F4F5F7",
             padding: "10px",
             width: "20%",
           }}
         />
 
-        <div className="register-navigation-msg-container">
-          <p className="register-switching-msg">
-            ALREADY HAVE AN ACCOUNT ?{" "}
-            <Link className="register-link" to="/quiz-login">
-              <span>LOGIN</span>
+        <div className="navigation-msg-container">
+          <p className="switching-msg">
+            DO NOT HAVE AN ACCOUNT?{" "}
+            <Link className="shared-link" to="/quiz-register">
+              <span>REGISTER</span>
             </Link>
           </p>
         </div>
@@ -129,4 +111,4 @@ const Register = ({}) => {
   );
 };
 
-export default Register;
+export default Login;

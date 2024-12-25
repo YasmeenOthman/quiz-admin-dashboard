@@ -1,7 +1,7 @@
 @use "../../styles/colors";
 @use "../../styles/fonts";
 
-.register-form-container {
+.shared-form-container {
   min-height: 100vh;
   padding: 3%;
   color: colors.$primary-Color;
@@ -11,7 +11,7 @@
   background-size: cover;
 }
 
-.register-form {
+.shared-form {
   background-color: colors.$bg-Color;
   font-family: fonts.$primary-font;
   width: 50%;
@@ -29,6 +29,7 @@
 .form-logo {
   width: 50%;
 }
+
 .form-logo img {
   border-radius: 50%;
   width: 30%;
@@ -37,13 +38,25 @@
   margin: 0 auto;
 }
 
-.register-inputs {
+.input-container {
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  width: 100%;
+  margin: 10px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.shared-inputs {
   width: 80%;
   padding: 10px;
   margin: 10px;
 }
 
-.register-inputs input {
+.shared-inputs input {
   width: 100%;
   padding: 20px;
   margin: 10px;
@@ -52,31 +65,20 @@
   border-radius: 0.25rem;
   font-size: 18px;
   color: colors.$primary-Color;
+  background-color: transparent;
 }
-.register-inputs input::placeholder {
+
+.shared-inputs input::placeholder {
   font-size: 14px;
 }
-.email-container,
-.pass-container {
-  display: grid;
-  align-items: center;
-  padding: 0.5rem;
-}
 
-.email-container {
-  grid-template-columns: 90%;
-}
-.pass-container {
-  grid-template-columns: 80% 20%;
-}
-
-.register-navigation-msg-container {
+.navigation-msg-container {
   margin: 30px;
   padding: 10px;
   font-size: 14px;
 }
 
-.register-link {
+.shared-link {
   text-decoration: none;
   color: colors.$secondary-Color;
 }
