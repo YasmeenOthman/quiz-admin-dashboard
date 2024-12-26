@@ -139,6 +139,20 @@
 
 // __________EDIT User Modal_____________
 
+.blurBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px); /* Blurry background effect */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional for a dark overlay */
+  z-index: 10; /* Ensure it is above other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .edit-user-modal {
   width: 50vw;
   max-width: 600px;
@@ -182,7 +196,7 @@
       transition: color 0.3s;
 
       &:hover {
-        color: darken(colors.$secondary-Color, 10%);
+        color: darken(colors.$warning-Color, 10%);
       }
     }
   }
@@ -246,7 +260,7 @@
         color: colors.$bg-Color;
 
         &:hover {
-          background-color: darken(colors.$primary-Color, 10%);
+          background-color: darken(colors.$accent-Color, 10%);
         }
       }
 
@@ -255,7 +269,7 @@
         color: colors.$bg-Color;
 
         &:hover {
-          background-color: lighten(colors.$secondary-Color, 10%);
+          background-color: lighten(colors.$warning-Color, 10%);
         }
       }
     }
