@@ -1,16 +1,15 @@
 @use "../../../styles/colors";
 @use "../../../styles/fonts";
-.question-form-container{
-    background-color: colors.$bg-Color;
-    padding: 2% 5%;
-    display: flex;
-    flex-direction: column;
-    gap: 3%;
-    min-height: 100vh;
+.question-form-container {
+  background-color: colors.$bg-Color;
+  padding: 2% 5%;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  min-height: 100vh;
 }
 
-
-.question-form-title-container{
+.question-form-title-container {
   background-color: colors.$primary-Color;
   color: colors.$bg-Color;
   // font-family: fonts.$primary-font;
@@ -19,28 +18,26 @@
   padding: 15px;
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
 
-  div{
+  div {
     display: flex;
     h1 {
       font-size: 1.5rem;
     }
   }
-
 }
 
-.question-form{
-    background-color: colors.$bg-Color;
-    min-height: 80vh;
-    padding: 15px;
-    margin-top: 30px;
-    border-radius: .25rem;
-    box-shadow: #2d9bdb98 0px 3px 8px;
+.question-form {
+  background-color: colors.$bg-Color;
+  min-height: 80vh;
+  padding: 15px;
+  margin-top: 30px;
+  border-radius: 0.25rem;
+  box-shadow: #2d9bdb98 0px 3px 8px;
 }
 
-
-.inputs-label-container{
+.inputs-label-container {
   padding: 15px;
   margin: 10px;
   border-bottom: 1px solid colors.$secondary-Color;
@@ -48,7 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  
+
   .form-label {
     margin-right: 3%;
     flex-basis: 20%;
@@ -58,7 +55,7 @@
   }
   .form-input {
     border: 1px solid colors.$bg-Color;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     color: colors.$primary-Color;
     padding: 12px;
     flex-basis: 70%;
@@ -67,37 +64,45 @@
     &::placeholder {
       color: #999;
     }
-}
-.question-form-textarea {
-  resize: vertical;
-  min-height: 100px;
- flex-basis: 70%;
- border: none;
- color: colors.$primary-Color;
- outline: none;
-}
-}
-
-.multiple-choices-container{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 5px;
+  }
+  .code {
     width: 100%;
-    
-   
-}
-.multiple-choices-inputs-container{
-margin: 10px;
-width: 90%;
-display: flex;
-justify-content: space-between;
-align-items: center;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
- 
+    .code-label {
+      font-size: 0.8rem;
+      padding-left: 10px;
+      color: coral;
+    }
+  }
+  .question-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    flex-basis: 70%;
+    border: none;
+    color: colors.$primary-Color;
+    outline: none;
+  }
 }
 
+.multiple-choices-container {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 5px;
+  width: 100%;
+}
+.multiple-choices-inputs-container {
+  margin: 10px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .true-false-container {
   color: colors.$primary-Color;
@@ -112,12 +117,11 @@ align-items: center;
   .false-answer-option {
     width: 60%;
     padding: 10px;
-    display: flex; 
-    align-items: center; 
-
+    display: flex;
+    align-items: center;
 
     label {
-      margin-left: 10px; 
+      margin-left: 10px;
     }
   }
 }
@@ -128,7 +132,7 @@ align-items: center;
   padding: 15px;
   .questions-container-title {
     background-color: white;
-    border-radius: .25rem;
+    border-radius: 0.25rem;
     padding: 10px;
     margin-bottom: 30px;
     color: colors.$primary-Color;
@@ -136,10 +140,10 @@ align-items: center;
     align-items: center;
     justify-content: space-between;
   }
-  .title{
+  .title {
     width: 50%;
-  } 
-  .total{
+  }
+  .total {
     width: 20%;
     color: colors.$warning-Color;
   }
@@ -148,7 +152,6 @@ align-items: center;
   padding: 15px;
   max-height: 70vh;
   overflow-y: scroll;
-
 
   .question-details {
     margin-bottom: 1em;
@@ -182,15 +185,15 @@ align-items: center;
 
     .question-equation {
       background-color: #1e1e1e;
-      color: colors.$bg-Color; 
-      font-family: 'Fira Code', monospace; 
-      padding: 15px; 
-      border-radius: 5px; 
+      color: colors.$bg-Color;
+      font-family: "Fira Code", monospace;
+      padding: 15px;
+      border-radius: 5px;
       margin-bottom: 20px;
       line-height: 1.5;
       white-space: pre-wrap; /* To handle code formatting */
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
-    
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
       .line-numbers {
         display: inline-block;
         text-align: right;
@@ -199,7 +202,7 @@ align-items: center;
         color: #888;
       }
     }
-    
+
     .question-equation code {
       display: block;
       white-space: pre-wrap;
@@ -216,11 +219,13 @@ align-items: center;
   }
 }
 
-.choices-type,.correct-answer,.explanation,.no-questions-msg{
+.choices-type,
+.correct-answer,
+.explanation,
+.no-questions-msg {
   color: colors.$warning-Color;
   font-family: fonts.$accent-font;
 }
-
 
 .button-container {
   margin-top: 10px;

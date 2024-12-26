@@ -114,6 +114,7 @@ function Users() {
         filteredUsers={filteredUsers}
         onEditUser={handleEditUser}
         onDeleteUser={handleDeleteUser}
+        selectedUser={selectedUser}
       />
       {selectedUser && (
         <UserEditModal

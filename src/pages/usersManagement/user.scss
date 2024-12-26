@@ -1,16 +1,17 @@
 @use "../../styles/colors";
 @use "../../styles/fonts";
 
-.user-container{
+.user-container {
   background-color: colors.$bg-Color;
   padding: 2% 5%;
   font-family: fonts.$background-font;
   display: flex;
   flex-direction: column;
-  gap: 3%; 
+  gap: 3%;
   width: 80vw;
+  position: relative;
 }
-.users-title-container{
+.users-title-container {
   background-color: colors.$primary-Color;
   color: colors.$bg-Color;
   font-family: fonts.$primary-font;
@@ -20,23 +21,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  h1{
-      font-size: 1.5rem;
+  h1 {
+    font-size: 1.5rem;
   }
 }
 
 // --------- user filter ------------
 
-.user-filter-container{
+.user-filter-container {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
- 
-
 }
 
-.user-filter-inputs{
+.user-filter-inputs {
   padding: 10px;
   width: 25%;
   outline: none;
@@ -44,93 +43,221 @@
   text-transform: capitalize;
   color: colors.$primary-Color;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: .25rem;
-  font-size: .8rem;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
 }
-.user-filter-inputs::placeholder{
-  font-size: .8rem;
+.user-filter-inputs::placeholder {
+  font-size: 0.8rem;
 }
 
-// --------- End of user filter ------------
+// __________ End of user filter_________
 
-
-// User Data component
+// _________User Data component_________
 .user-table-container {
-    margin: 2rem auto;
+  margin: 2rem auto;
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f9f9;
+  padding: 0 1rem 1rem 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  .table {
     width: 100%;
-    height: 100vh;
-    background-color: #f9f9f9;
-    padding:0 1rem 1rem 1rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: auto;
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: fonts.$background-font;
-      font-size: .9rem;
-      thead {
-        background-color: colors.$secondary-Color; 
-        color: white;
-        position: sticky;
-        top: 0; // Stick the header to the top
-        z-index: 1;
-        height: 70px;
-        .table-row-header {
-          th {
-            padding: 15px;
-            font-weight: bold;
-            text-align: left;
-            border-bottom: 2px solid #ddd;
+    border-collapse: collapse;
+    font-family: fonts.$background-font;
+    font-size: 0.9rem;
+    thead {
+      background-color: colors.$secondary-Color;
+      color: white;
+      position: sticky;
+      top: 0; // Stick the header to the top
+      z-index: 1;
+      height: 70px;
+      .table-row-header {
+        th {
+          padding: 15px;
+          font-weight: bold;
+          text-align: left;
+          border-bottom: 2px solid #ddd;
+        }
+      }
+    }
+
+    tbody {
+      .table-row-data {
+        height: 50px;
+
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        &:hover {
+          background-color: #e9f5ff;
+        }
+        td {
+          border-bottom: 1px solid #ddd;
+          color: colors.$text-Color;
+          padding: 10px;
+          .formattedDate {
+            font-size: 0.9rem;
+          }
+          .formattedTime {
+            color: colors.$secondary-Color;
+            margin-top: 3px;
+            font-size: 0.8rem;
           }
         }
       }
-  
-      tbody {
-        .table-row-data  {
-            height: 50px;
+    }
+  }
+}
 
-          &:nth-child(even) {
-            background-color: #f2f2f2;
-          }
-          &:hover {
-            background-color: #e9f5ff; 
-          }
-            td {
-              border-bottom: 1px solid #ddd;
-              color: colors.$text-Color; 
-              padding: 10px;
-              .formattedDate{
-                font-size: .9rem;
-              }
-              .formattedTime{
-                color: colors.$secondary-Color;
-                margin-top: 3px;
-                font-size: .8rem;
-              }
-             
-            }
+.edit-user-btn,
+.delete-user-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 0.45rem;
+  margin-left: 3px;
+  cursor: pointer;
+}
+/* width */
+.user-table-container::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.user-table-container::-webkit-scrollbar-track {
+  background: colors.$primary-Color;
+}
+
+/* Handle */
+.user-table-container::-webkit-scrollbar-thumb {
+  background: colors.$secondary-Color;
+}
+
+// __________end of User Data component_________
+
+// __________EDIT User Modal_____________
+
+.edit-user-modal {
+  width: 50vw;
+  max-width: 600px;
+  height: auto;
+  max-height: 80vh;
+  background-color: colors.$bg-Color;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+
+  z-index: 10;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+
+  .modal-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: fonts.$primary-font;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: colors.$primary-Color;
+    border-bottom: 1px solid colors.$secondary-Color;
+    padding-bottom: 1rem;
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: colors.$secondary-Color;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: darken(colors.$secondary-Color, 10%);
+      }
+    }
+  }
+
+  .modal-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: fonts.$background-font;
+    font-size: 1rem;
+    color: colors.$text-Color;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      label {
+        font-weight: bold;
+        color: colors.$primary-Color;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid colors.$secondary-Color;
+        border-radius: 5px;
+        font-family: fonts.$background-font;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: lighten(colors.$secondary-Color, 20%);
         }
       }
     }
   }
 
-  /* width */
-  .user-table-container::-webkit-scrollbar {
-    width: 3px;
-  }
-  
-  /* Track */
-  .user-table-container::-webkit-scrollbar-track {
-    background: colors.$primary-Color; 
-  }
-   
-  /* Handle */
-  .user-table-container::-webkit-scrollbar-thumb {
-    background:colors.$secondary-Color; 
-  }
-  
+  .modal-footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
 
-  
-  // end of User Data component
+    .save-btn,
+    .cancel-btn {
+      padding: 0.8rem 1.5rem;
+      font-family: fonts.$primary-font;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
 
+      &.save-btn {
+        background-color: colors.$primary-Color;
+        color: colors.$bg-Color;
+
+        &:hover {
+          background-color: darken(colors.$primary-Color, 10%);
+        }
+      }
+
+      &.cancel-btn {
+        background-color: colors.$secondary-Color;
+        color: colors.$bg-Color;
+
+        &:hover {
+          background-color: lighten(colors.$secondary-Color, 10%);
+        }
+      }
+    }
+  }
+}

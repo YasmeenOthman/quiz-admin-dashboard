@@ -1,7 +1,7 @@
 import { Edit } from "@mui/icons-material";
 import { DeleteForever } from "@mui/icons-material";
 
-function UserData({ filteredUsers, onDeleteUser, onEditUser }) {
+function UserData({ filteredUsers, onDeleteUser, onEditUser, selectedUser }) {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
 
@@ -59,11 +59,24 @@ function UserData({ filteredUsers, onDeleteUser, onEditUser }) {
                 </td>
                 <td>{user.quizzesTaken.length}</td>
                 <td>
-                  <button onClick={() => onEditUser(user)}>
-                    <Edit />
+                  <button
+                    className="edit-user-btn"
+                    onClick={() => onEditUser(user)}
+                  >
+                    <Edit sx={{ color: "#6FCF97" }} />
                   </button>
-                  <button onClick={() => onDeleteUser(user._id)}>
-                    <DeleteForever />
+                  {/* Delete Button */}
+                  <button
+                    className="delete-user-btn"
+                    onClick={() => !selectedUser && onDeleteUser(user._id)}
+                    disabled={selectedUser} // Disable the button itself
+                  >
+                    <DeleteForever
+                      sx={{
+                        color: selectedUser ? "grey" : "#ff7f50", // Change color to indicate disabled
+                        pointerEvents: selectedUser ? "none" : "auto", // Block interaction when disabled
+                      }}
+                    />
                   </button>
                 </td>
               </tr>

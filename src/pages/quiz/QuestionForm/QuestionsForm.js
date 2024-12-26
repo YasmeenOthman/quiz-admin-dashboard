@@ -169,16 +169,16 @@ function QuestionsForm() {
               required
               className="form-input"
             />
-            <div style={{ width: "100%", fontSize: ".7rem" }} className="code">
-              <label style={{ color: "coral" }} className="form-label">
-                Does this question have an equation or code?
-              </label>
+            <div className="code">
               <input
                 type="checkbox"
                 name="hasEquation"
                 checked={questionData.hasEquation}
                 onChange={handleChange}
               />
+              <label className="code-label">
+                Does this question have an equation or code?
+              </label>
             </div>
           </div>
 
