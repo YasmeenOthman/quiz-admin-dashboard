@@ -145,9 +145,9 @@
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(8px); /* Blurry background effect */
-  background-color: rgba(0, 0, 0, 0.5); /* Optional for a dark overlay */
-  z-index: 10; /* Ensure it is above other content */
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;

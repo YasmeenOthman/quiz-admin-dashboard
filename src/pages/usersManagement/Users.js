@@ -3,11 +3,12 @@ import axios from "axios";
 import UserData from "./UserData";
 import UserFilter from "./UserFilter";
 import BasicButton from "../../components/BasicButton";
-import "./user.scss";
 import UserEditModal from "./UserEditModal";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import "./user.scss";
 const serverUrl = process.env.REACT_APP_SERVER_URL;
+
 function Users() {
   const navigate = useNavigate();
   const [users, setUsers] = useState([]);
@@ -36,14 +37,13 @@ function Users() {
   // ----------Edit user-------------
 
   const handleEditUser = (user) => {
-    console.log(user);
     setSelectedUser(user); // Open the modal and set the user to be edited
   };
 
   const handleSaveUser = async (updatedUser) => {
     try {
-      await axios.put(
-        `${serverUrl}/admin/users/${updatedUser._id}`,
+      let res = await axios.put(
+        `${serverUrl}/admin/updateUser/${updatedUser._id}`,
         updatedUser,
         {
           headers: {
@@ -51,12 +51,26 @@ function Users() {
           },
         }
       );
+
+      // // Extract the new token from the response
+      // const newToken = res.data.token;
+
+      // if (newToken) {
+      //   // Update the token in local storage
+      //   localStorage.setItem("authToken", newToken);
+
+      //   // Optionally, decode the token to update frontend state (if needed)
+      //   const decoded = jwtDecode(newToken); // Requires 'jwt-decode' package
+      //   setUser(decoded); // Update global or local user state
+      // }
+
       fetchAllUsers();
       setSelectedUser(null);
     } catch (error) {
       console.error(error);
     }
   };
+
   // ------------Delete user ---------------
   const handleDeleteUser = async (userId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {

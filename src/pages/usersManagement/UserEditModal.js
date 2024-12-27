@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function UserEditModal({ user, onSave, onCancel }) {
+  console.log(user);
   const [formData, setFormData] = useState({ ...user });
 
   const handleChange = (e) => {
@@ -10,6 +11,7 @@ function UserEditModal({ user, onSave, onCancel }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
     onSave(formData);
   };
 
@@ -37,6 +39,7 @@ function UserEditModal({ user, onSave, onCancel }) {
             <input
               id="email"
               name="email"
+              disabled
               value={formData.email}
               onChange={handleChange}
             />
