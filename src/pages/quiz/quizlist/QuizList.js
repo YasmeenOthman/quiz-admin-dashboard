@@ -73,13 +73,13 @@ function QuizList() {
   // ---- delete a quiz -----
   const deleteQuiz = async (quizId) => {
     try {
-      if (window.confirm("Are you sure you want to delete this quiz?")) {
-        await axios.delete(`${serverUrl}/quiz/${quizId}`);
-        setQuizzez(quizzez.filter((quiz) => quiz._id !== quizId));
-        setFilteredQuizzez(
-          filteredQuizzez.filter((quiz) => quiz._id !== quizId)
-        );
-      }
+      await axios.delete(`${serverUrl}/quiz/${quizId}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        },
+      });
+      setQuizzez(quizzez.filter((quiz) => quiz._id !== quizId));
+      setFilteredQuizzez(filteredQuizzez.filter((quiz) => quiz._id !== quizId));
     } catch (error) {
       console.error("Error deleting quiz:", error);
     }

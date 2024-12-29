@@ -40,7 +40,7 @@ const QuizCard = ({
       onDelete &&
       window.confirm("Are you sure you want to delete this quiz?")
     ) {
-      onDelete();
+      onDelete(quizId);
     }
   };
 
