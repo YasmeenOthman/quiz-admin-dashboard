@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
@@ -27,18 +27,15 @@ const QuizCard = ({
 }) => {
   const navigate = useNavigate();
 
-  // Format the date
   const formattedDate = dateCreated
     ? format(new Date(dateCreated), "MMMM d, yyyy")
     : "";
 
-  // Determine badge color based on status
   const badgeColor = status === "active" ? "success" : "error";
   const badgeText = status === "active" ? "Active" : "Inactive";
 
-  // Function to handle delete button click
   const handleDeleteClick = (event) => {
-    event.stopPropagation(); // Prevent the card click from firing
+    event.stopPropagation();
     if (
       onDelete &&
       window.confirm("Are you sure you want to delete this quiz?")
@@ -47,22 +44,34 @@ const QuizCard = ({
     }
   };
 
-  // Function to handle edit button click
   const handleEditClick = (event) => {
-    event.stopPropagation(); // Prevent the card click from firing
+    event.stopPropagation();
     navigate(`/edit-quiz/${quizId}`);
   };
 
-  // Function to handle view questions button click
   const handleViewQuestionsClick = (event) => {
-    event.stopPropagation(); // Prevent the card click from firing
+    event.stopPropagation();
     navigate(`/question-form/${quizId}`);
   };
 
-  // Handle card click to navigate to the quiz page
-  const handleCardClick = () => {
+  const handleReadMoreClick = (event) => {
+    event.stopPropagation(); // Prevent card click event
     navigate(`/quiz/${quizId}`, { state: { from: "home" } });
   };
+
+  const truncatedContent = (text, maxLength) => {
+    if (!text) return "No Description is available.....!!";
+    const words = text.split(" ");
+    if (words.length > maxLength) {
+      return {
+        truncated: words.slice(0, maxLength).join(" ") + "...",
+        needsReadMore: true,
+      };
+    }
+    return { truncated: text, needsReadMore: false };
+  };
+
+  const { truncated, needsReadMore } = truncatedContent(description, 10);
 
   return (
     <Card
@@ -72,7 +81,7 @@ const QuizCard = ({
         border: "1px solid #ccc",
         minHeight: 450,
       }}
-      onClick={handleCardClick} // Navigate to quiz on card click
+      onClick={() => navigate(`/quiz/${quizId}`, { state: { from: "home" } })}
     >
       <CardMedia
         component="img"
@@ -105,7 +114,15 @@ const QuizCard = ({
             minHeight: "80px",
           }}
         >
-          {description ? description : "No Description is available.....!!"}
+          {truncated}
+          {needsReadMore && (
+            <a
+              onClick={handleReadMoreClick}
+              style={{ color: "#2D9CDB", cursor: "pointer", marginLeft: "5px" }}
+            >
+              Read more
+            </a>
+          )}
         </Typography>
         {numberOfQuestions >= 0 && (
           <Typography variant="body2" color="text.secondary">
@@ -135,7 +152,6 @@ const QuizCard = ({
             <VisibilityIcon sx={{ color: "#2D9CDB" }} />
           </IconButton>
         </Tooltip>
-        {/* Badge for status */}
         <Badge
           badgeContent={badgeText}
           color={badgeColor}

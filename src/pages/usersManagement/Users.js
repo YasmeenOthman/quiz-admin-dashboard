@@ -52,18 +52,6 @@ function Users() {
         }
       );
 
-      // // Extract the new token from the response
-      // const newToken = res.data.token;
-
-      // if (newToken) {
-      //   // Update the token in local storage
-      //   localStorage.setItem("authToken", newToken);
-
-      //   // Optionally, decode the token to update frontend state (if needed)
-      //   const decoded = jwtDecode(newToken); // Requires 'jwt-decode' package
-      //   setUser(decoded); // Update global or local user state
-      // }
-
       fetchAllUsers();
       setSelectedUser(null);
     } catch (error) {
