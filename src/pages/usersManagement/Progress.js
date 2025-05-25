@@ -1,7 +1,7 @@
 import React from "react";
 
 function Progress() {
-  return <div>Progress</div>;
+  return <h1>Progress</h1>;
 }
 
 export default Progress;

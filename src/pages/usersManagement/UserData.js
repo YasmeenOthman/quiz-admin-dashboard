@@ -4,7 +4,7 @@ import { DeleteForever } from "@mui/icons-material";
 function UserData({ filteredUsers, onDeleteUser, onEditUser, selectedUser }) {
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-
+    console.log(filteredUsers);
     // Format the date (e.g., 27 Feb, 2024)
     const formattedDate = date.toLocaleDateString("en-US", {
       day: "2-digit",
@@ -71,12 +71,14 @@ function UserData({ filteredUsers, onDeleteUser, onEditUser, selectedUser }) {
                     onClick={() => !selectedUser && onDeleteUser(user._id)}
                     disabled={selectedUser} // Disable the button itself
                   >
-                    <DeleteForever
-                      sx={{
-                        color: selectedUser ? "grey" : "#ff7f50", // Change color to indicate disabled
-                        pointerEvents: selectedUser ? "none" : "auto", // Block interaction when disabled
-                      }}
-                    />
+                    {user.role !== "admin" && (
+                      <DeleteForever
+                        sx={{
+                          color: selectedUser ? "grey" : "#ff7f50", // Change color to indicate disabled
+                          pointerEvents: selectedUser ? "none" : "auto", // Block interaction when disabled
+                        }}
+                      />
+                    )}
                   </button>
                 </td>
               </tr>
