@@ -5,10 +5,11 @@
   min-height: 100vh;
   padding: 3%;
   color: colors.$primary-Color;
-  // background-image: url("../../assets/images/shared-form-bg.jpg");
+  background-image: url("../../assets/images/bg1.webp");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  display: flex;
 }
 
 .shared-form {
@@ -27,17 +28,31 @@
 }
 
 .form-logo {
-  width: 50%;
+  width: 70%;
 }
 
 .form-logo img {
-  border-radius: 50%;
+  border-radius: 60%;
   width: 30%;
   height: 100%;
   display: block;
   margin: 0 auto;
 }
-
+.form-header {
+  font-size: 2.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shared-inputs {
+  width: 90%;
+  padding: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .input-container {
   border: 1px solid #ccc;
   border-radius: 0.25rem;
@@ -49,33 +64,26 @@
   justify-content: space-between;
   padding: 0.5rem;
 }
-
-.shared-inputs {
-  width: 80%;
-  padding: 10px;
-  margin: 10px;
-}
-
-.shared-inputs input {
+.input-container input {
   width: 100%;
   padding: 20px;
   margin: 10px;
   border: none;
   outline: none;
   border-radius: 0.25rem;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: colors.$primary-Color;
   background-color: transparent;
 }
 
 .shared-inputs input::placeholder {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .password-criteria {
   margin-top: 5px;
   margin-left: 10px;
-  font-size: 14px;
+  font-size: 0.875rem;
   padding: 10px;
 
   div {
@@ -90,10 +98,37 @@
 .navigation-msg-container {
   margin: 30px;
   padding: 10px;
-  font-size: 14px;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .shared-link {
   text-decoration: none;
   color: colors.$secondary-Color;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 22px;
+  }
+
+  .shared-form {
+    flex: 1;
+  }
+  .form-header {
+    font-size: 1.6rem;
+  }
+  .form-logo img {
+    width: 70%;
+  }
+  .input-container input {
+    font-size: 0.8rem;
+    padding: 0;
+  }
+  .navigation-msg-container {
+    width: 100%;
+    font-size: 0.6rem;
+  }
 }

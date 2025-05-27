@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import logo from "../../assets/images/logo.png";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import passwordSchema from "./passwordSchema"; // Import the schema
@@ -86,7 +86,7 @@ const Register = () => {
     <div className="shared-form-container">
       <form className="shared-form" onSubmit={handleSubmit}>
         <div className="form-logo">
-          <img src="../images/logo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </div>
         <h1 className="form-header">Sign Up!!</h1>
         <div className="shared-inputs">
@@ -153,7 +153,7 @@ const Register = () => {
             backgroundColor: "#04305a",
             color: "#F4F5F7",
             padding: "10px",
-            width: "20%",
+            width: "40%",
           }}
         />
 

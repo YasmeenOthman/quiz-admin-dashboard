@@ -94,7 +94,7 @@ const Login = () => {
             backgroundColor: "#04305a",
             color: "#F4F5F7",
             padding: "10px",
-            width: "20%",
+            width: "30%",
           }}
         />
 
