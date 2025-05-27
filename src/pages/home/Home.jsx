@@ -14,7 +14,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import QuizStats from "./QuizStats";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function Home() {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ function Home() {
   async function getAllQuizzes() {
     try {
       const allQuizzes = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/quiz`,
+        `${import.meta.env.VITE_SERVER_URL}/quiz`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -58,7 +58,7 @@ function Home() {
   async function getAllUsers() {
     try {
       const users = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/admin/users`,
+        `${import.meta.env.VITE_SERVER_URL}/admin/users`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("authToken")}`,

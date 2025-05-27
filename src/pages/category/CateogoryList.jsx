@@ -4,7 +4,7 @@ import "./categoryList.scss";
 import CategoryCard from "../../components/categorycard/CategoryCard";
 import { useNavigate } from "react-router-dom";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 function CategoryList() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./shared-form.scss";
+import logo from "../../assets/images/logo.png";
 import axios from "axios";
 import BasicButton from "../../components/BasicButton";
 import { useNavigate, Link } from "react-router-dom";
@@ -9,7 +10,7 @@ import { Tooltip } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 const toastOptions = {
   position: "top-right",
   autoClose: 5000,
@@ -55,7 +56,7 @@ const Login = () => {
     <div className="shared-form-container">
       <form className="shared-form" onSubmit={handleSubmit}>
         <div className="form-logo">
-          <img src="../images/logo.png" alt="logo" />
+          <img src={logo} alt="logo" />
         </div>
         <h1 className="form-header">Welcome Back!!</h1>
         <div className="shared-inputs">

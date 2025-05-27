@@ -9,7 +9,7 @@ import TrueFalseInput from "./TrueFalseInput";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 // Base URL for server API
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 // Initial state structure for a new question
 const initialQuestionData = {

@@ -5,7 +5,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import BasicButton from "../../../components/BasicButton";
 import "./quizform.scss";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 const EditQuizForm = () => {
   const { quizId } = useParams(); // Get quizId from URL parameters

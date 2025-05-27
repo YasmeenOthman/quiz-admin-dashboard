@@ -6,7 +6,7 @@ import MultipleChoiceInput from "./MultipleChoiceInput";
 import TrueFalseInput from "./TruefalseInput";
 import "./editquestion.scss";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 const EditQuestionForm = () => {
   const location = useLocation();

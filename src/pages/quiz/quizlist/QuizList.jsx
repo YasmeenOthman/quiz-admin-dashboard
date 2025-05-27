@@ -6,7 +6,7 @@ import "./quizlist.scss";
 import QuizCard from "../../../components/QuizCard";
 import QuizFilter from "../quizfilter/QuizFilter";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function QuizList() {
   const navigate = useNavigate();

@@ -7,7 +7,7 @@ import UserEditModal from "./UserEditModal";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import "./user.scss";
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function Users() {
   const navigate = useNavigate();

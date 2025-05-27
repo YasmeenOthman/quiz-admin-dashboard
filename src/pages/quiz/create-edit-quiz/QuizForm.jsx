@@ -5,7 +5,7 @@ import "./quizform.scss";
 import BasicButton from "../../../components/BasicButton";
 import BasicModal from "../../../components/Modal";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 // Initial state for the quiz form
 const newQuizData = {
   title: "",

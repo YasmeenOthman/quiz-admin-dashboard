@@ -10,7 +10,7 @@ import "./quizpage.scss";
 import QuestionTemplate from "../QuestionForm/QuestionTemplate";
 import { Padding } from "@mui/icons-material";
 
-const serverUrl = process.env.REACT_APP_SERVER_URL;
+const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function QuizPage() {
   const { quizId } = useParams();
