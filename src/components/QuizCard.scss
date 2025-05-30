@@ -1,0 +1,120 @@
+.quiz-card {
+  width: 280px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
+  &-image {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &-content {
+    padding: 12px;
+
+    & .quiz-card-title {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    & .quiz-card-meta {
+      font-size: 0.75rem;
+      color: #666;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    & .quiz-card-description {
+      font-size: 0.9rem;
+      min-height: 60px;
+    }
+
+    & .read-more {
+      color: #2d9cdb;
+      cursor: pointer;
+      margin-left: 6px;
+      font-weight: 500;
+    }
+
+    & .quiz-card-questions {
+      font-size: 0.85rem;
+      margin-top: 6px;
+      color: #333;
+    }
+  }
+
+  &-footer {
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+
+    .btn {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &.delete {
+        background-color: #fddede;
+        color: #d9534f;
+
+        &:hover {
+          background-color: #f8c6c6;
+        }
+      }
+
+      &.edit {
+        background-color: #d2f4e6;
+        color: #28a745;
+
+        &:hover {
+          background-color: #c0e7d6;
+        }
+      }
+
+      &.view {
+        background-color: #d6eaf8;
+        color: #0275d8;
+
+        &:hover {
+          background-color: #b9daed;
+        }
+      }
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      border-radius: 12px;
+      color: white;
+
+      &.active {
+        background-color: #28a745;
+      }
+
+      &.inactive {
+        background-color: #dc3545;
+      }
+    }
+  }
+}

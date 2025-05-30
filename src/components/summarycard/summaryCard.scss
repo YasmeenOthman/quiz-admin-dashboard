@@ -1,46 +1,43 @@
-@use '../../styles/colors';
+@use "../../styles/colors";
 @use "../../styles/fonts";
 
 .summary-card {
-    box-shadow: rgba(0, 0, 0, 0.24)  0px 3px 8px;
-    border-radius: 8px; 
-    min-width:20%;
-    padding: 5px;
-    margin: 16px;
-   
- 
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 8px;
+  min-width: 20%;
+  padding: 5px;
+  margin: 16px;
+  transition: transform 0.2s ease;
 }
-.card-content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.summary-card:hover {
+  transform: translateY(-5px);
+}
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .summary-card-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-   
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 
 .summary-card-icon {
-   color:colors.$primary-Color ; 
-    padding: 5px;
-    border:none; 
-    
-    
-
+  color: colors.$primary-Color;
+  padding: 5px;
+  border: none;
 }
 .summary-card-title {
-    font-family: fonts.$secondary-font; 
-    color:colors.$primary-Color ; 
-    font-size: .8rem;
-    text-align: center;
- 
+  font-family: fonts.$secondary-font;
+  color: colors.$primary-Color;
+  font-size: 0.8rem;
+  text-align: center;
 }
 .summary-card-value {
-    font-family: fonts.$text-font;
-    color: colors.$primary-Color; 
-    font-size: 1.6rem;
-    padding: 10px;
+  font-family: fonts.$text-font;
+  color: colors.$primary-Color;
+  font-size: 1.6rem;
+  padding: 10px;
 }

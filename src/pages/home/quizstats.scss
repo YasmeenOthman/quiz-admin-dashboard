@@ -1,82 +1,79 @@
 @use "../../styles/colors";
 @use "../../styles/fonts";
 
-.quiz-stats-section{
-    background-color: white;
-    padding: 15px;
-    margin-top: 40px;
-  
+.quiz-stats-section {
+  background-color: white;
+  padding: 15px;
+  margin-top: 40px;
+  flex: 1 1 200px;
+  border-radius: .5rem;
+}
+.quiz-stats-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.quiz-stats-header{
-    display: flex;
-    justify-content: space-between;
-  
+.quiz-stats-title {
+  color: colors.$primary-Color;
+  flex-basis: 50%;
+  font-size: fonts.$heading-font-size;
+  font-weight: 600;
+  border-left: 5px solid colors.$accent-Color;
+  padding-left: 10px;
 }
 
-.quiz-stats-title{
-    color:colors.$primary-Color;
-    flex-basis: 50%;
-   
-}
-
-.quiz-select-dropdown{
-    flex-basis: 20%;
-    height: 30px;
-    color: colors.$primary-Color;
-
+.quiz-select-dropdown {
+  flex-basis: 20%;
+  height: 30px;
+  color: colors.$primary-Color;
 }
 
 .quiz-stats-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    padding: 10px;
-    margin-top: 20px;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
 }
-
 
 .quiz-stat-card {
-    margin: 10px; 
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  gap: 10px;
+  flex: 1 1 150px;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+
+  .quiz-stat-card-icon {
     padding: 10px;
+    border-radius: 50%;
+    color: white;
     display: flex;
     align-items: center;
-    height: 100px;
-    gap: 10px;
+    justify-content: center;
+  }
 
-   
-    .quiz-stat-card-icon {
-        padding: 10px;
-        border-radius: 50%;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      
-        
+  .quiz-stat-card-data {
+    padding: 5px;
+    color: colors.$primary-Color;
+    .quiz-stat-card-title {
+      font-size: 0.8rem;
+      color: colors.$primary-Color;
     }
 
-    .quiz-stat-card-data {
-        padding: 5px;
-        color: colors.$primary-Color;
-        .quiz-stat-card-title {
-            font-size: .8rem;
-            color: colors.$primary-Color;
-        }
-        
-        .quiz-stat-card-value {
-            font-family: fonts.$background-font;
-            text-transform: uppercase;
-            margin-top: 3px;
-            font-size: 1.1rem;
-            font-weight: bolder;
-        }
+    .quiz-stat-card-value {
+      font-family: fonts.$background-font;
+      text-transform: uppercase;
+      margin-top: 3px;
+      font-size: 1.1rem;
+      font-weight: bolder;
     }
+  }
 }
-
-
-
-
-
-

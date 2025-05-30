@@ -1,119 +1,129 @@
-@use '../../styles/colors';
+@use "../../styles/colors";
 @use "../../styles/fonts";
 
 // Home Container
 .home-container {
-    background-color: colors.$bg-Color;
-    padding: 2% 5%;
-    font-family: fonts.$background-font;
-    display: flex;
-    flex-direction: column;
-    gap: 3%; 
-    width: 80vw;
+  background-color: colors.$bg-Color;
+  padding: 2% 5%;
+  font-family: fonts.$background-font;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  width: 80vw;
 }
 
 // Navbar Section
 .navbar-container {
-    width: 100%;
-    margin-bottom: 40px;
-    padding: 15px;
-    background-color: colors.$primary-Color;
-    color: colors.$bg-Color;
-    // background: linear-gradient(to left, colors.$primary-Color,#43C6AC);
-    
-    .home-nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        &-list {
-            display: flex;
-            justify-content: space-around;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            &-item {
-                &-link {
-                    text-decoration: none;
-                    padding: 10px 15px;
-                    color: colors.$bg-Color;
-                    font-family: fonts.$primary-font;
-                    // border-radius: 0.25rem;
-                    transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 15px;
+  background-color: colors.$primary-Color;
+  color: colors.$bg-Color;
+  // background: linear-gradient(to left, colors.$primary-Color,#43C6AC);
 
-                    &:hover {
-                        border-bottom: 1px solid colors.$secondary-Color;
-                        // background-color: colors.$secondary-Color;
-                        // color: colors.$bg-Color;
-                        color: colors.$secondary-Color;
-                    }
-                }
-            }
-        }
+  .home-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    h1 {
+      font-size: 1.8rem;
+      font-family: fonts.$secondary-font;
+      letter-spacing: 1px;
+      font-weight: bold;
+      color: colors.$secondary-Color;
     }
+    &-list {
+      display: flex;
+      justify-content: space-around;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      &-item {
+        &-link {
+          text-decoration: none;
+          padding: 10px 15px;
+          color: colors.$bg-Color;
+          font-family: fonts.$primary-font;
+          transition: background-color 0.3s ease, color 0.3s ease;
+
+          &:hover {
+            border-bottom: 1px solid colors.$secondary-Color;
+            color: colors.$secondary-Color;
+          }
+        }
+      }
+    }
+  }
 }
 // Home Cards (Stats) Section
 .home-cards-container {
-    width: 100%;
-    .home-stats-cards {
-       display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        gap: 10px; 
-    
-    }
-}
-// Last Added Quizzes Section
-.last-added-quiz-container {
-    margin: 50px 0;
-    padding: 10px;
-    min-height: 500px;
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .home-stats-cards {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: white;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+// Recent Added Quizzez  Section
+.last-added-quiz-container {
+  margin: 50px 0;
+  padding: 10px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: white;
+  border-radius: 0.5rem;
 
-    .last-added-quiz-cards {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: 10px;
-    }
+  .last-added-quiz-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+  }
 }
 
-.quiz-page-link{
-    text-decoration: none;
+.quiz-page-link {
+  text-decoration: none;
 }
 
 // Categories Section
 .home-categories-container {
-    margin-top: 10px;
-    background-color: white;
+  margin-top: 10px;
+  background-color: white;
 
-
-    .category-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fill,minmax(300px ,auto));
-        justify-content: center;
-        gap: 20px;
-    }
+  .category-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+    justify-content: center;
+    gap: 20px;
+  }
 }
 
 // Subtitles for Each Section (Shared Styles)
 .home-cards-subtitle,
 .last-added-quiz-subtitle,
 .categories-subtitle {
-    font-family: fonts.$secondary-font;
-    color: colors.$primary-Color;
-    font-size: 1.5rem;
-    padding: 10px 15px;
-    margin-bottom: 30px;
-    width: auto ;
-    display: block;
-
-
+  font-family: fonts.$secondary-font;
+  color: colors.$primary-Color;
+  font-size: fonts.$heading-font-size;
+  font-weight: 600;
+  border-left: 5px solid colors.$accent-Color;
+  padding-left: 10px;
+  padding: 10px 15px;
+  margin-bottom: 30px;
+  width: auto;
+  display: block;
 }
 
 // @media (max-width: 768px) {
