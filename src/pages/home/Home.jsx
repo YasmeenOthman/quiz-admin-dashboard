@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getUniqueCategoriesWithQuizzes } from "../../utils/helperfunctions";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
-import QuizCard from "../../components/QuizCard";
+import QuizCard from "../../components/quizCard/QuizCard";
 import CategoryCard from "../../components/categorycard/CategoryCard";
 import HomeNav from "./HomeNav";
 import SummaryCard from "../../components/summarycard/SummaryCard";
-import "./home.scss";
 import QuizIcon from "@mui/icons-material/Quiz";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import QuizStats from "./QuizStats";
+import "./home.scss";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
@@ -207,15 +206,9 @@ function Home() {
           </h2>
         </div>
         <div className="category-cards">
-          {filteredQuizzez
-            .map((quiz) => quiz.category)
-            .filter(
-              (category, index, arr) =>
-                category &&
-                category.quizzes.length > 0 &&
-                arr.findIndex((cat) => cat.name === category.name) === index
-            )
-            .slice(0, 4)
+          {/* Display only the first 4 unique categories with quizzes */}
+          {getUniqueCategoriesWithQuizzes(filteredQuizzez)
+            .slice(0, 3)
             .map((category) => (
               <CategoryCard
                 key={category._id}
@@ -225,7 +218,6 @@ function Home() {
             ))}
         </div>
       </div>
-      {/* <ArrowUpwardIcon /> */}
     </div>
   );
 }

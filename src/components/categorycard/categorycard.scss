@@ -1,69 +1,67 @@
-
 @use "../../styles/colors";
-.category-card-container{
-    border: 1px solid #ddd;
-    border-radius: .4rem;
-    width: 250px;
-    margin: 16px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: colors.$bg-Color;
-    color: colors.$primary-Color;
 
-  }
-  
-  .category-card-header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    text-transform: capitalize;
-    .category-icon-container {
-      border-radius:.25rem;
-      margin-right: 10px;
-      padding: 5px;
-    }
-    
-   .category-name{
-      font-size: 1.2rem;
-      padding: 10px;
-      width: 60%;
-     
-      
-    }
+.category-card-container {
+  flex: 0 0 auto; // Prevent shrinking, allow horizontal scroll layout
+  width: 250px;
+  margin: 0 12px; // Horizontal spacing
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 0.4rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: colors.$bg-Color;
+  color: colors.$primary-Color;
+}
+
+.category-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  text-transform: capitalize;
+
+  .category-icon-container {
+    border-radius: 0.25rem;
+    margin-right: 10px;
+    padding: 5px;
   }
 
-  
-  .category-card-description{
+  .category-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    flex: 1;
+  }
+}
+
+.category-card-description {
+  font-size: 0.9rem;
+  margin-top: 8px;
+  color: colors.$secondary-Color;
+}
+
+.category-card-quiz-count {
+  margin-top: 12px;
+  font-size: 0.95rem;
+
+  .category-card-quiz-count-no {
     color: colors.$secondary-Color;
+    font-weight: bolder;
+    font-size: 1.1rem;
   }
-  
-  .category-card-quiz-count {
-    color: colors.$primary-Color;
-    margin-top: 16px;
-    .category-card-quiz-count-no{
-      color: colors.$secondary-Color;
-      font-weight: bolder;
-      font-size: 1.2rem;
-    }
-  }
-  
-  .category-card-add-quiz-link{
-    text-decoration: none;
-    width: 20%;
+}
 
-  
-  }
-  
-  .category-card-add-quiz-button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-  }
-  
- 
+.category-card-add-quiz-link {
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.category-card-add-quiz-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}

@@ -57,7 +57,7 @@
     }
   }
 }
-// Home Cards (Stats) Section
+// Home Cards first Section
 .home-cards-container {
   flex: 1 1 200px;
   display: flex;
@@ -101,12 +101,16 @@
 .home-categories-container {
   margin-top: 10px;
   background-color: white;
-
+  flex: 1 1 200px;
+  padding: 10px;
+  border-radius: 0.5rem;
   .category-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    padding: 10px 0;
+    gap: 16px;
   }
 }
 

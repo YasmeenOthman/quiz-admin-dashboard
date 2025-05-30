@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import "./quizlist.scss";
-import QuizCard from "../../../components/QuizCard";
+import QuizCard from "../../../components/quizCard/QuizCard";
 import QuizFilter from "../quizfilter/QuizFilter";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
