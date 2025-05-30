@@ -33,7 +33,6 @@ const list = [
     icon: <QuizIcon />,
     path: "/quizzes",
     items: [
-      { name: "Manage", path: "/", icon: <HandymanIcon /> },
       { name: "Create New Quiz", path: "/create-quiz", icon: <AddIcon /> },
       {
         name: "All Quizzez",

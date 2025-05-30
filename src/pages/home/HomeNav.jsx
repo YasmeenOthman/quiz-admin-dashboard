@@ -5,7 +5,7 @@ function HomeNav() {
   return (
     <div className="navbar-container">
       <nav className="home-nav">
-        <Link to="/" className="home-logo">
+        <Link to="/home" className="home-logo">
           QuiziGo
         </Link>
 

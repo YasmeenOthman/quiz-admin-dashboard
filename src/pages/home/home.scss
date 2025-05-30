@@ -26,15 +26,6 @@
     align-items: center;
     justify-content: space-between;
 
-    .home-logo {
-      font-size: 1.8rem;
-      font-family: fonts.$secondary-font;
-      letter-spacing: 1px;
-      font-weight: bold;
-      color: colors.$secondary-Color;
-      text-decoration: none;
-    }
-
     &-list {
       display: flex;
       justify-content: space-around;
@@ -73,6 +64,30 @@
     }
   }
 }
+// quiz management section
+.dashboard-section {
+  padding: 20px;
+  background-color: white;
+  border-radius: .5rem;
+  flex: 1 1 200px;
+  .dashboard-header {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: colors.$primary-Color;
+    font-family: fonts.$secondary-font;
+  }
+  .dashboard-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
 // Home Hero Section
 // Home Cards first Section
 .home-cards-container {
@@ -134,7 +149,8 @@
 // Subtitles for Each Section (Shared Styles)
 .home-cards-subtitle,
 .last-added-quiz-subtitle,
-.categories-subtitle {
+.categories-subtitle,
+.dashboard-title {
   font-family: fonts.$secondary-font;
   color: colors.$primary-Color;
   font-size: fonts.$heading-font-size;
@@ -146,9 +162,3 @@
   width: auto;
   display: block;
 }
-
-// @media (max-width: 768px) {
-//     .home-stats-cards {
-//         grid-template-columns: 1fr; // Single column on smaller screens
-//     }
-// }

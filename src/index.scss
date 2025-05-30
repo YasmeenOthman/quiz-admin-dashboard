@@ -6,4 +6,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.home-logo {
+  font-size: 1.8rem;
+  font-family: fonts.$secondary-font;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: colors.$secondary-Color;
+  text-decoration: none;
+}

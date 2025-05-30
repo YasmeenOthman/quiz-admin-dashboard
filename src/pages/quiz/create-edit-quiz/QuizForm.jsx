@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import "./quizform.scss";
 import BasicButton from "../../../components/BasicButton";
@@ -67,7 +67,10 @@ const QuizForm = () => {
   return (
     <div className="quiz-form-container">
       <div className="quiz-form-title-container">
-        <h1>Create New Quiz</h1>
+        <Link to="/home" className="home-logo">
+          QuiziGo
+        </Link>
+        <h4>Create New Quiz</h4>
       </div>
 
       <form className="quiz-form">

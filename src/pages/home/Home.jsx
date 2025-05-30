@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { getUniqueCategoriesWithQuizzes } from "../../utils/helperfunctions";
 import axios from "axios";
 import QuizCard from "../../components/quizCard/QuizCard";
@@ -11,6 +11,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import GroupIcon from "@mui/icons-material/Group";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import QuizStats from "./QuizStats";
+import BasicButton from "../../components/BasicButton";
 import "./home.scss";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
@@ -150,11 +151,9 @@ function Home() {
   return (
     <div className="home-container">
       <HomeNav />
+
       {/* Stats Section */}
       <div id="stats" className="home-cards-container">
-        <div className="home-cards-subtitle-container">
-          {/* <h2 className="home-cards-subtitle">Last Activities:</h2> */}
-        </div>
         <div className="home-stats-cards">
           {summaryData.map((item, index) => (
             <SummaryCard
@@ -167,6 +166,27 @@ function Home() {
           ))}
         </div>
       </div>
+      {/* Quiz management */}
+      <section id="quiz-management" className="dashboard-section">
+        <div className="dashboard-header">
+          <h2 className="dashboard-title"> Quiz Management</h2>
+        </div>
+        <div className="dashboard-actions">
+          <BasicButton
+            value="➕ Create Quiz"
+            onClick={() => navigate("/create-quiz")}
+          />
+          <BasicButton
+            value="📋 Manage Quizzes"
+            onClick={() => navigate("/quizzes")}
+          />
+          <BasicButton
+            value="🗂 Categories"
+            onClick={() => navigate("/categories")}
+          />
+        </div>
+      </section>
+
       <QuizStats quizzes={quizzes} />
       {/* Last Added Quizzes Section */}
       <div id="last-added-quizzes" className="last-added-quiz-container">

@@ -13,7 +13,7 @@ import QuizForm from "./pages/quiz/create-edit-quiz/QuizForm";
 import EditQuizForm from "./pages/quiz/create-edit-quiz/EditQuizForm";
 import QuestionsForm from "./pages/quiz/QuestionForm/QuestionsForm";
 import EditQuestionForm from "./pages/quiz/editquestion/EditQuestionForm";
-import QuizManagement from "./pages/quiz/QuizManagement";
+
 import QuizPage from "./pages/quiz/quizpage/QuizPage";
 import PrivateRoute from "./authRoutes/PrivateRoute";
 import ProtectedRoute from "./authRoutes/ProtectedRoute";
@@ -66,14 +66,7 @@ const router = createBrowserRouter([
               </ProtectedRoute>
             ),
           },
-          {
-            path: "",
-            element: (
-              <ProtectedRoute>
-                <QuizManagement />
-              </ProtectedRoute>
-            ),
-          },
+
           {
             path: "quizzes",
             element: (
