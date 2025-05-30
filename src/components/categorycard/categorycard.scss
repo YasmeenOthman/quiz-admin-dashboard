@@ -1,9 +1,9 @@
 @use "../../styles/colors";
 
 .category-card-container {
-  flex: 0 0 auto; // Prevent shrinking, allow horizontal scroll layout
+  flex: 0 0 auto;
   width: 250px;
-  margin: 0 12px; // Horizontal spacing
+  margin: 0 12px;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -13,8 +13,12 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: colors.$bg-Color;
   color: colors.$primary-Color;
+  transition: transform 0.2s ease;
+  cursor: pointer;
 }
-
+.category-card-container:hover {
+  transform: translateY(-5px);
+}
 .category-card-header {
   display: flex;
   align-items: center;

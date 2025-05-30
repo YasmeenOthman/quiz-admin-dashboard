@@ -5,10 +5,11 @@ function HomeNav() {
   return (
     <div className="navbar-container">
       <nav className="home-nav">
-        <h1> QuiziGo</h1>
-        <ul className="home-nav-list">
-          {/* <h1 className="home-welcome-message"> Home page</h1> */}
+        <Link to="/" className="home-logo">
+          QuiziGo
+        </Link>
 
+        <ul className="home-nav-list">
           <li className="home-nav-list-item">
             <Link to="/quizzes" className="home-nav-list-item-link">
               Quizzez
