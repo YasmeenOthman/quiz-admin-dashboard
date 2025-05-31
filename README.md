@@ -5,7 +5,7 @@ Admin interface for creating, editing, publishing, and deleting quizzes.
 ## 💻 Built With
 
 - React
-- Tailwind CSS
+- SASS
 - Axios (for API calls)
 - React Router
 

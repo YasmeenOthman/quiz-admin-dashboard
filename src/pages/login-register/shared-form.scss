@@ -109,25 +109,25 @@
   color: colors.$secondary-Color;
 }
 
-// @media screen and (max-width: 768px) {
-//   html {
-//     font-size: 22px;
-//   }
-//   .shared-form {
-//     flex: 1;
-//   }
-//   .form-header {
-//     font-size: 1.6rem;
-//   }
-//   .form-logo img {
-//     width: 70%;
-//   }
-//   .input-container input {
-//     font-size: 0.8rem;
-//     padding: 0;
-//   }
-//   .navigation-msg-container {
-//     width: 100%;
-//     font-size: 0.6rem;
-//   }
-// }
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 22px;
+  }
+  .shared-form {
+    flex: 1;
+  }
+  .form-header {
+    font-size: 1.6rem;
+  }
+  .form-logo img {
+    width: 70%;
+  }
+  .input-container input {
+    font-size: 0.8rem;
+    padding: 0;
+  }
+  .navigation-msg-container {
+    width: 100%;
+    font-size: 0.6rem;
+  }
+}

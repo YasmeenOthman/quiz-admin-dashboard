@@ -226,7 +226,7 @@ function Home() {
           </h2>
         </div>
         <div className="category-cards">
-          {/* Display only the first 4 unique categories with quizzes */}
+          {/* Display only the first 3 unique categories with quizzes */}
           {getUniqueCategoriesWithQuizzes(filteredQuizzez)
             .slice(0, 3)
             .map((category) => (
