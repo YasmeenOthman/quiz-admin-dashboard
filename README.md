@@ -12,7 +12,7 @@ Admin interface for creating, editing, publishing, and deleting quizzes.
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/yourusername/quiz-admin-dashboard
+git clone git@github.com:YasmeenOthman/quiz-admin-dashboard.git
 cd quiz-admin-dashboard
 npm install
 npm run dev
