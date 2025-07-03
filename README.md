@@ -1,4 +1,4 @@
-# 📋 Quiz Builder – Admin Dashboard
+# 📋 Quiz Builder – Admin Dashboard [Under construction]
 
 Admin interface for creating, editing, publishing, and deleting quizzes.
 
@@ -9,6 +9,19 @@ Admin interface for creating, editing, publishing, and deleting quizzes.
 - Axios (for API calls)
 - React Router
 
+---
+
+## 🚀 Live Demo
+
+🔐 Login page (admin dashboard):  
+[https://statuesque-monstera-296d0c.netlify.app/quiz-login](https://statuesque-monstera-296d0c.netlify.app/quiz-login)
+
+- For testing use :
+  - Email: yasmeen@gmail.com
+  - password: 1234
+
+---
+
 ## 🚀 Getting Started
 
 ```bash
@@ -17,6 +30,7 @@ cd quiz-admin-dashboard
 npm install
 npm run dev
 ```
+
 ## 🔑 Features
 
 - Create quizzes
