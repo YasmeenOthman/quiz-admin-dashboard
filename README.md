@@ -20,6 +20,8 @@ Admin interface for creating, editing, publishing, and deleting quizzes.
   - Email: yasmeen@gmail.com
   - password: 1234
 
+**Note**: There may be a short delay in loading due to the use of the free Render tier for deployment.
+
 ---
 
 ## 🚀 Getting Started
