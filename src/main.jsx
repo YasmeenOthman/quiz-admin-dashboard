@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         element: <Navigation />, // Renders Sidebar and main content
         children: [
           {
-            path: "/home",
+            index: true,
             element: (
               <ProtectedRoute>
                 <Home />

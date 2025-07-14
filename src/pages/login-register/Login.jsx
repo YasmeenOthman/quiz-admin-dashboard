@@ -44,7 +44,7 @@ const Login = () => {
       let res = await axios.post(`${serverUrl}/user/login`, user);
       if (res.data.status) {
         localStorage.setItem("authToken", res.data.token);
-        navigate("/home");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
