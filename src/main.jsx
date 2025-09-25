@@ -44,7 +44,11 @@ const Navigation = () => {
       {isMobile && (
         <AppBar
           position="fixed"
-          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          sx={{
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+            backgroundColor: "#04305a",
+            color: "#F4F5F7",
+          }}
         >
           <Toolbar>
             <IconButton

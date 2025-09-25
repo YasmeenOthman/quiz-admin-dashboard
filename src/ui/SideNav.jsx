@@ -78,7 +78,9 @@ const SideNav = ({ onNavigate }) => {
     <Box
       sx={{
         width: 250,
-        mt: { xs: "64px", sm: 0 }, // margin-top 64px on mobile, 0 on desktop
+        mt: { xs: "64px", sm: 0 },
+        backgroundColor: "#04305a",
+        color: "#F4F5F7", // margin-top 64px on mobile, 0 on desktop
       }}
     >
       <List>
