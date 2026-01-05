@@ -14,7 +14,7 @@ Admin interface for creating, editing, publishing, and deleting quizzes.
 ## 🚀 Live Demo
 
 🔐 Login page (admin dashboard):  
-[https://statuesque-monstera-296d0c.netlify.app/quiz-login](https://statuesque-monstera-296d0c.netlify.app/quiz-login)
+[https://statuesque-monstera-296d0c.netlify.app/quiz-login](https://statuesque-monstera-296d0c.netlify.app)
 
 - For testing use :
   - Email: yasmeen@gmail.com
